@@ -6,23 +6,21 @@
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 # library(DatabaseConnector)
 #Set CDM name
-cdmDatabaseSchema <-"Dolphin_CDM.dbo"
-
-
+cdmDatabaseSchema <-""
 #Set User Info to check authority
 connectionDetails<- DatabaseConnector::createConnectionDetails(dbms="",
                                                                server="",
                                                                schema=cdmDatabaseSchema,
                                                                user="",
                                                                password="")
-
 #Connect CDM using Details
 connection <- DatabaseConnector::connect(connectionDetails)
-
 ################################################################################
 #SAVE DATA RESOURCE
 #Set location when project path is change
 ################################################################################
+dir.create(file.path(getwd(), "../Standard RDS"), showWarnings = FALSE)
+dir.create(file.path(getwd(), "../Target RDS"), showWarnings = FALSE)
 ################################################################################
 #PERSON DATA SAVING FUNCTION
 ################################################################################

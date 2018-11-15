@@ -1,6 +1,8 @@
 # install.packages('plotrix')
 library(plotrix)
 library(ggplot2)
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+dir.create(file.path(getwd(), "../images"), showWarnings = FALSE)
 source("gemini.R")
 #Library for Pie 3D function
 options(scipen = 999999)
