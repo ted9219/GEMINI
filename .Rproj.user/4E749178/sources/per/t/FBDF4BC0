@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542252828835.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1383864013",
+    "id" : "FBDF4BC0",
+    "lastKnownWriteTime" : 1539672728,
+    "last_content_update" : 1539672728,
+    "path" : "~/R project/gemini_upload/R/drug_exposure_data.R",
+    "project_path" : "R/drug_exposure_data.R",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

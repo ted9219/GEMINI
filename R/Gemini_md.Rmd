@@ -1,0 +1,373 @@
+---
+title: "GEMINI Report"
+output: 
+  html_document:
+    theme: paper
+    highlight: zenburn
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: TRUE
+---
+<a name="Top"></a>
+
+### **GEMINI info** 
+This is GEMINI Report. This code is compare two institute's CDMs with graph. will be updating...
+
+<style>
+  .col2{
+    display: inline-block;
+    -webkit-columns: 100px 2;
+    -moz-columns: 100px 2;
+    columns: 100px 2;
+    -webkit-column-rule:
+    1px dotted #e0e0e0;
+    -moz-column-rule: 1px dotted #e0e0e0;
+    column-rule: 1px dotted #e0e0e0;
+    column-span:all;
+  }
+</style>
+
+***
+<a name="Summary"></a>
+
+### **Summary** {.flexbox .vcenter}
+
+<div class="col2">
+
+![CDM 레코드 비교](../images/Whole/00.Record.jpg)
+
+두 CDM에서 전체 레코드 중 각 테이블 별 레코드가 차지하는 비율
+<!-- This figure shows that Standard CDM's record each assigned table ratio and Target CDM's record each assigned table ratio.-->
+
+
+![CDM Person 비교](../images/Whole/01.Person.jpg)
+
+두 CDM에서 전체 환자 중 각 테이블 별 환자가 차지하는 비율
+<!-- This figure shows that Standard CDM's person each assigned person ratio and Target CDM's person each assigned person ratio. -->
+
+</div>
+
+<a href="#Top">TOP</a>
+
+***
+<a name="PERSON"></a>
+
+### **PERSON Table** 
+
+<div class="col2">
+![Person 테이블 레코드 비율](../images/Person/00.Person_record.jpg)
+
+전체 테이블 중 Person 테이블 레코드가 차지하는 비율
+<!-- This figure shows that Standard CDM's PERSON Table record ratio and Target CDM's PERSON Table record ratio. -->
+
+![Person 테이블 성비](../images/Person/01.Person_gender.jpg)
+
+두 CDM에 있는 환자의 성별을 기준으로 한 비율
+<!-- This figure shows that Standard CDM's gender ratio and Target CDM's gender ratio. -->
+
+</div>
+
+<div class="col2">
+
+![Person 테이블 첫 진료 연도](../images/Person/02.Person_min_year.jpg)
+
+![Person 테이블 마지막 진료 연도](../images/Person/03.Person_max_year.jpg)
+
+</div>
+환자들이 처음으로 진료받은 연도와 마지막으로 진료받은 연도를 이용한 연령별 및 성별 비율
+<!-- This figure shows that Standard CDM's, Target CDM's Observation Period Start and End. -->
+
+<div class="col2">
+
+![Person 인종](../images/Person/04.Person_race.jpg)
+
+환자의 인종에 따른 비율
+<!-- This figure shows that Standard CDM's Race ratio and Target CDM's Race ratio-->
+
+![Person 민족](../images/Person/05.Person_ethnicity.jpg)
+
+환자의 민족에 따른 비율
+<!-- This figure shows that Standard CDM's Ethnicity ratio and Target CDM's Ethnicity ratio-->
+
+</div>
+
+<div class="col2">
+
+![Person 주소](../images/Person/06.Person_location.jpg)
+
+환자의 주소 종류 수 및 Null 값의 비율
+<!-- This figure shows the number of location types, the null ratio in the standard CDM and target CDM.-->
+
+![Person 담당자](../images/Person/07.Person_provider.jpg)
+
+환자 담당자의 인원 수와 Null 값의 비율
+<!-- This figure shows the number of provider types, the null ratio in the standard CDM and target CDM.-->
+
+</div>
+
+<SPAN class="col2">
+![Person 의료 서비스 장소](../images/Person/08.Person_care_site.jpg)
+
+환자가 의료 서비스를 받는 장소의 종류 및 Null 값의 비율
+<!-- This figure shows the number of care site types, the null ratio in the standard CDM and target CDM.-->
+</SPAN>
+
+<a href="#Top">TOP</a>
+
+***
+<a name="DEATH"></a>
+
+### **DEATH Table**
+<div class="col2">
+![Death ETL check](../images/Death/00.Death_deathcheck.jpg)
+
+Death 테이블을 이용하여 ETL 오류 확인
+<!-- This figure shows Percentage of people with multiple death times for check data ETL fault.-->
+
+![Death 유형](../images/Death/01.Death_type.jpg)
+
+환자의 사망 유형별 비율
+<!-- This figure shows that Standard CDM's Death Type ratio and Target CDM's Death Type ratio-->
+
+</div>
+
+<a href="#Top">TOP</a>
+
+***
+<a name="VISIT OCCURRENCE"></a>
+
+### **VISIT OCCURRENCE Table**
+<div class="col2">
+![Visit 테이블 레코드](../images/VIsit/00.Visit_record.jpg)
+
+전체 테이블 중 Visit Occurrence 테이블의 레코드가 차지하는 비율
+
+<!-- This figure shows that Standard CDM's Visit Occurrenece Table record ratio and Target CDM's Visit Occurrenece Table record ratio.-->
+
+![Visit 테이블 Person](../images/VIsit/01.Visit_person.jpg)
+
+전체 테이블 중 Visit Occurrence 테이블의 Person이 차지하는 비율
+<!-- This figure shows that Standard CDM's Visit Occurrenece Table person ratio and Target CDM's Visit Occurrenece Table person ratio.-->
+
+</div>
+<div class="col2">
+![Visit 방문 유형](../images/VIsit/02.Visit_concept.jpg)
+
+병원 방문 유형 별 비율
+<!-- This figure shows that Standard CDM's Visit Concept ratio and Target CDM's Visit Concept ratio.-->
+
+![Visit 기간](../images/VIsit/03.Visit_Duration.jpg)
+
+환자의 방문 기간 히스토그램
+<!-- This figure shows that Standard CDM's Visit Duration histogram and Target CDM's Visit Duration histogram.-->
+
+</div>
+<div class="col2">
+![Visit 시작 연도](../images/VIsit/04.Visit_start.jpg)
+
+![Visit 종료 연도](../images/VIsit/05.Visit_end.jpg)
+</div>
+연도별 방문 시작 및 종료 비율
+<!-- This figure shows that the Visit occurrence start, end with person ratio.-->
+<div class="col2">
+![Visit 유형](../images/VIsit/06.Visit_type.jpg)
+
+Visit type의 구분에 따른 비율
+
+<!-- This figure shows that Standard CDM's Visit type ratio and Target CDM's Visit type ratio.-->
+
+![Visit 의료 서비스 장소](../images/VIsit/07.Visit_care_site.jpg)
+
+방문자가 서비스를 받는 장소의 종류 및 Null 값의 비율
+
+<!-- This figure shows that the number of care site types, the null ratio in the standard CDM and target CDM.-->
+
+</div>
+<div class="col2">
+![Visit 구분 코드](../images/VIsit/08.Visit_source.jpg)
+
+방문 구분 코드에 따른 비율
+
+<!-- This figure shows that Standard CDM's Visit source ratio and Target CDM's Visit source ratio.-->
+
+![Visit 허용](../images/VIsit/09.Visit_admitting.jpg)
+
+방문 허용 코드에 따른 비율
+
+<!-- This figure shows that Standard CDM's Visit admitting ratio and Target CDM's Visit admitting ratio.-->
+
+</div>
+<div class="col2">
+![Visit 종료 사유](../images/VIsit/10.Visit_discharge.jpg)
+
+방문 종료 사유에 따른 비율
+<!-- This figure shows that Standard CDM's Visit discharge ratio and Target CDM's Visit discharge ratio.-->
+
+![Visit 방문 여부](../images/VIsit/11.Visit_preceding.jpg)
+
+이전의 방문 연관에 따른 비율
+<!-- This figure shows that Standard CDM's Visit preceding ratio and Target CDM's Visit preceding ratio.-->
+
+</div>
+
+<a href="#Top">TOP</a>
+
+***
+<a name="CONDITION OCCURRENCE"></a>
+
+### **CONDITION OCCURRENCE Table**
+<div class="col2">
+![Condition 테이블 레코드](../images/Condition/00.Condition_record.jpg)
+
+전체 테이블 중 Condition Occurrence 테이블의 레코드가 차지하는 비율
+
+<!-- This figure shows that Standard CDM's Visit Occurrenece Table record ratio and Target CDM's Visit Occurrenece Table record ratio.-->
+
+![Condition 테이블 person](../images/Condition/01.Condition_person.jpg)
+
+전체 테이블 중 Condition Occurrence 테이블의 Person이 차지하는 비율
+
+<!-- This figure shows that Standard CDM's Visit Occurrenece Table people ratio and Target CDM's Visit Occurrenece Table people ratio.-->
+</div>
+
+<div class="col2">
+![Condition 시작 연도](../images/Condition/02.Condition_start.jpg)
+
+![Condition 종료 연도](../images/Condition/03.Condition_end.jpg)
+</div>
+<!-- This figure shows that the start condition and end condition.-->
+질병 시작 및 종료 연도별 비율
+
+<div class="col2">
+![Condition 기간](../images/Condition/04.Condition_Duration.jpg)
+
+질병 기간별 히스토그램
+<!-- This figure shows that Standard CDM's Condition histogram and Target CDM's Condition Duration histogram.-->
+
+![Condition 유형](../images/Condition/05.Condition_type.jpg)
+
+질병 유형별 비율
+<!-- This figure shows that Standard CDM's Condition type ratio and Target CDM's Condition type ratio.-->
+</div>
+
+<div class="col2">
+![Condition 중단 사유](../images/Condition/06.Condition Stop.jpg)
+
+증상이 나타나지 않는 이유의 종류 수
+<!-- This figure shows the number of stop reason in the standard CDM and target CDM. -->
+
+![Condition / visit occurrence](../images/Condition/07.Condition_visit_occurrence.jpg)
+
+Condition 과 Visit 간 상관 관계의 비율
+<!-- This figure shows that Standard CDM's and Target CDM's Condition occurrence Associate with Visit occurrence ratio.-->
+</div>
+<SPAN class="col2">
+![Condition 방문 상세](../images/Condition/08.Condition_visit_detail.jpg)
+
+증상과 방문 내용과의 상관 관계 비율
+<!-- This figure shows the number of care site types, the null ratio in the standard CDM and target CDM.-->
+</SPAN>
+
+<a href="#Top">TOP</a>
+
+***
+<a name="DRUG EXPOSURE"></a>
+
+### **DRUG EXPOSURE Table**
+<div class="col2">
+![DrugExp 테이블 레코드](../images/Drug exposure/00.Drug_exp_record.jpg)
+
+전체 테이블 중 Drug Exposue 테이블의 레코드가 차지하는 비율
+
+<!-- This figure shows that Standard CDM's Drug Exposure Table record ratio and Target CDM's Drug Exposure Table record ratio.-->
+
+![DrugExp 테이블 person](../images/Drug exposure/01.Drug_exp_person.jpg)
+
+전체 테이블 중 Drug Exposue 테이블의 레코드가 차지하는 비율
+
+<!-- This figure shows that Standard CDM's Drug Exposure Table person ratio and Target CDM's Drug Exposure Table person ratio.-->
+
+</div>
+
+<div class="col2">
+![DrugExp 시작 연도](../images/Drug exposure/02.Drug_exp_start.jpg)
+
+![DrugExp 종료 연도](../images/Drug exposure/03.Drug_exp_end.jpg)
+</div>
+약물을 제공하기 시작한 연도 및 종료 연도별 비율
+<!-- This figure shows that the Drug Exposure start and end.-->
+
+<div class="col2">
+![DrugExp 기간](../images/Drug exposure/04.Drug_exp_duration.jpg)
+
+약물 제공 기간에 대한 히스토그램
+<!-- This figure shows that Standard CDM's Drug Exposure Duration histogram and Target CDM's Drug Exposure Duration histogram.-->
+
+![DrugExp 유형](../images/Drug exposure/05.Drug_exp_type.jpg)
+
+약물 제공 유형에 따른 비율
+<!-- This figure shows that Standard CDM's Drug exposure type ratio and Target CDM's Drug exposure type ratio.-->
+
+</div>
+
+<div class="col2">
+![DrugExp 중단 사유](../images/Drug exposure/06.Drug Stop.jpg)
+
+약물 제공을 중지한 사유의 종류 수
+<!-- This figure shows the number of stop reason in the standard CDM and target CDM. -->
+
+![DrugExp 경로](../images/Drug exposure/07.Drug_exp_route.jpg)
+
+약물 제공을 한 경로 별 비율
+<!-- This figure shows that Standard CDM's Drug exposure route ratio and Target CDM's Drug exposure route ratio.-->
+
+</div>
+
+<SPAN class="col2">
+![DrugExp / visit occurrence](../images/Drug exposure/08.Drug_exp_visit_occurrence.jpg)
+
+약물 제공과 방문 간 연관 관계의 비율
+<!-- This figure shows that Standard CDM's Drug exposure Associate with Visit occurrence ratio and Target CDM's Drug exposure Associate with Visit occurrence ratio.-->
+</SPAN>
+
+<a href="#Top">TOP</a>
+
+***
+<a name="DRUG ERA"></a>
+
+### **DRUG ERA Table**
+<div class="col2">
+![DrugEra 테이블 레코드](../images/Drug era/00.Drug_era_record.jpg)
+
+전체 테이블 중 Drug Era 테이블의 레코드가 차지하는 비율
+<!-- This figure shows that Standard CDM's Drug Era Table record ratio and Target CDM's Drug Era Table record ratio.-->
+
+![DrugEra 테이블 person](../images/Drug era/01.Drug_era_person.jpg)
+
+전체 테이블 중 Drug Era 테이블의 Person이 차지하는 비율
+<!-- This figure shows that Standard CDM's Drug Era Table people ratio and Target CDM's Drug Era Table people ratio.-->
+</div>
+
+<div class="col2">
+![DrugEra 시작 연도](../images/Drug era/02.Drug_era_start.jpg)
+
+![DrugEra 종료 연도](../images/Drug era/03.Drug_era_end.jpg)
+</div>
+약물을 복용하기 시작한 연도 및 종료 연도별 비율
+<!-- This figure shows that the Drug Era start and end.-->
+
+<div class="col2">
+![DrugEra 기간](../images/Drug era/04.Drug_era_Duration.jpg)
+
+약물 복용 기간에 대한 히스토그램
+<!-- This figure shows that Standard CDM's Drug Era Duration histogram and Target CDM's Drug Era Duration histogram.-->
+
+![DrugEra 약물 제공일과 차이](../images/Drug era/05.Drug_era_Gap.jpg)
+
+약물 제공일과 약물 복용일 차이에 대한 히스토그램
+<!-- This figure shows that Standard CDM's Gap Days histogram and Target CDM's Gap Days histogram. -->
+</div>
+<a href="#Top">TOP</a>
+
+***
