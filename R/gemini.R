@@ -120,7 +120,6 @@ labeling <- function(value){
   lbl <- paste0(lbl,"%",seq="")
   return(lbl)
 }
-value <- std_visittbl_preceding
 #NA data 
 naTostring <- function(value){
   napos <- sapply(value$attributeName,FUN=is.na)
