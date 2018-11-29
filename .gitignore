@@ -6,6 +6,7 @@
 *.swp
 *.html
 *.Rhistory
+'.Rhistory'
 
 ############
 # 제외 폴더#
