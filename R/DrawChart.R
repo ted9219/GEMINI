@@ -1,6 +1,11 @@
 # install.packages('plotrix')
+# install.packages("knitr")
+# install.packages("rmarkdown")
 library(plotrix)
 library(ggplot2)
+library(knitr)
+library(rmarkdown)
+
 source("gemini.R")
 # Library for Pie 3D function
 options(scipen = 999999)
@@ -24,6 +29,7 @@ jpeg(
   filename = "../images/Whole/00.Record.jpg",
   width = 720, height = 720, quality = 75, bg = "white"
 )
+tryCatch({
 record_bar <- barplot(c(
   std_persontbl_record$ratio[1], tar_persontbl_record$ratio[1], std_visittbl_record$ratio[1], tar_visittbl_record$ratio[1],
   std_conditiontbl_record$ratio[1], tar_conditiontbl_record$ratio[1], std_drug_exptbl_record$ratio[1], tar_drug_exptbl_record$ratio[1],
@@ -51,6 +57,12 @@ text(
   ), col = "black", cex = 2.0
 )
 legend("topleft", c("Standard CDM", "Target CDM"), pch = 15, cex = 1.5, col = c("green", "yellow"))
+}, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 # dev.copy(device = jpeg , filename=paste0())
 dev.off()
 
@@ -63,6 +75,7 @@ jpeg(
   width = 720, height = 720, quality = 75, bg = "white"
 )
 # Draw graph in one bar chart
+tryCatch({
 person_bar <- barplot(c(
   std_persontbl_person_ratio$ratio, tar_persontbl_person_ratio$ratio, std_visittbl_person_ratio$ratio, tar_visittbl_person_ratio$ratio,
   std_conditiontbl_person_ratio$ratio, tar_conditiontbl_person_ratio$ratio, std_drug_exptbl_person_ratio$ratio, tar_drug_exptbl_person_ratio$ratio,
@@ -90,7 +103,12 @@ text(
   ), col = "black", cex = 2.0
 )
 legend("bottomleft", c("Standard CDM", "Target CDM"), pch = 15, cex = 1.5, col = c("green", "yellow"))
-
+}, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 # dev.copy(device = jpeg ,filename=paste0("images/Whole/01.Person.jpg"))
 dev.off()
 ################################################################################
@@ -112,6 +130,7 @@ jpeg(
 )
 par(mfrow = c(1, 1), xpd = T)
 # Draw graph in one bar chart
+tryCatch({
 gender_bar <- barplot(c(std_persontbl_gender$ratio[1], tar_persontbl_gender$ratio[1], std_persontbl_gender$ratio[2], tar_persontbl_gender$ratio[2]),
   beside = F, ylim = c(0, 100), names = c(
     std_persontbl_gender$attributeName[1], tar_persontbl_gender$attributeName[1],
@@ -128,6 +147,12 @@ text(
   ), col = "black", cex = 2.0
 )
 legend("topleft", c("Standard CDM", "Target CDM"), pch = 15, cex = 2.0, col = c("green", "yellow"))
+}, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 # Graph Save
 dev.off()
 ################################################################################
@@ -139,6 +164,7 @@ jpeg(
 )
 par(mfrow = c(1, 1), xpd = F)
 # Divide ratio by Gender
+tryCatch({
 male_min_ratio <- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8507"]
 female_min_ratio <- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8532"]
 compared_male_min_ratio <- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8507"]
@@ -178,7 +204,12 @@ legend("topright", c(
   "Std.Male", "Std.Female",
   "Tar.Male", "Tar.Female"
 ), lwd = c(2, 2, 2, 2), lty = c(1, 1, 5, 5), cex = 2.0, col = c("blue", "red", "cyan4", "brown"))
-
+}, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 # Graph Save
 dev.off()
 ################################################################################
@@ -190,6 +221,7 @@ jpeg(
 )
 par(mfrow = c(1, 1), xpd = F)
 # Divide ratio by Gender
+tryCatch({
 male_max_ratio <- std_persontbl_max_age$ratio[std_persontbl_max_age$genderConceptId == "8507"]
 female_max_ratio <- std_persontbl_max_age$ratio[std_persontbl_max_age$genderConceptId == "8532"]
 compared_male_max_ratio <- tar_persontbl_max_age$ratio[tar_persontbl_max_age$genderConceptId == "8507"]
@@ -229,7 +261,12 @@ legend("topright", c(
   "Std.Male", "Std.Female",
   "Tar.Male", "Tar.Female"
 ), lwd = c(2, 2, 2, 2), lty = c(1, 1, 5, 5), cex = 2.0, col = c("blue", "red", "cyan4", "brown"))
-
+}, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 # Graph Save
 dev.off()
 ################################################################################
@@ -331,8 +368,22 @@ jpeg(
 )
 
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
+tryCatch(
 hist(std_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "Standard CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
+tryCatch(
 hist(tar_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "Target CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 title("Visit Duration by Hospital", line = -1, outer = TRUE, cex = 2.0)
 # file close
 dev.off() # It protect previous jpg file to not change current jpg image.
@@ -534,8 +585,22 @@ jpeg(
   width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
+tryCatch(
 hist(std_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Condition Duration", main = "Standard CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
+tryCatch(
 hist(tar_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Condition Duration", main = "Target CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 title("Condition Duration by Hospital", outer = T, cex.main = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
@@ -638,8 +703,22 @@ jpeg(
   width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
+tryCatch(
 hist(std_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Drug exp Duration", main = "Standard CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
+tryCatch(
 hist(tar_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Drug exp Duration", main = "Target CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 title("Drug Exposure Duration by Hospital", outer = T, cex.main = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
@@ -744,8 +823,22 @@ jpeg(
   width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
+tryCatch(
 hist(std_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Drug Era Duration", main = "Standard CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
+tryCatch(
 hist(tar_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Drug Era Duration", main = "Target CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 title("Drug Era Duration by Hospital", outer = T, cex.main = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
@@ -765,7 +858,25 @@ jpeg(
   width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
+tryCatch(
 hist(std_drug_eratbl_gap_days$personRatio, breaks = 25, xlab = "Gap Days Duration", main = "Standard CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+    , # If data isn't exist...
+    error = function(error_message) {
+        print(error_message)
+        afterError()
+    }
+)
+tryCatch(
 hist(tar_drug_eratbl_gap_days$personRatio, breaks = 25, xlab = "Gap Days Duration", main = "Target CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+, # If data isn't exist...
+error = function(error_message) {
+    print(error_message)
+    afterError()
+}
+)
 title("Drug Era Gap Day by Hospital", outer = T, cex.main = 2.0)
 dev.off() # It protect previous jpg file to not change current jpg image.
+
+# Execute R markdown file
+rmarkdown::render("Gemini_md.Rmd",encoding = "UTF-8")
+browseURL(url=paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/Gemini_md.html"))
