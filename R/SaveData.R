@@ -10,11 +10,12 @@ serverInfoFile <- file.path("../server_info.cfg")
 infoFromFile <- function(file, pattern){
     gsub(paste0(pattern,"="),"",grep(paste0("^",pattern,"="), scan(file,what="",quiet=T,sep = "\n"),value=T))
 }
+cdmDatabaseSchema <- infoFromFile(serverInfoFile,"schemaName")
 
 connectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = infoFromFile(serverInfoFile,"dbName"),
   server = infoFromFile(serverInfoFile,"server"),
-  schema = infoFromFile(serverInfoFile,"schemaName"),
+  schema = cdmDatabaseSchema,
   user = infoFromFile(serverInfoFile,"user"),
   password = infoFromFile(serverInfoFile,"password")
 )
