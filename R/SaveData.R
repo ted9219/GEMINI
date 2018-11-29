@@ -5,17 +5,18 @@
 # set working directory
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 # library(DatabaseConnector)
-# Set CDM name
-cdmDatabaseSchema <- ""
-# cdmDatabaseSchema <-"NHIS_NSC.dbo"
-
+serverInfoFile <- file.path("../server_info.cfg")
 # Set User Info to check authority
+infoFromFile <- function(file, pattern){
+    gsub(paste0(pattern,"="),"",grep(paste0("^",pattern,"="), scan(file,what="",quiet=T,sep = "\n"),value=T))
+}
+
 connectionDetails <- DatabaseConnector::createConnectionDetails(
-  dbms = "",
-  server = "",
-  schema = cdmDatabaseSchema,
-  user = "",
-  password = ""
+  dbms = infoFromFile(serverInfoFile,"dbName"),
+  server = infoFromFile(serverInfoFile,"server"),
+  schema = infoFromFile(serverInfoFile,"schemaName"),
+  user = infoFromFile(serverInfoFile,"user"),
+  password = infoFromFile(serverInfoFile,"password")
 )
 connection <- DatabaseConnector::connect(connectionDetails)
 
