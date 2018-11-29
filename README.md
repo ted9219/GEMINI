@@ -42,4 +42,4 @@ This RDS files must be stored in 'Target RDS' folder.
 
 This process will make gemini_md.md and gemini_md.html file and automatically execute html file.
 
-> If R studio encoding is CP949 (Window defalut), don't open gemini_md.Rmd file until change R studio encoding to UTF-8.
+> If R studio encoding is CP949 (Window default), don't open gemini_md.Rmd file until change R studio encoding to UTF-8.

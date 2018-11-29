@@ -3,6 +3,7 @@
 ################################################################################
 # install.packages("DatabaseConnector")
 # set working directory
+get
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 # library(DatabaseConnector)
 serverInfoFile <- file.path("../server_info.cfg")
@@ -30,7 +31,7 @@ dir.create(file.path(getwd(), "../Target RDS"), showWarnings = FALSE)
 ################################################################################
 # PERSON DATA SAVING FUNCTION
 ################################################################################
-tm1 <- as.numeric(round(system.time(source("person_data.r"))[3], digit = 1))
+tm1 <- as.numeric(round(system.time(source("person_data.R"))[3], digit = 1))
 # list for save data
 # if append more data, append in list
 persontbl_list <- list(
@@ -51,7 +52,7 @@ mapply(saveRDS, object = persontbl_list, file = temp)
 ################################################################################
 # DEATH DATA SAVING FUNCTION
 ################################################################################
-tm2 <- as.numeric(round(system.time(source("death_data.r"))[3], digit = 1))
+tm2 <- as.numeric(round(system.time(source("death_data.R"))[3], digit = 1))
 deathtbl_list <- list(deathtbl_check, deathtbl_type)
 deathtbl_name_list <- c("deathtbl_check", "deathtbl_type")
 temp <- sapply(FUN = paste0, "../Standard RDS/", deathtbl_name_list, ".rds")
@@ -59,7 +60,7 @@ mapply(saveRDS, object = deathtbl_list, file = temp)
 ################################################################################
 # VISIT_OCCURRENCE DATA SAVING FUNCTION
 ################################################################################
-tm3 <- as.numeric(round(system.time(source("visit_occurrence_data.r"))[3], digit = 1))
+tm3 <- as.numeric(round(system.time(source("visit_occurrence_data.R"))[3], digit = 1))
 visittbl_list <- list(
   visittbl_record, visittbl_person_ratio, visittbl_visit_concept, visittbl_start, visittbl_end, visittbl_diff_date
   , visittbl_count, visittbl_type_concept, visittbl_care_site, visittbl_source_concept, visittbl_admitting_source,
@@ -76,7 +77,7 @@ mapply(saveRDS, object = visittbl_list, file = temp)
 ################################################################################
 # CONDITION_OCCURRENCE DATA SAVING FUNCTION
 ################################################################################
-tm4 <- as.numeric(round(system.time(source("condition_occurrence_data.r"))[3], digit = 1))
+tm4 <- as.numeric(round(system.time(source("condition_occurrence_data.R"))[3], digit = 1))
 conditiontbl_list <- list(
   conditiontbl_record, conditiontbl_person_ratio, conditiontbl_diff_date, conditiontbl_start, conditiontbl_end,
   conditiontbl_type_concept, conditiontbl_stop, conditiontbl_visit_occurrence, conditiontbl_visit_detail
@@ -91,7 +92,7 @@ mapply(saveRDS, object = conditiontbl_list, file = temp)
 ################################################################################
 # DRUG_EXPOSURE DATA SAVING FUNCTION
 ################################################################################
-tm5 <- as.numeric(round(system.time(source("drug_exposure_data.r"))[3], digit = 1))
+tm5 <- as.numeric(round(system.time(source("drug_exposure_data.R"))[3], digit = 1))
 drug_exptbl_list <- list(
   drug_exptbl_record, drug_exptbl_person_ratio, drug_exptbl_diff_date, drug_exptbl_start, drug_exptbl_end,
   drug_exptbl_type_concept, drug_exptbl_stop, drug_exptbl_route, drug_exptbl_visit_occurrence
@@ -105,7 +106,7 @@ mapply(saveRDS, object = drug_exptbl_list, file = temp)
 ################################################################################
 # DRUG_ERA DATA SAVING FUNCTION
 ################################################################################
-tm6 <- as.numeric(round(system.time(source("drug_era_data.r"))[3], digit = 1))
+tm6 <- as.numeric(round(system.time(source("drug_era_data.R"))[3], digit = 1))
 drug_eratbl_list <- list(
   drug_eratbl_record, drug_eratbl_person_ratio, drug_eratbl_diff_date, drug_eratbl_start, drug_eratbl_end,
   drug_eratbl_exp_count, drug_eratbl_gap_days

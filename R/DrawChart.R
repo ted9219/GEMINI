@@ -878,5 +878,5 @@ title("Drug Era Gap Day by Hospital", outer = T, cex.main = 2.0)
 dev.off() # It protect previous jpg file to not change current jpg image.
 
 # Execute R markdown file
-rmarkdown::render("Gemini_md.Rmd",encoding = "UTF-8")
-browseURL(url=paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/Gemini_md.html"))
+rmarkdown::render("gemini_md.Rmd",encoding = "UTF-8")
+browseURL(url=paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/gemini_md.html"))
