@@ -1,0 +1,21 @@
+################
+# 제외할 확장자#
+*.txt
+*.RData
+*.Rproj
+*.swp
+*.html
+*.Rhistory
+
+############
+# 제외 폴더#
+images/
+Packages/
+Standard RDS/
+Target RDS/
+
+###########
+#제외 파일#
+.Rhistory
+R/.Rhistory
+
