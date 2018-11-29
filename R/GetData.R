@@ -17,10 +17,18 @@ set_val <<- function(name_list) {
 # CDM valuable name list
 ################################################################################
 # Read data list
-# if Save changed, this lit should change
+# if Save changed, this list should change
 str_name_list <- list.files(paste0(dirname(getwd()), "/Standard RDS/"), pattern = "*.rds")
 tar_name_list <- list.files(paste0(dirname(getwd()), "/Target RDS/"), pattern = "*.rds")
+name_list <- intersect(str_name_list,tar_name_list)
+
+no_files <- gsub(x=setdiff(str_name_list,tar_name_list),pattern=".rds",replacement = "")
+if(length(no_files) != 0){
+    lapply(no_files, function(x) assign(paste0("tar_",x),value = NULL,envir=.GlobalEnv))
+}else{
+    print("All data exist")
+}
 ################################################################################
 # Read Data
 ################################################################################
-set_val(str_name_list)
+set_val(name_list)
