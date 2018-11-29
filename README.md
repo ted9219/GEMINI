@@ -18,15 +18,28 @@ DRUG ERA
 
 # HOW TO USE
 
+0. Before SaveData.R, you should make server_info.cfg file.
+
+> dbName=<sql server name>
+> server=<server IP>
+> schemaName=<schema name>
+> user=<ID>
+> password=<password>
+
 1. Run SaveData.R to get Standard RDS files
-  * Set CDM name
-  * Set server infomation and database user infomation
+
+This will be create 'Standard RDS', 'target RDS' folder. And if server_info.cfg is correctly able to access DB, create RDS files in 'standard RDS' folder 
 
 2. Request RDS files to other institution.
-  * This RDS files must be stored in 'Target RDS' folder.
+
+This RDS files must be stored in 'Target RDS' folder.
+
+> if want to test 'gemini', by copying RDS files in standard RDS folder to target RDS folder.
   
 3. Run GetData.R
 
 4. Run DrawChart.R
 
-5. Run gemini_md.Rmd
+This process will make gemini_md.md and gemini_md.html file and automatically execute html file.
+
+> If R studio encoding is CP949 (Window defalut), don't open gemini_md.Rmd file until change R studio encoding to UTF-8.
