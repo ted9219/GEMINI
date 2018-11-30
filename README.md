@@ -45,10 +45,10 @@ This will be create 'Standard RDS', 'target RDS' folder. And if server_info.cfg 
 2. Request RDS files to other institution.
 
 This RDS files must be stored in 'Target RDS' folder.
-
-> if want to test 'gemini', by copying RDS files in standard RDS folder to target RDS folder.
   
 3. Run GetData.R
+
+If you don't have Target RDS files, It asks you want to proceed. Type 'y', It copy Standard RDS files to Target RDS. Type 'n' or else, process will be stopped.
 
 4. Run DrawChart.R
 
