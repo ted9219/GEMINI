@@ -3,7 +3,6 @@
 ################################################################################
 # install.packages("DatabaseConnector")
 # set working directory
-get
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 # library(DatabaseConnector)
 serverInfoFile <- file.path("../server_info.cfg")

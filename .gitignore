@@ -5,10 +5,9 @@
 *.Rproj
 *.swp
 *.html
-*.Rhistory
-'.Rhistory'
 *.cfg
 *.md
+*.rds
 
 ############
 # 제외 폴더#
@@ -21,4 +20,3 @@ Target RDS/
 #제외 파일#
 .Rhistory
 R/.Rhistory
-

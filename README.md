@@ -30,11 +30,13 @@ or you can create server_info.txt file and then convert .txt to .cfg.
 
 In file, you should write down DB server information and DB user information.
 
-> dbName=<sql server name>
-> server=<server IP>
-> schemaName=<schema name>
-> user=<ID>
-> password=<password>
+```
+dbName=<sql server name>
+server=<server IP>
+schemaName=<schema name>
+user=<ID>
+password=<password>
+```
 
 1. Run SaveData.R to get Standard RDS files
 
