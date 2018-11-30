@@ -20,6 +20,16 @@ DRUG ERA
 
 0. Before SaveData.R, you should make server_info.cfg file.
 
+You should create file in work directory by using terminal.
+
+```
+touch server_info.cfg
+```
+
+or you can create server_info.txt file and then convert .txt to .cfg.
+
+In file, you should write down DB server information and DB user information.
+
 > dbName=<sql server name>
 > server=<server IP>
 > schemaName=<schema name>
@@ -40,6 +50,6 @@ This RDS files must be stored in 'Target RDS' folder.
 
 4. Run DrawChart.R
 
-This process will make gemini_md.md and gemini_md.html file and automatically execute html file.
+This process will create gemini_md.md and gemini_md.html file and automatically execute html file.
 
-> If R studio encoding is CP949 (Window default), don't open gemini_md.Rmd file until change R studio encoding to UTF-8.
+> If R studio encoding is CP949 (Window default), don't open gemini_md.Rmd file until change R studio encoding to UTF-8. It occurs .Rmd file crash.
