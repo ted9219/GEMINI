@@ -2,14 +2,13 @@
 # READ DATA RESOURCE
 # In RDS Folder, there shouldn't exist another rds files.
 ################################################################################
+
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 # assign value function
 set_val <<- function(name_list) {
-    temp <- lapply(name_list, function(x) paste0("std_",x))
-    lapply(name_list, function(x) assign(gsub(temp, pattern = ".rds", replacement = ""), readRDS(paste0("../Standard RDS/", x)), envir = .GlobalEnv))
-    temp <- gsub(temp, pattern = "std_", replacement = "tar_")
-    lapply(name_list, function(x) assign(gsub(temp, pattern = ".rds", replacement = ""), readRDS(paste0("../Target RDS/", x)), envir = .GlobalEnv))
+    lapply(name_list, function(x) assign(gsub(lapply(x, function(y) paste0("std_",y)), pattern = ".rds", replacement = ""), readRDS(paste0("../Standard RDS/", x)), envir = .GlobalEnv))
+    lapply(name_list, function(x) assign(gsub(lapply(x, function(y) paste0("tar_",y)), pattern = ".rds", replacement = ""), readRDS(paste0("../Target RDS/", x)), envir = .GlobalEnv))
 }
 ################################################################################
 # CDM valuable name list
