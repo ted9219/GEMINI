@@ -1,173 +1,4 @@
-Sys.setlocale("LC_ALL", "C")
-#######################################################################
-# Data extraction
-#######################################################################
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-# Sys.setlocale('LC_ALL','C')
-
-# sql query Render
-queryRender <- function(sqlquery, tblName = "", AttName = "", comparedAttName = "", startName = "", endName = "") {
-  # Unset parameter call warning message
-  options(warn = -1)
-  sql <- SqlRender::renderSql(sql,
-    cdm_database_schema = cdmDatabaseSchema, tbl_name = tblName, att_name = AttName,
-    compared_att_name = comparedAttName, start_name = startName, end_name = endName
-  )$sql
-  options(warn = 1)
-  sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
-
-  temp <- DatabaseConnector::querySql(connection, sql)
-  # Colname change
-  colnames(temp) <- SqlRender::snakeCaseToCamelCase(colnames(temp))
-
-  return(temp)
-}
-
-# Get total records
-# Query to find all table records count info, target table record and calculate with it
-get_total_records <- function(tblName) {
-  sql <<- "SELECT '@tbl_name' as attribute_name , round(count(*)/CONVERT(float,(
-            SELECT SUM(TEMP.rows) FROM(
-              SELECT rows FROM(
-                SELECT o.name, i.rows FROM sysindexes i
-                INNER JOIN 
-                sysobjects o 
-                ON i.id = o.id
-                WHERE i.indid < 2 AND  o.xtype = 'U' AND (o.name='person' OR o.name='death' OR o.name='visit_occurrence'
-                                        OR o.name='condition_occurrence' OR o.name='drug_exposure' OR o.name='drug_era')
-                )AS T
-              )AS TEMP))*100,1
-            )as ratio
-          FROM @cdm_database_schema.@tbl_name"
-
-  return(queryRender(sql, tblName))
-}
-
-# Get person ratio with Query
-get_person_ratio <- function(tblName) {
-  sql <<- "SELECT 'table person' as attribute_name,
-          ROUND(count(distinct person_id)/CONVERT(float,(SELECT count(distinct person_id) FROM @cdm_database_schema.person))*100,1) as ratio
-          FROM @cdm_database_schema.@tbl_name"
-
-  return(queryRender(sql, tblName))
-}
-
-# Get Gender ratio
-get_gender_ratio <- function(tblName, attName) {
-  sql <<- "SELECT (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
-          round(count(distinct person_id)/convert(float,(SELECT count(distinct person_id)
-          FROM @cdm_database_schema.@tbl_name))*100,1) as ratio
-          FROM @cdm_database_schema.@tbl_name
-          GROUP BY @att_name"
-
-  return(queryRender(sql, tblName, attName))
-}
-
-# Get regular type ratio
-get_ratio <- function(tblName, attName) {
-  sql <<- "SELECT (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
-          round(count(@att_name)/convert(float,(SELECT count(*) FROM @cdm_database_schema.@tbl_name))*100,1) as ratio
-          FROM @cdm_database_schema.@tbl_name 
-          GROUP BY @att_name"
-
-  return(queryRender(sql, tblName, attName))
-}
-
-# Get regular type ratio with NULL ratio
-get_null_ratio <- function(tblName, attName) {
-  sql <<- "select '@att_name' as attribute_name ,count(distinct @att_name) as attribute_count,
-          round(SUM(CASE WHEN @att_name IS NULL THEN 1 ELSE 0 END)/convert(float,SUM(CASE WHEN @att_name IS NULL THEN 1 ELSE 1 END))*100,1) as null_ratio
-          from @cdm_database_schema.@tbl_name"
-
-  return(queryRender(sql, tblName, attName))
-}
-
-# Get Person per Year data
-get_record_per_year <- function(tblName, attName) {
-  sql <<- "WITH T1 AS(
-          select	LEFT(@att_name,4) as visit_year, count(person_id) as person_count  FROM @cdm_database_schema.@tbl_name
-          GROUP BY LEFT(@att_name,4)
-        )
-          SELECT visit_year, ROUND(person_count/CONVERT(float,(SELECT SUM(person_count) FROM T1))*100,1) as person_ratio FROM T1
-          ORDER BY visit_year ASC"
-
-  return(queryRender(sql, tblName, attName))
-}
-
-# End date - Start date, to get Duration
-get_diff_year <- function(tblName, startName, endName) {
-  sql <<- "SELECT day_diff, SUM(person_temp) as person_count FROM(SELECT DATEDIFF(day, @start_name, @end_name) as day_diff,
-          count(person_id) as person_temp FROM @cdm_database_schema.@tbl_name
-          GROUP BY DATEDIFF(day, @start_name, @end_name)) AS T1
-          GROUP BY day_diff"
-
-  return(queryRender(sql, tblName, startName = startName, endName = endName))
-}
-
-# Extract data and Compare other column
-get_compared_ratio <- function(tblName, attName, comparedAttName) {
-  sql <<- "select 'Associate' as attribute_name, ROUND((count(@att_name)/CONVERT(float,count(@compared_att_name)))*100,1) as ratio
-          from @cdm_database_schema.@tbl_name"
-
-  return(queryRender(sql, tblName, attName, comparedAttName))
-}
-
-# Count stop reason
-get_reason_count <- function(tblName) {
-  sql <<- "select 'stop reason' as attribute_name ,count(distinct stop_reason) as attribute_count
-          from @cdm_database_schema.@tbl_name"
-  return(queryRender(sql, tblName))
-}
-
-# #Person calculation
-# i <- 1
-# while (i != nrow(persontbl_min_age) + 1) {
-#   if (persontbl_min_age$ratio[i] == 0.0 || persontbl_min_age$ratio[i] == 0) {
-#     persontbl_min_age$ratio[i] <- 0.01
-#   }
-#   if (persontbl_min_age$genderConceptId[i] == "8507" && persontbl_min_age$genderConceptId[i + 1] != "8532") {
-#     temp <- c(persontbl_min_age$ageRange[i], "8532", 0)
-#     persontbl_min_age <- rbind(persontbl_min_age[c(1:i), ], temp, persontbl_min_age[c(i + 1:nrow(persontbl_min_age)), ])
-#   }
-#   else if (persontbl_min_age$genderConceptId[i] == "8532" && persontbl_min_age$genderConceptId[i - 1] != "8507") {
-#     temp <- c(persontbl_min_age$ageRange[i], "8507", 0)
-#     persontbl_min_age <- rbind(persontbl_min_age[c(1:i - 1), ], temp, persontbl_min_age[c(i:nrow(persontbl_min_age)), ])
-#   }
-#   i <- i + 1
-# }
-
-#0 values get little numeric data for Pie3D...
-zeroToDecimal <- function(attName){
-  attName$ratio <- sapply(attName$ratio, function(x) if (x == 0.0 || x == 0){
-    x <- 0.001
-  }else{
-    (x)
-    }
-  )
-  return(attName)
-}
-
-#Append zero data frame
-addNullGender <- function(attName){
-  i <- 1
-  while(i != nrow(attName) + 1){
-    if (attName$genderConceptId[i] == "8507" && attName$genderConceptId[i + 1] != "8532") {
-      temp <- c(attName$ageRange[i], "8532", 0)
-      attName <- rbind(attName[c(1:i), ], temp, attName[c(i + 1:nrow(attName)), ])
-    }
-    else if (attName$genderConceptId[i] == "8532" && attName$genderConceptId[i - 1] != "8507") {
-      temp <- c(attName$ageRange[i], "8507", 0)
-      attName <- rbind(attName[c(1:i - 1), ], temp, attName[c(i:nrow(attName)), ])
-    }
-    i <- i + 1
-  }
-  return(attName)
-}
-
-
-#######################################################################
-# Data Visualization
-#######################################################################
+# Function for data visualization
 
 # label set
 labeling <- function(value) {
@@ -248,25 +79,6 @@ gridline <- function(std_value, tar_value) {
     )
   }
 }
-# 
-# checkNa <- function(value){
-#   if (length(value[is.na(value$visitYear),]) != 0) {
-#     na_end <- value[is.na(value$visitYear), 2]
-#     temp_s <- 2
-#   } else {
-#     na_end <- NA
-#     temp_s <- 1
-#   }
-# }
-# checkOver <- function(value){
-#   if (length(value[value$visitYear == 2999, ]$visitYear) != 0) {
-#     over_end <- value[na.omit(value$visitYear == 2999), 2]
-#     temp_e <- nrow(value) - 1
-#   } else {
-#     over_end <- NA
-#     temp_e <- nrow(value)
-#   }
-# }
 
 # Create Pie chart which use attribute_name
 draw_ratio_pie <- function(std_value, tar_value, path) {
@@ -289,7 +101,7 @@ draw_ratio_pie <- function(std_value, tar_value, path) {
       })
     # Draw Pie
     pie3D(std_slices,
-      labels = paste0(std_value$ratio, "%"), explode = 0.1, main = "Standard CDM",
+      labels = paste0(std_value$ratio, "%"), explode = 0.1, main = "A CDM",
       radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(std_value) + 1, s = 0.7)
     )
     legend(-1.5, -1.5, std_value$attributeName, cex = 1.5, fill = rainbow(nrow(std_value) + 1, s = 0.7), xpd = T)
@@ -315,7 +127,7 @@ draw_ratio_pie <- function(std_value, tar_value, path) {
       })
     # Draw Pie
     pie3D(tar_slices,
-      labels = paste0(tar_value$ratio, "%"), explode = 0.03, main = "Target CDM",
+      labels = paste0(tar_value$ratio, "%"), explode = 0.03, main = "B CDM",
       radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(tar_value) + 1, s = 0.7)
     )
     legend(-1.5, -1.5, tar_value$attributeName, cex = 1.5, fill = rainbow(nrow(tar_value) + 1, s = 0.7), xpd = T)
@@ -346,7 +158,7 @@ draw_compare_pie <- function(std_value, tar_value, path) {
       })
     # Draw pie
     pie3D(std_slices,
-      labels = c("", std_lbl), explode = 0.03, main = "Standard CDM",
+      labels = c("", std_lbl), explode = 0.03, main = "A CDM",
       radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(std_value) + 1, s = 0.7)
     )
   }, # If data isn't exist...
@@ -372,7 +184,7 @@ draw_compare_pie <- function(std_value, tar_value, path) {
       })
     # Draw pie
     pie3D(tar_slices,
-      labels = c("", tar_lbl), explode = 0.03, main = "Target CDM",
+      labels = c("", tar_lbl), explode = 0.03, main = "B CDM",
       radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(tar_value) + 1, s = 0.7)
     )
   }, # If data isn't exist...
@@ -402,7 +214,7 @@ draw_table_pie <- function(std_value, tar_value, tblname, path) {
         (x)
       })
     pie3D(std_recordslices,
-      labels = c(std_recordlbl, ""), explode = 0.03, main = "Standard CDM",
+      labels = c(std_recordlbl, ""), explode = 0.03, main = "A CDM",
       col = rainbow(nrow(std_value) + 1, s = 0.7), radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0
     )
   }, # If data isn't exist...
@@ -425,7 +237,7 @@ draw_table_pie <- function(std_value, tar_value, tblname, path) {
         (x)
       })
     pie3D(tar_recordslices,
-      labels = c(tar_recordlbl, ""), explode = 0.03, main = "Target CDM",
+      labels = c(tar_recordlbl, ""), explode = 0.03, main = "B CDM",
       col = rainbow(nrow(tar_value) + 1, s = 0.7), radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0
     )
   }, # If data isn't exist...
@@ -446,15 +258,15 @@ draw_line_start <- function(std_value, tar_value, text = "", path) {
     y_axis <- setYAxis(std_value, tar_value)
     # drawing line
     plot(std_value,
-      type = "o", col = 4, lwd = 2, xlab = "YEAR", ylab = "Person ratio(%)", axes = T, xlim = c(min(x_lbl), max(x_lbl)), ylim = c(0, y_axis),
-      main = paste0(text, " Start Date"), cex.main = 2.0, cex.lab = 1.5
+      type = "o", col = 4, lwd = 2, xlab = "YEAR", ylab = "Person ratio(%)", axes = F, xlim = c(min(x_lbl), max(x_lbl)), ylim = c(0, y_axis),
+      main = paste0(text, " Start Date"), cex.main = 2.0, cex.lab = 1.4
     )
     lines(tar_value, type = "o", col = 2, lwd = 2)
     axis(1, at = c(1:length(x_lbl)), labels = x_lbl)
     axis(2, at = c(0:y_axis), cex.axis = 2.0)
     box()
     gridline(std_value, tar_value)
-    legend("topleft", c("Standard", "Target"), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
+    legend("topleft", c("A", "B"), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
   }, # If data isn't exist...
   error = function(error_message) {
     print(error_message)
@@ -483,14 +295,14 @@ draw_line_end <- function(std_value, tar_value, na_value = "No data", over_value
     axis(2, at = c(0:y_axis), cex.axis = 2.0)
     box()
     gridline(std_value, tar_value)
-    legend("topleft", c("Standard", "Target"), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
+    legend("topleft", c("A", "B"), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
     # Need to append NA, 2999 person data.
     if (is.null(na_value) && is.null(over_value)) {}
     else {
       # as.numeric(min(c(std_value$visitYear,tar_value$visitYear)))+10,y=as.numeric(max(c(std_value$personRatio,tar_value$personRatio)))
       mtext(
         side = 3, line = -5, adj = 1, cex = 1.2, font = 2, outer = T,
-        text = paste0("Standard CDM NA : ", na_value[1], " / Target CDM NA : ", na_value[2], "\nStandard CDM 2999 : ", over_value[1], " / Target CDM 2999 : ", over_value[2])
+        text = paste0("A CDM NA : ", na_value[1], " / B CDM NA : ", na_value[2], "\nA CDM 2999 : ", over_value[1], " / B CDM 2999 : ", over_value[2])
       )
     }
   }, # If data isn't exist...
@@ -509,7 +321,7 @@ draw_null_bar <- function(std_value, tar_value, text = "", path) {
     # count drawing
     bar_data <- barplot(c(std_value$attributeCount, tar_value$attributeCount),
       ylim = c(0, max(std_value$attributeCount, tar_value$attributeCount)), cex.names = 2.0,
-      beside = F, names = c("Standard", "Target"), col = c("Green", "Yellow"), main = paste("Number of", text, "type"), cex.main = 2.0, cex.axis = 2.0,
+      beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = paste("Number of", text, "type"), cex.main = 2.0, cex.axis = 2.0,
       ylab = "Counts (s)", cex.lab = 1.5
     )
     text(
@@ -520,7 +332,7 @@ draw_null_bar <- function(std_value, tar_value, text = "", path) {
     # NULL data drawing
     null_bar <- barplot(c(std_value$nullRatio, tar_value$nullRatio),
       ylim = c(0, max(std_value$nullRatio, tar_value$nullRatio)),
-      beside = F, names = c("Standard", "Target"), col = c("Gray40", "Gray55"), main = "NULL Ratio", cex.main = 2.0, cex.axis = 2.0,
+      beside = F, names = c("A", "B"), col = c("Gray40", "Gray55"), main = "NULL Ratio", cex.main = 2.0, cex.axis = 2.0,
       ylab = "Percentage (%)", cex.names = 2.0, cex.lab = 1.5
     )
     text(
@@ -543,21 +355,9 @@ draw_ratio_bar <- function(std_value, tar_value, path) {
   tryCatch({
     # count drawing
     bar_data <- barplot(c(std_value$ratio, tar_value$ratio),
-      beside = T, names = c("Standard", "Target"), col = c("Green", "Yellow"), main = "Count by hospital",
+      beside = T, names = c("A", "B"), col = c("Green", "Yellow"), main = "Count by hospital",
       xlab = "Hospital", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
     )
-    # low value label position setting
-
-    # if(max(c(std_value$ratio,tar_value$ratio))*0.5<=std_value$ratio){
-    #   std_lbl <- paste("\n",std_value$ratio,"%")
-    # }else{
-    #   std_lbl <- paste(std_value$ratio,"%\n")
-    # }
-    # if(max(c(std_value$ratio,tar_value$ratio))*0.5<=tar_value$ratio){
-    #   tar_lbl <- paste("\n",tar_value$ratio,"%")
-    # }else{
-    #   tar_lbl <- paste(tar_value$ratio,"%\n")
-    # }
     text(
       x = bar_data, y = c(std_value$ratio, tar_value$ratio),
       labels = label_sort(std_value$ratio, tar_value$ratio, dp = max(c(std_value$ratio, tar_value$ratio)) * 0.5), col = "black", cex = 1.5
@@ -576,20 +376,9 @@ draw_count_bar <- function(std_value, tar_value, text = "", path) {
   tryCatch({
     # count drawing
     bar_data <- barplot(c(std_value$attributeCount, tar_value$attributeCount),
-      beside = F, names = c("Standard", "Target"), col = c("Green", "Yellow"), main = paste0(text, " Count by hospital"),
+      beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = paste0(text, " Count by hospital"),
       xlab = "Hospital", ylab = "Counts (s)", cex.names = 1.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
     )
-    # low value label position setting
-    # if(max(c(std_value$attributeCount,tar_value$attributeCount))*0.5<=std_value$attributeCount){
-    #   std_lbl <- paste("\n",std_value$attributeCount,"s")
-    # }else{
-    #   std_lbl <- paste(std_value$attributeCount,"s\n")
-    # }
-    # if(max(c(std_value$attributeCount,tar_value$attributeCount))*0.5<=tar_value$attributeCount){
-    #   tar_lbl <- paste("\n",tar_value$attributeCount,"s")
-    # }else{
-    #   tar_lbl <- paste(tar_value$attributeCount,"s\n")
-    # }
     text(
       x = bar_data, y = c(std_value$attributeCount, tar_value$attributeCount),
       labels = label_sort(std_value$attributeCount, tar_value$attributeCount, unit = "s", dp = max(c(std_value$attributeCount, tar_value$attributeCount)) * 0.5)
@@ -609,22 +398,9 @@ draw_compare_bar <- function(std_value, tar_value, text = "", path) {
   tryCatch({
     # count drawing
     bar_data <- barplot(c(std_value$ratio, tar_value$ratio),
-      beside = F, names = c("Standard", "Target"), col = c("Green", "Yellow"), main = paste0(text, " by hospital"),
+      beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = paste0(text, " by hospital"),
       xlab = "Hospital", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
     )
-    # low value label position setting
-
-    #
-    # if(max(c(std_value$ratio,tar_value$ratio))*0.5<=std_value$ratio){
-    #   std_lbl <- paste("\n",std_value$ratio,"%")
-    # }else{
-    #   std_lbl <- paste(std_value$ratio,"%\n")
-    # }
-    # if(max(c(std_value$ratio,tar_value$ratio))*0.5<=tar_value$ratio){
-    #   tar_lbl <- paste("\n",tar_value$ratio,"%")
-    # }else{
-    #   tar_lbl <- paste(tar_value$ratio,"%\n")
-    # }
     text(
       x = bar_data, y = c(std_value$ratio, tar_value$ratio),
       labels = label_sort(std_value$ratio, tar_value$ratio, dp = max(c(std_value$ratio, tar_value$ratio)) * 0.5), col = "black", cex = 1.5

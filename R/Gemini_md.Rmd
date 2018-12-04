@@ -12,7 +12,11 @@ output:
 <a name="Top"></a>
 
 ### **GEMINI info** 
-CDM으로 변환된 데이터를 기반으로 다기관 데이터 특성 비교 및 시각화 하여 데이터 품질 관리할 수 있는 툴
+CDM으로 변환된 데이터를 기반으로 다기관 데이터 특성 비교 및 시각화 하여 데이터 품질 관리할 수 있는 툴.
+
+CDM의 PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRUG ERA 테이블을 비교합니다.
+
+OBSERVATION PERIOD의 값을 참조한 그래프도 있습니다.
 
 <style>
   .col2{
@@ -51,14 +55,14 @@ CDM으로 변환된 데이터를 기반으로 다기관 데이터 특성 비교 
 
 ![전체 레코드 분율 비교](../images/Whole/00.Record.jpg)
 
-비교 대상이 되는 테이블 레코드 수의 총합을 기준으로 테이블 별 레코드 분율
+비교 대상이 되는 테이블의 레코드 수 총합을 기준으로 한 테이블 별 레코드 분율.
 <!-- This figure shows that Standard CDM's record each assigned table ratio and Target CDM's record each assigned table ratio.-->
 </div>
 
 <div class="pull_right">
 ![전체 환자 분율 비교](../images/Whole/01.Person.jpg)
 
-전체 환자 수를 기준으로 한 테이블 별 환자 분율
+비교 대상이 되는 테이블의 전체 환자 수를 기준으로 한 테이블 별 환자 분율.
 <!-- This figure shows that Standard CDM's person each assigned person ratio and Target CDM's person each assigned person ratio. -->
 
 </div>
@@ -72,9 +76,9 @@ CDM으로 변환된 데이터를 기반으로 다기관 데이터 특성 비교 
 
 <div class="row">
 <div class="pull_left">
-![Person 테이블 레코드 비율](../images/Person/00.Person_record.jpg)
+![Person 테이블 레코드](../images/Person/00.Person_record.jpg)
 
-Person 테이블 레코드가 차지하는 분율
+Person 테이블의 레코드가 차지하는 분율
 <!-- This figure shows that Standard CDM's PERSON Table record ratio and Target CDM's PERSON Table record ratio. -->
 </div>
 
@@ -117,7 +121,7 @@ Person 테이블 레코드가 차지하는 분율
 
 ![Person 주소](../images/Person/06.Person_location.jpg)
 
-환자의 주소 종류 수 및 Null 값의 분율
+환자의 거주 주소의 수 및 Null 값의 분율
 <!-- This figure shows the number of location types, the null ratio in the standard CDM and target CDM.-->
 </div>
 
@@ -132,7 +136,7 @@ Person 테이블 레코드가 차지하는 분율
 <SPAN class="col2">
 ![Person 의료 서비스 장소](../images/Person/08.Person_care_site.jpg)
 
-의료 서비스를 제공하는 장소의 종류 수 및 Null 값의 분율
+환자에게 의료 서비스를 제공하는 장소의 수 및 Null 값의 분율
 <!-- This figure shows the number of care site types, the null ratio in the standard CDM and target CDM.-->
 </SPAN>
 
@@ -153,7 +157,7 @@ Person 테이블 레코드가 차지하는 분율
 <div class="pull_right">
 ![Death 유형](../images/Death/01.Death_type.jpg)
 
-사망자의 사망 유형별 비율
+사망자의 사망 유형별 분율
 <!-- This figure shows that Standard CDM's Death Type ratio and Target CDM's Death Type ratio-->
 
 </div>
@@ -163,6 +167,7 @@ Person 테이블 레코드가 차지하는 분율
 
 ***
 <a name="VISIT OCCURRENCE"></a>
+
 ### **VISIT OCCURRENCE Table**
 <div class="row">
 <div class="pull_left">
@@ -176,7 +181,7 @@ Visit Occurrence 테이블의 레코드가 차지하는 분율
 <div class="pull_right">
 ![Visit 테이블 Person](../images/VIsit/01.Visit_person.jpg)
 
-Visit Occurrence 테이블에서 환자가 차지하는 분율
+Visit Occurrence 테이블의 환자가 차지하는 분율
 <!-- This figure shows that Standard CDM's Visit Occurrenece Table person ratio and Target CDM's Visit Occurrenece Table person ratio.-->
 </div>
 </div>
@@ -185,7 +190,7 @@ Visit Occurrence 테이블에서 환자가 차지하는 분율
 <div class="pull_left">
 ![Visit 방문 유형](../images/VIsit/02.Visit_concept.jpg)
 
-병원 방문 유형 별 비율
+병원 방문 유형 별 분율. 
 <!-- This figure shows that Standard CDM's Visit Concept ratio and Target CDM's Visit Concept ratio.-->
 </div>
 
