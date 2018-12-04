@@ -1,0 +1,14 @@
+Package: gemini
+Title: GEMINI for data visualization
+Version: 0.0.0.9000
+Authors@R: person("JunHyeong", "Kim", email = "wnsuddlsla@gmail.com", role = c("aut", "cre"))
+Description: Extract data from CDM and visualize data to compare other data
+Depends: R (>= 3.4.4)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+NeedsCompilation: no
+Packaged: 2018-12-05 06:15:32 UTC; K.JunHyeong
+Author: JunHyeong Kim [aut, cre]
+Maintainer: JunHyeong Kim <wnsuddlsla@gmail.com>

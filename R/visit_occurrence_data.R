@@ -1,12 +1,16 @@
-################################################################################
-# Loading Function
-################################################################################
-source("gemini.r")
+#' visit occurrence data
+#'
+#' This function extract data from visit occurrence table
+#' @keywords gemini
+#' @export
+#' @example
+#' visit_occurrence_data()
+visit_occurrence_data <- function(){
 ################################################################################
 # Get data from visit_occurrence_id
 # If no data, value have Null to check No Data
 ################################################################################
-tryCatch(visittbl_record <- get_total_records("visit_occurrence")
+tryCatch(visittbl_record <<- get_total_records("visit_occurrence")
   ,
   error = function(e) {
     visittbl_record <<- NULL
@@ -15,7 +19,7 @@ tryCatch(visittbl_record <- get_total_records("visit_occurrence")
 ################################################################################
 # Get data from person_id
 ################################################################################
-tryCatch(visittbl_person_ratio <- get_person_ratio("visit_occurrence")
+tryCatch(visittbl_person_ratio <<- get_person_ratio("visit_occurrence")
   ,
   error = function(e) {
     visittbl_person_ratio <<- NULL
@@ -24,7 +28,7 @@ tryCatch(visittbl_person_ratio <- get_person_ratio("visit_occurrence")
 ################################################################################
 # Get data from visit_concept_id
 ################################################################################
-tryCatch(visittbl_visit_concept <- get_ratio("visit_occurrence", "visit_concept_id")
+tryCatch(visittbl_visit_concept <<- get_ratio("visit_occurrence", "visit_concept_id")
   ,
   error = function(e) {
     visittbl_visit_concept <<- NULL
@@ -33,7 +37,7 @@ tryCatch(visittbl_visit_concept <- get_ratio("visit_occurrence", "visit_concept_
 ################################################################################
 # Get data from visit_start_date
 ################################################################################
-tryCatch(visittbl_start <- get_record_per_year("visit_occurrence", "visit_start_date")
+tryCatch(visittbl_start <<- get_record_per_year("visit_occurrence", "visit_start_date")
   ,
   error = function(e) {
     visittbl_start <<- NULL
@@ -42,7 +46,7 @@ tryCatch(visittbl_start <- get_record_per_year("visit_occurrence", "visit_start_
 ################################################################################
 # Get data from visit_end_date
 ################################################################################
-tryCatch(visittbl_end <- get_record_per_year("visit_occurrence", "visit_end_date")
+tryCatch(visittbl_end <<- get_record_per_year("visit_occurrence", "visit_end_date")
   ,
   error = function(e) {
     visittbl_end <<- NULL
@@ -51,7 +55,7 @@ tryCatch(visittbl_end <- get_record_per_year("visit_occurrence", "visit_end_date
 ################################################################################
 # day diff
 ################################################################################
-tryCatch(visittbl_diff_date <- get_diff_year("visit_occurrence", "visit_start_date", "visit_end_date")
+tryCatch(visittbl_diff_date <<- get_diff_year("visit_occurrence", "visit_start_date", "visit_end_date")
   ,
   error = function(e) {
     visittbl_diff_date <<- NULL
@@ -61,7 +65,7 @@ tryCatch(visittbl_diff_date <- get_diff_year("visit_occurrence", "visit_start_da
 # sd Graph????
 ################################################################################
 tryCatch({
-  sql <- "select	YEAR(visit_end_date) as visit_year, count(person_id) as person_count FROM @cdm_database_schema.visit_occurrence
+  sql <<- "select	YEAR(visit_end_date) as visit_year, count(person_id) as person_count FROM @cdm_database_schema.visit_occurrence
 GROUP BY YEAR(visit_end_date)"
   visittbl_count <<- queryRender(sql)
   # sql <- SqlRender::renderSql(sql, cdm_database_schema = cdmDatabaseSchema)$sql
@@ -77,7 +81,7 @@ error = function(e) {
 ################################################################################
 # Get data from visit_type_concept_id
 ################################################################################
-tryCatch(visittbl_type_concept <- get_ratio("visit_occurrence", "visit_type_concept_id")
+tryCatch(visittbl_type_concept <<- get_ratio("visit_occurrence", "visit_type_concept_id")
   ,
   error = function(e) {
     visittbl_type_concept <<- NULL
@@ -86,7 +90,7 @@ tryCatch(visittbl_type_concept <- get_ratio("visit_occurrence", "visit_type_conc
 ################################################################################
 # Get data from care_site_id
 ################################################################################
-tryCatch(visittbl_care_site <- get_null_ratio("visit_occurrence", "care_site_id")
+tryCatch(visittbl_care_site <<- get_null_ratio("visit_occurrence", "care_site_id")
   ,
   error = function(e) {
     visittbl_care_site <<- NULL
@@ -95,7 +99,7 @@ tryCatch(visittbl_care_site <- get_null_ratio("visit_occurrence", "care_site_id"
 ################################################################################
 # Get data from visit_source_concept_id
 ################################################################################
-tryCatch(visittbl_source_concept <- get_ratio("visit_occurrence", "visit_source_concept_id")
+tryCatch(visittbl_source_concept <<- get_ratio("visit_occurrence", "visit_source_concept_id")
   ,
   error = function(e) {
     visittbl_source_concept <<- NULL
@@ -106,7 +110,7 @@ tryCatch(visittbl_source_concept <- get_ratio("visit_occurrence", "visit_source_
 # No data in NHIS, So it will be NULL
 ################################################################################
 tryCatch({
-  visittbl_admitting_source <- get_ratio("visit_occurrence", "admitting_source_concept_id")
+  visittbl_admitting_source <<- get_ratio("visit_occurrence", "admitting_source_concept_id")
 }
 ,
 error = function(e) {
@@ -117,19 +121,20 @@ error = function(e) {
 # Get data from discharge_to_concept_id
 # No data in NHIS
 ################################################################################
-tryCatch(visittbl_discharge <- get_ratio("visit_occurrence", "discharge_to_concept_id")
+tryCatch(visittbl_discharge <<- get_ratio("visit_occurrence", "discharge_to_concept_id")
   ,
   error = function(e) {
     visittbl_discharge <<- NULL
-  }
-)
+
+})
 ################################################################################
 # Get data from preceding_visit_occurrence_id
 # No data in NHIS
 ################################################################################
-tryCatch(visittbl_preceding <- get_compared_ratio("visit_occurrence", "preceding_visit_occurrence_id", "visit_occurrence_id")
+tryCatch(visittbl_preceding <<- get_compared_ratio("visit_occurrence", "preceding_visit_occurrence_id", "visit_occurrence_id")
   ,
   error = function(e) {
     visittbl_preceding <<- NULL
   }
 )
+}
