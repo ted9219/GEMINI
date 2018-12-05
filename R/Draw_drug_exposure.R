@@ -1,6 +1,14 @@
+#' Draw drug exposure
+#'
+#' This function for draw graph from drug exposure RDS data
+#' @keywords gemini
+#' @export
+#' @example
+#' draw_drug_exposure()
 ################################################################################
 # DRUG EXPOSURE TABLE VISUALLIZATION
 ################################################################################
+draw_drug_exposure <- function(){
 ################################################################################
 # drug_exposure_record
 ################################################################################
@@ -27,35 +35,35 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # 2999, NA Problem issue
 # 2999, NA Problem issue
 if (length(std_drug_exptbl_end[is.na(std_drug_exptbl_end$drug_expYear)]) != 0) {
-    std_drug_exptbl_na_end <- std_drug_exptbl_end[is.na(std_drug_exptbl_end$drug_expYear), 2]
-    temp_std_s <- 2
+    std_drug_exptbl_na_end <<- std_drug_exptbl_end[is.na(std_drug_exptbl_end$drug_expYear), 2]
+    temp_std_s <<- 2
 } else {
-    std_drug_exptbl_na_end <- NA
-    temp_std_s <- 1
+    std_drug_exptbl_na_end <<- NA
+    temp_std_s <<- 1
 }
 if (length(std_drug_exptbl_end[std_drug_exptbl_end$drug_expYear == 2999, ]$drug_expYear) != 0) {
-    std_drug_exptbl_over_end <- std_drug_exptbl_end[std_drug_exptbl_end$drug_expYear == 2999, 2]
-    temp_std_e <- nrow(std_drug_exptbl_end) - 1
+    std_drug_exptbl_over_end <<- std_drug_exptbl_end[std_drug_exptbl_end$drug_expYear == 2999, 2]
+    temp_std_e <<- nrow(std_drug_exptbl_end) - 1
 } else {
-    std_drug_exptbl_over_end <- NA
-    temp_std_e <- nrow(std_drug_exptbl_end)
+    std_drug_exptbl_over_end <<- NA
+    temp_std_e <<- nrow(std_drug_exptbl_end)
 }
 if (length(tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$drug_expYear)]) != 0) {
-    tar_drug_exptbl_na_end <- tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$drug_expYear), 2]
-    temp_tar_s <- 2
+    tar_drug_exptbl_na_end <<- tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$drug_expYear), 2]
+    temp_tar_s <<- 2
 } else {
-    tar_drug_exptbl_na_end <- NA
-    temp_tar_s <- 1
+    tar_drug_exptbl_na_end <<- NA
+    temp_tar_s <<- 1
 }
 if (length(tar_drug_exptbl_end[tar_drug_exptbl_end$drug_expYear == 2999, ]$drug_expYear) != 0) {
-    tar_drug_exptbl_over_end <- tar_drug_exptbl_end[tar_drug_exptbl_end$drug_expYear == 2999, 2]
-    temp_tar_e <- nrow(tar_drug_exptbl_end) - 1
+    tar_drug_exptbl_over_end <<- tar_drug_exptbl_end[tar_drug_exptbl_end$drug_expYear == 2999, 2]
+    temp_tar_e <<- nrow(tar_drug_exptbl_end) - 1
 } else {
-    tar_drug_exptbl_over_end <- NA
-    temp_tar_e <- nrow(tar_drug_exptbl_end)
+    tar_drug_exptbl_over_end <<- NA
+    temp_tar_e <<- nrow(tar_drug_exptbl_end)
 }
-drug_exp_na_end <- c(std_drug_exptbl_na_end, tar_drug_exptbl_na_end)
-drug_exp_over_end <- c(std_drug_exptbl_over_end, tar_drug_exptbl_over_end)
+drug_exp_na_end <<- c(std_drug_exptbl_na_end, tar_drug_exptbl_na_end)
+drug_exp_over_end <<- c(std_drug_exptbl_over_end, tar_drug_exptbl_over_end)
 draw_line_end(
     std_drug_exptbl_end[temp_std_s:temp_std_e, ], tar_drug_exptbl_end[temp_tar_s:temp_tar_e, ], drug_exp_na_end, drug_exp_over_end,
     "Drug Exposure", "Drug Exposure/03.Drug_exp_end.jpg"
@@ -116,3 +124,4 @@ draw_compare_pie(std_drug_exptbl_visit_occurrence, tar_drug_exptbl_visit_occurre
 mtext("Drug Exposure/Visit Occurrence Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
+}

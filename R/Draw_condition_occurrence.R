@@ -1,6 +1,14 @@
+#' Draw condition occurrence
+#'
+#' This function for draw graph from condition occurrence RDS data
+#' @keywords gemini
+#' @export
+#' @example
+#' draw_condition_occurrence()
 ################################################################################
 # CONDITION OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
+draw_condition_occurrence <- function(){
 ################################################################################
 # condition_occurrence_record
 ################################################################################
@@ -26,36 +34,36 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # 2999, NA Problem issue
 if (length(std_conditiontbl_end[is.na(std_conditiontbl_end$visitYear)]) != 0) {
-    std_conditiontbl_na_end <- std_conditiontbl_end[is.na(std_conditiontbl_end$visitYear), 2]
-    temp_std_s <- 2
+    std_conditiontbl_na_end <<- std_conditiontbl_end[is.na(std_conditiontbl_end$visitYear), 2]
+    temp_std_s <<- 2
 } else {
-    std_conditiontbl_na_end <- NA
-    temp_std_s <- 1
+    std_conditiontbl_na_end <<- NA
+    temp_std_s <<- 1
 }
 if (length(std_conditiontbl_end[std_conditiontbl_end$visitYear == 2999, ]$visitYear) != 0) {
-    std_conditiontbl_over_end <- std_conditiontbl_end[na.omit(std_conditiontbl_end$visitYear == 2999), 2]
-    temp_std_e <- nrow(std_conditiontbl_end) - 1
+    std_conditiontbl_over_end <<- std_conditiontbl_end[na.omit(std_conditiontbl_end$visitYear == 2999), 2]
+    temp_std_e <<- nrow(std_conditiontbl_end) - 1
 } else {
-    std_conditiontbl_over_end <- NA
-    temp_std_e <- nrow(std_conditiontbl_end)
+    std_conditiontbl_over_end <<- NA
+    temp_std_e <<- nrow(std_conditiontbl_end)
 }
 if (length(tar_conditiontbl_end[is.na(tar_conditiontbl_end$visitYear)]) != 0) {
-    tar_conditiontbl_na_end <- tar_conditiontbl_end[is.na(tar_conditiontbl_end$visitYear), 2]
-    temp_tar_s <- 2
+    tar_conditiontbl_na_end <<- tar_conditiontbl_end[is.na(tar_conditiontbl_end$visitYear), 2]
+    temp_tar_s <<- 2
 } else {
-    tar_conditiontbl_na_end <- NA
-    temp_tar_s <- 1
+    tar_conditiontbl_na_end <<- NA
+    temp_tar_s <<- 1
 }
 if (length(tar_conditiontbl_end[tar_conditiontbl_end$visitYear == 2999, ]$visitYear) != 0) {
-    tar_conditiontbl_over_end <- tar_conditiontbl_end[tar_conditiontbl_end$visitYear == 2999, 2]
-    temp_tar_e <- nrow(tar_conditiontbl_end) - 1
+    tar_conditiontbl_over_end <<- tar_conditiontbl_end[tar_conditiontbl_end$visitYear == 2999, 2]
+    temp_tar_e <<- nrow(tar_conditiontbl_end) - 1
 } else {
-    tar_conditiontbl_over_end <- NA
-    temp_tar_e <- nrow(tar_conditiontbl_end) - 1
+    tar_conditiontbl_over_end <<- NA
+    temp_tar_e <<- nrow(tar_conditiontbl_end) - 1
 }
 
-condition_na_end <- c(std_conditiontbl_na_end, tar_conditiontbl_na_end)
-condition_over_end <- c(std_conditiontbl_over_end, tar_conditiontbl_over_end)
+condition_na_end <<- c(std_conditiontbl_na_end, tar_conditiontbl_na_end)
+condition_over_end <<- c(std_conditiontbl_over_end, tar_conditiontbl_over_end)
 draw_line_end(
     std_conditiontbl_end[temp_std_s:temp_std_e, ], tar_conditiontbl_end[temp_tar_s:temp_tar_e, ], condition_na_end, condition_over_end,
     "Condition", "Condition/03.Condition_End.jpg"
@@ -116,3 +124,4 @@ draw_compare_pie(std_conditiontbl_visit_detail, tar_conditiontbl_visit_detail, "
 mtext("Condition/Visit detail ratio by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
 # Graph Save
 dev.off()
+}

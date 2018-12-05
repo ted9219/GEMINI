@@ -1,101 +1,109 @@
+#' Save data
+#'
+#' This function for saving data by RDS file
+#' @keywords gemini
+#' @export
+#' @example
+#' save_data()
 ################################################################################
 # SAVE DATA RESOURCE
 # Set location when project path is change
 ################################################################################
-source("Query_func.R")
+
+save_data <- function(){
+    gemini::create_folder()
+    gemini::Query_func()
 ################################################################################
 # PERSON DATA SAVING FUNCTION
 ################################################################################
-tm1 <- as.numeric(round(system.time(source("Person_data.R"))[3], digit = 1))
-# list for save data
-# if append more data, append in list
-persontbl_list <- list(
-  persontbl_record, persontbl_person_ratio, persontbl_gender, persontbl_min_age, persontbl_max_age, persontbl_race
-  , persontbl_ethnicity, persontbl_location, persontbl_provider, persontbl_care_site
-)
-persontbl_name_list <- c(
-  "persontbl_record", "persontbl_person_ratio", "persontbl_gender", "persontbl_min_age", "persontbl_max_age",
-  "persontbl_race", "persontbl_ethnicity", "persontbl_location", "persontbl_provider", "persontbl_care_site"
-)
-# Making path, Save Data
-# saveRDS(object = persontbl_list, file = "Standard RDS/test.rds")
-# rds_temp <- readRDS(file = "Standard RDS/test.rds")
-# rds_temp[[1]]
-temp <- sapply(FUN = paste0, "../Standard RDS/", persontbl_name_list, ".rds")
-mapply(saveRDS, object = persontbl_list, file = temp)
+    tm1 <- as.numeric(round(system.time(gemini::person_data())[3], digit = 1))
+    # list for save data
+    # if append more data, append in list
+    persontbl_list <- list(
+      persontbl_record, persontbl_person_ratio, persontbl_gender, persontbl_min_age, persontbl_max_age, persontbl_race
+      , persontbl_ethnicity, persontbl_location, persontbl_provider, persontbl_care_site
+    )
+    persontbl_name_list <- c(
+      "persontbl_record", "persontbl_person_ratio", "persontbl_gender", "persontbl_min_age", "persontbl_max_age",
+      "persontbl_race", "persontbl_ethnicity", "persontbl_location", "persontbl_provider", "persontbl_care_site"
+    )
+    # Making path, Save Data
+    temp <- sapply(FUN = paste0, "../Standard RDS/", persontbl_name_list, ".rds")
+    mapply(saveRDS, object = persontbl_list, file = temp)
 
 ################################################################################
 # DEATH DATA SAVING FUNCTION
 ################################################################################
-tm2 <- as.numeric(round(system.time(source("Death_data.R"))[3], digit = 1))
-deathtbl_list <- list(deathtbl_check, deathtbl_type)
-deathtbl_name_list <- c("deathtbl_check", "deathtbl_type")
-temp <- sapply(FUN = paste0, "../Standard RDS/", deathtbl_name_list, ".rds")
-mapply(saveRDS, object = deathtbl_list, file = temp)
+    tm2 <- as.numeric(round(system.time(gemini::death_data())[3], digit = 1))
+    deathtbl_list <- list(deathtbl_check, deathtbl_type)
+    deathtbl_name_list <- c("deathtbl_check", "deathtbl_type")
+    temp <- sapply(FUN = paste0, "../Standard RDS/", deathtbl_name_list, ".rds")
+    mapply(saveRDS, object = deathtbl_list, file = temp)
 ################################################################################
 # VISIT_OCCURRENCE DATA SAVING FUNCTION
 ################################################################################
-tm3 <- as.numeric(round(system.time(source("Visit_occurrence_data.R"))[3], digit = 1))
-visittbl_list <- list(
-  visittbl_record, visittbl_person_ratio, visittbl_visit_concept, visittbl_start, visittbl_end, visittbl_diff_date
-  , visittbl_count, visittbl_type_concept, visittbl_care_site, visittbl_source_concept, visittbl_admitting_source,
-  visittbl_discharge, visittbl_preceding
-)
-str(visittbl_record)
-visittbl_name_list <- list(
-  "visittbl_record", "visittbl_person_ratio", "visittbl_visit_concept", "visittbl_start", "visittbl_end",
-  "visittbl_diff_date", "visittbl_count", "visittbl_type_concept", "visittbl_care_site", "visittbl_source_concept",
-  "visittbl_admitting_source", "visittbl_discharge", "visittbl_preceding"
-)
-temp <- sapply(FUN = paste0, "../Standard RDS/", visittbl_name_list, ".rds")
-mapply(saveRDS, object = visittbl_list, file = temp)
+    tm3 <- as.numeric(round(system.time(gemini::visit_occurrence_data())[3], digit = 1))
+    visittbl_list <- list(
+      visittbl_record, visittbl_person_ratio, visittbl_visit_concept, visittbl_start, visittbl_end, visittbl_diff_date
+      , visittbl_count, visittbl_type_concept, visittbl_care_site, visittbl_source_concept, visittbl_admitting_source,
+      visittbl_discharge, visittbl_preceding
+    )
+    str(visittbl_record)
+    visittbl_name_list <- list(
+      "visittbl_record", "visittbl_person_ratio", "visittbl_visit_concept", "visittbl_start", "visittbl_end",
+      "visittbl_diff_date", "visittbl_count", "visittbl_type_concept", "visittbl_care_site", "visittbl_source_concept",
+      "visittbl_admitting_source", "visittbl_discharge", "visittbl_preceding"
+    )
+    temp <- sapply(FUN = paste0, "../Standard RDS/", visittbl_name_list, ".rds")
+    mapply(saveRDS, object = visittbl_list, file = temp)
 ################################################################################
 # CONDITION_OCCURRENCE DATA SAVING FUNCTION
 ################################################################################
-tm4 <- as.numeric(round(system.time(source("Condition_occurrence_data.R"))[3], digit = 1))
-conditiontbl_list <- list(
-  conditiontbl_record, conditiontbl_person_ratio, conditiontbl_diff_date, conditiontbl_start, conditiontbl_end,
-  conditiontbl_type_concept, conditiontbl_stop, conditiontbl_visit_occurrence, conditiontbl_visit_detail
-)
-conditiontbl_name_list <- list(
-  "conditiontbl_record", "conditiontbl_person_ratio", "conditiontbl_diff_date", "conditiontbl_start",
-  "conditiontbl_end", "conditiontbl_type_concept", "conditiontbl_stop", "conditiontbl_visit_occurrence",
-  "conditiontbl_visit_detail"
-)
-temp <- sapply(FUN = paste0, "../Standard RDS/", conditiontbl_name_list, ".rds")
-mapply(saveRDS, object = conditiontbl_list, file = temp)
+    tm4 <- as.numeric(round(system.time(gemini::condition_occurrence_data())[3], digit = 1))
+    conditiontbl_list <- list(
+      conditiontbl_record, conditiontbl_person_ratio, conditiontbl_diff_date, conditiontbl_start, conditiontbl_end,
+      conditiontbl_type_concept, conditiontbl_stop, conditiontbl_visit_occurrence, conditiontbl_visit_detail
+    )
+    conditiontbl_name_list <- list(
+      "conditiontbl_record", "conditiontbl_person_ratio", "conditiontbl_diff_date", "conditiontbl_start",
+      "conditiontbl_end", "conditiontbl_type_concept", "conditiontbl_stop", "conditiontbl_visit_occurrence",
+      "conditiontbl_visit_detail"
+    )
+    temp <- sapply(FUN = paste0, "../Standard RDS/", conditiontbl_name_list, ".rds")
+    mapply(saveRDS, object = conditiontbl_list, file = temp)
 ################################################################################
 # DRUG_EXPOSURE DATA SAVING FUNCTION
 ################################################################################
-tm5 <- as.numeric(round(system.time(source("Drug_exposure_data.R"))[3], digit = 1))
-drug_exptbl_list <- list(
-  drug_exptbl_record, drug_exptbl_person_ratio, drug_exptbl_diff_date, drug_exptbl_start, drug_exptbl_end,
-  drug_exptbl_type_concept, drug_exptbl_stop, drug_exptbl_route, drug_exptbl_visit_occurrence
-)
-drug_exptbl_name_list <- list(
-  "drug_exptbl_record", "drug_exptbl_person_ratio", "drug_exptbl_diff_date", "drug_exptbl_start", "drug_exptbl_end",
-  "drug_exptbl_type_concept", "drug_exptbl_stop", "drug_exptbl_route", "drug_exptbl_visit_occurrence"
-)
-temp <- sapply(FUN = paste0, "../Standard RDS/", drug_exptbl_name_list, ".rds")
-mapply(saveRDS, object = drug_exptbl_list, file = temp)
+    tm5 <- as.numeric(round(system.time(gemini::drug_exposure_data())[3], digit = 1))
+    drug_exptbl_list <- list(
+      drug_exptbl_record, drug_exptbl_person_ratio, drug_exptbl_diff_date, drug_exptbl_start, drug_exptbl_end,
+      drug_exptbl_type_concept, drug_exptbl_stop, drug_exptbl_route, drug_exptbl_visit_occurrence
+    )
+    drug_exptbl_name_list <- list(
+      "drug_exptbl_record", "drug_exptbl_person_ratio", "drug_exptbl_diff_date", "drug_exptbl_start", "drug_exptbl_end",
+      "drug_exptbl_type_concept", "drug_exptbl_stop", "drug_exptbl_route", "drug_exptbl_visit_occurrence"
+    )
+    temp <- sapply(FUN = paste0, "../Standard RDS/", drug_exptbl_name_list, ".rds")
+    mapply(saveRDS, object = drug_exptbl_list, file = temp)
 ################################################################################
 # DRUG_ERA DATA SAVING FUNCTION
 ################################################################################
-tm6 <- as.numeric(round(system.time(source("Drug_era_data.R"))[3], digit = 1))
-drug_eratbl_list <- list(
-  drug_eratbl_record, drug_eratbl_person_ratio, drug_eratbl_diff_date, drug_eratbl_start, drug_eratbl_end,
-  drug_eratbl_exp_count, drug_eratbl_gap_days
-)
-drug_eratbl_name_list <- list(
-  "drug_eratbl_record", "drug_eratbl_person_ratio", "drug_eratbl_diff_date", "drug_eratbl_start", "drug_eratbl_end",
-  "drug_eratbl_exp_count", "drug_eratbl_gap_days"
-)
-temp <- sapply(FUN = paste0, "../Standard RDS/", drug_eratbl_name_list, ".rds")
-mapply(saveRDS, object = drug_eratbl_list, file = temp)
+    tm6 <- as.numeric(round(system.time(gemini::drug_era_data())[3], digit = 1))
+    drug_eratbl_list <- list(
+      drug_eratbl_record, drug_eratbl_person_ratio, drug_eratbl_diff_date, drug_eratbl_start, drug_eratbl_end,
+      drug_eratbl_exp_count, drug_eratbl_gap_days
+    )
+    drug_eratbl_name_list <- list(
+      "drug_eratbl_record", "drug_eratbl_person_ratio", "drug_eratbl_diff_date", "drug_eratbl_start", "drug_eratbl_end",
+      "drug_eratbl_exp_count", "drug_eratbl_gap_days"
+    )
+    temp <- sapply(FUN = paste0, "../Standard RDS/", drug_eratbl_name_list, ".rds")
+    mapply(saveRDS, object = drug_eratbl_list, file = temp)
 
-# time check
-message(paste0("This process takes ", sum(tm1, tm2, tm3, tm4, tm5, tm6), "s."))
+    # time check
+    message(paste0("This process takes ", sum(tm1, tm2, tm3, tm4, tm5, tm6), "s."))
 ################################################################################
 # Disconnect DB
 ################################################################################
-DatabaseConnector::disconnect(connection)
+    DatabaseConnector::disconnect(connection)
+}

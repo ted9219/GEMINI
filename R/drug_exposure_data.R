@@ -1,7 +1,15 @@
+#' Drug exposure data
+#'
+#' This function extract data from drug exposure table
+#' @keywords gemini
+#' @export
+#' @example
+#' drug_exposure_data()
+drug_exposure_data <- function(){
 ################################################################################
 # Get data from drug_exposure_id
 ################################################################################
-tryCatch(drug_exptbl_record <- get_total_records("drug_exposure")
+tryCatch(drug_exptbl_record <<- get_total_records("drug_exposure")
   ,
   error = function(e) {
     drug_exptbl_record <<- NULL
@@ -10,7 +18,7 @@ tryCatch(drug_exptbl_record <- get_total_records("drug_exposure")
 ################################################################################
 # Get data from person_id
 ################################################################################
-tryCatch(drug_exptbl_person_ratio <- get_person_ratio("drug_exposure")
+tryCatch(drug_exptbl_person_ratio <<- get_person_ratio("drug_exposure")
   ,
   error = function(e) {
     drug_exptbl_person_ratio <<- NULL
@@ -19,7 +27,7 @@ tryCatch(drug_exptbl_person_ratio <- get_person_ratio("drug_exposure")
 ################################################################################
 # Extract drug_exposure_start_date
 ################################################################################
-tryCatch(drug_exptbl_start <- get_record_per_year("drug_exposure", "drug_exposure_start_date")
+tryCatch(drug_exptbl_start <<- get_record_per_year("drug_exposure", "drug_exposure_start_date")
   ,
   error = function(e) {
     drug_exptbl_start <<- NULL
@@ -28,7 +36,7 @@ tryCatch(drug_exptbl_start <- get_record_per_year("drug_exposure", "drug_exposur
 ################################################################################
 # Extract drug_exposure_end_date
 ################################################################################
-tryCatch(drug_exptbl_end <- get_record_per_year("drug_exposure", "drug_exposure_end_date")
+tryCatch(drug_exptbl_end <<- get_record_per_year("drug_exposure", "drug_exposure_end_date")
   ,
   error = function(e) {
     drug_exptbl_end <<- NULL
@@ -38,7 +46,7 @@ tryCatch(drug_exptbl_end <- get_record_per_year("drug_exposure", "drug_exposure_
 # Get data from drug_exposure_diff_date
 ################################################################################
 tryCatch({
-  drug_exptbl_diff_date <- get_diff_year("drug_exposure", "drug_exposure_start_date", "drug_exposure_end_date")
+  drug_exptbl_diff_date <<- get_diff_year("drug_exposure", "drug_exposure_start_date", "drug_exposure_end_date")
 }, error = function(e) {
   drug_exptbl_diff_date <<- NULL
 })
@@ -46,7 +54,7 @@ tryCatch({
 # Get data from drug_type_concept_id
 ################################################################################
 tryCatch({
-  drug_exptbl_type_concept <- get_ratio("drug_exposure", "drug_type_concept_id")
+  drug_exptbl_type_concept <<- get_ratio("drug_exposure", "drug_type_concept_id")
 }, error = function(e) {
   drug_exptbl_type_concept <<- NULL
 })
@@ -54,7 +62,7 @@ tryCatch({
 # Get data from stop_reason
 ################################################################################
 tryCatch({
-  drug_exptbl_stop <- get_reason_count("drug_exposure")
+  drug_exptbl_stop <<- get_reason_count("drug_exposure")
 }, error = function(e) {
   drug_exptbl_stop <<- NULL
 })
@@ -62,7 +70,7 @@ tryCatch({
 # Get data from route_concept_id
 ################################################################################
 tryCatch({
-  drug_exptbl_route <- get_ratio("drug_exposure", "route_concept_id")
+  drug_exptbl_route <<- get_ratio("drug_exposure", "route_concept_id")
 }, error = function(e) {
   drug_exptbl_route <<- NULL
 })
@@ -70,7 +78,7 @@ tryCatch({
 # Get data from visit_occurrence_id
 ################################################################################
 tryCatch({
-  drug_exptbl_visit_occurrence <- get_compared_ratio("drug_exposure", "visit_occurrence_id", "drug_exposure_id")
+  drug_exptbl_visit_occurrence <<- get_compared_ratio("drug_exposure", "visit_occurrence_id", "drug_exposure_id")
 }, error = function(e) {
   drug_exptbl_visit_occurrence <<- NULL
 })
@@ -80,7 +88,8 @@ tryCatch({
 # drug_exposure_visit_detail <- get_compared_ratio("drug_exposure","visit_detail_id","drug_exposure_id")
 ################################################################################
 tryCatch({
-  drug_exptbl_visit_detail <- get_compared_ratio("drug_exposure", "visit_detail_id", "drug_exposure_id")
+  drug_exptbl_visit_detail <<- get_compared_ratio("drug_exposure", "visit_detail_id", "drug_exposure_id")
 }, error = function(e) {
   drug_exptbl_visit_detail <<- NULL
 })
+}

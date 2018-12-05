@@ -1,6 +1,14 @@
+#' Draw person
+#'
+#' This function for draw graph from person RDS data
+#' @keywords gemini
+#' @export
+#' @example
+#' draw_person()
 ################################################################################
 # PERSON TABLE VISUALLIZATION
 ################################################################################
+draw_person <- function(){
 ################################################################################
 # person_record
 ################################################################################
@@ -18,7 +26,7 @@ jpeg(
 par(mfrow = c(1, 1), xpd = T)
 # Draw graph in one bar chart
 tryCatch({
-    gender_bar <- barplot(c(std_persontbl_gender$ratio[1], tar_persontbl_gender$ratio[1], std_persontbl_gender$ratio[2], tar_persontbl_gender$ratio[2]),
+    gender_bar <<- barplot(c(std_persontbl_gender$ratio[1], tar_persontbl_gender$ratio[1], std_persontbl_gender$ratio[2], tar_persontbl_gender$ratio[2]),
                           beside = F, ylim = c(0, 100), names = c(
                               std_persontbl_gender$attributeName[1], tar_persontbl_gender$attributeName[1],
                               std_persontbl_gender$attributeName[2], tar_persontbl_gender$attributeName[2]
@@ -52,16 +60,16 @@ jpeg(
 par(mfrow = c(1, 1), xpd = F)
 # Divide ratio by Gender
 tryCatch({
-    male_min_ratio <- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8507"]
-    female_min_ratio <- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8532"]
-    compared_male_min_ratio <- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8507"]
-    compared_female_min_ratio <- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8532"]
+    male_min_ratio <<- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8507"]
+    female_min_ratio <<- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8532"]
+    compared_male_min_ratio <<- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8507"]
+    compared_female_min_ratio <<- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8532"]
     # Set label which got more long length
     if (length(std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"])
         > length(tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"])) {
-        x_min_lbl <- std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"]
+        x_min_lbl <<- std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"]
     } else {
-        x_min_lbl <- tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"]
+        x_min_lbl <<- tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"]
     }
     # Draw line Graph
     plot(male_min_ratio,
@@ -72,12 +80,12 @@ tryCatch({
     axis(1, at = c(1:length(x_min_lbl)), labels = x_min_lbl, cex.axis = 1.5)
     # Set y_axis which got more big value
     if (max(std_persontbl_min_age$ratio) > max(tar_persontbl_min_age$ratio)) {
-        y_axis <- as.numeric(max(std_persontbl_min_age$ratio))
+        y_axis <<- as.numeric(max(std_persontbl_min_age$ratio))
     } else {
-        y_axis <- as.numeric(max(tar_persontbl_min_age$ratio))
+        y_axis <<- as.numeric(max(tar_persontbl_min_age$ratio))
     }
     axis(2, at = c(0:ceiling(y_axis)), cex.axis = 1.5)
-    
+
     # add another line graph
     lines(female_min_ratio, type = "p", pch = 19, col = 2, cex = 2) +
         lines(compared_male_min_ratio, type = "p", pch = 18, cex = 2.5,col = "cyan4") +
@@ -109,10 +117,10 @@ jpeg(
 par(mfrow = c(1, 1), xpd = F)
 # Divide ratio by Gender
 tryCatch({
-    male_max_ratio <- std_persontbl_max_age$ratio[std_persontbl_max_age$genderConceptId == "8507"]
-    female_max_ratio <- std_persontbl_max_age$ratio[std_persontbl_max_age$genderConceptId == "8532"]
-    compared_male_max_ratio <- tar_persontbl_max_age$ratio[tar_persontbl_max_age$genderConceptId == "8507"]
-    compared_female_max_ratio <- tar_persontbl_max_age$ratio[tar_persontbl_max_age$genderConceptId == "8532"]
+    male_max_ratio <<- std_persontbl_max_age$ratio[std_persontbl_max_age$genderConceptId == "8507"]
+    female_max_ratio <<- std_persontbl_max_age$ratio[std_persontbl_max_age$genderConceptId == "8532"]
+    compared_male_max_ratio <<- tar_persontbl_max_age$ratio[tar_persontbl_max_age$genderConceptId == "8507"]
+    compared_female_max_ratio <<- tar_persontbl_max_age$ratio[tar_persontbl_max_age$genderConceptId == "8532"]
     # Set label which got more long length
     if (length(std_persontbl_max_age$ageRange[std_persontbl_max_age$genderConceptId == "8507"])
         > length(tar_persontbl_max_age$ageRange[tar_persontbl_max_age$genderConceptId == "8507"])) {
@@ -129,12 +137,12 @@ tryCatch({
     axis(1, at = c(1:length(x_max_lbl)), labels = x_max_lbl, cex.axis = 1.5)
     # Set y_axis which got more big value
     if (max(std_persontbl_max_age$ratio) > max(tar_persontbl_max_age$ratio)) {
-        y_axis <- as.numeric(max(std_persontbl_max_age$ratio))
+        y_axis <<- as.numeric(max(std_persontbl_max_age$ratio))
     } else {
-        y_axis <- as.numeric(max(tar_persontbl_max_age$ratio))
+        y_axis <<- as.numeric(max(tar_persontbl_max_age$ratio))
     }
     axis(2, at = c(0:ceiling(y_axis)), cex.axis = 1.5)
-    
+
     # add another line graph
     lines(female_max_ratio, type = "p", pch = 19, cex = 2, col = 2) +
         lines(compared_male_max_ratio, type = "p", pch = 18, cex = 2.5, col = "cyan4") +
@@ -188,3 +196,4 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 draw_null_bar(std_persontbl_care_site, tar_persontbl_care_site, "Care Site", "Person/08.Person_care_site.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
+}

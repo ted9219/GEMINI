@@ -1,6 +1,14 @@
+#' Draw whole
+#'
+#' This function for draw graph from summary RDS data
+#' @keywords gemini
+#' @export
+#' @example
+#' draw_whole()
 ################################################################################
 # WHOLE TABLE info VISUALLIZATION
 ################################################################################
+draw_whole<-function(){
 ################################################################################
 # WHOLE TABLE Record info
 ################################################################################
@@ -10,7 +18,7 @@ jpeg(
     width = 720, height = 720, quality = 75, bg = "white"
 )
 tryCatch({
-    record_bar <- barplot(c(
+    record_bar <<- barplot(c(
         std_persontbl_record$ratio[1], tar_persontbl_record$ratio[1], std_visittbl_record$ratio[1], tar_visittbl_record$ratio[1],
         std_conditiontbl_record$ratio[1], tar_conditiontbl_record$ratio[1], std_drug_exptbl_record$ratio[1], tar_drug_exptbl_record$ratio[1],
         std_drug_eratbl_record$ratio[1], tar_drug_eratbl_record$ratio[1]
@@ -56,7 +64,7 @@ jpeg(
 )
 # Draw graph in one bar chart
 tryCatch({
-    person_bar <- barplot(c(
+    person_bar <<- barplot(c(
         std_persontbl_person_ratio$ratio, tar_persontbl_person_ratio$ratio, std_visittbl_person_ratio$ratio, tar_visittbl_person_ratio$ratio,
         std_conditiontbl_person_ratio$ratio, tar_conditiontbl_person_ratio$ratio, std_drug_exptbl_person_ratio$ratio, tar_drug_exptbl_person_ratio$ratio,
         std_drug_eratbl_person_ratio$ratio, tar_drug_eratbl_person_ratio$ratio
@@ -91,3 +99,4 @@ error = function(error_message) {
 )
 # dev.copy(device = jpeg ,filename=paste0("images/Whole/01.Person.jpg"))
 dev.off()
+}

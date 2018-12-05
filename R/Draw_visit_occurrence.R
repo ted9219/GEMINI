@@ -1,6 +1,14 @@
+#' Draw visit occurrence
+#'
+#' This function for draw graph from visit_occurrence RDS data
+#' @keywords gemini
+#' @export
+#' @example
+#' draw_visit_occurrence()
 ################################################################################
 # VISIT OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
+draw_visit_occurrence <- function(){
 ################################################################################
 # visit_occurrence_record
 ################################################################################
@@ -70,35 +78,35 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # 2999, NA Problem issue
 if (length(std_visittbl_end[is.na(std_visittbl_end$visitYear)]) != 0) {
-    std_visittbl_na_end <- std_visittbl_end[is.na(std_visittbl_end$visitYear), 2]
-    temp_std_s <- 2
+    std_visittbl_na_end <<- std_visittbl_end[is.na(std_visittbl_end$visitYear), 2]
+    temp_std_s <<- 2
 } else {
-    std_visittbl_na_end <- NA
-    temp_std_s <- 1
+    std_visittbl_na_end <<- NA
+    temp_std_s <<- 1
 }
 if (length(std_visittbl_end[std_visittbl_end$visitYear == 2999, ]$visitYear) != 0) {
-    std_visittbl_over_end <- std_visittbl_end[na.omit(std_visittbl_end$visitYear == 2999), 2]
-    temp_std_e <- nrow(std_visittbl_end) - 1
+    std_visittbl_over_end <<- std_visittbl_end[na.omit(std_visittbl_end$visitYear == 2999), 2]
+    temp_std_e <<- nrow(std_visittbl_end) - 1
 } else {
-    std_visittbl_over_end <- NA
-    temp_std_e <- nrow(std_visittbl_end)
+    std_visittbl_over_end <<- NA
+    temp_std_e <<- nrow(std_visittbl_end)
 }
 if (length(tar_visittbl_end[is.na(tar_visittbl_end$visitYear)]) != 0) {
-    tar_visittbl_na_end <- tar_visittbl_end[is.na(tar_visittbl_end$visitYear), 2]
-    temp_tar_s <- 2
+    tar_visittbl_na_end <<- tar_visittbl_end[is.na(tar_visittbl_end$visitYear), 2]
+    temp_tar_s <<- 2
 } else {
-    tar_visittbl_na_end <- NA
-    temp_tar_s <- 1
+    tar_visittbl_na_end <<- NA
+    temp_tar_s <<- 1
 }
 if (length(tar_visittbl_end[tar_visittbl_end$visitYear == 2999, ]$visitYear) != 0) {
-    tar_visittbl_over_end <- tar_visittbl_end[na.omit(tar_visittbl_end$visitYear == 2999), 2]
-    temp_tar_e <- nrow(tar_visittbl_end) - 1
+    tar_visittbl_over_end <<- tar_visittbl_end[na.omit(tar_visittbl_end$visitYear == 2999), 2]
+    temp_tar_e <<- nrow(tar_visittbl_end) - 1
 } else {
-    tar_visittbl_over_end <- NA
-    temp_tar_e <- nrow(tar_visittbl_end)
+    tar_visittbl_over_end <<- NA
+    temp_tar_e <<- nrow(tar_visittbl_end)
 }
-visit_na_end <- c(std_visittbl_na_end, tar_visittbl_na_end)
-visit_over_end <- c(std_visittbl_over_end, tar_visittbl_over_end)
+visit_na_end <<- c(std_visittbl_na_end, tar_visittbl_na_end)
+visit_over_end <<- c(std_visittbl_over_end, tar_visittbl_over_end)
 # Grid line sketch
 draw_line_end(std_visittbl_end[temp_std_s:temp_std_e, ], tar_visittbl_end[temp_tar_s:temp_tar_e, ], visit_na_end, visit_over_end, "Visit Occurrence", "Visit/05.Visit_End.jpg")
 # Graph Save
@@ -147,3 +155,4 @@ draw_compare_pie(std_visittbl_preceding, tar_visittbl_preceding, "Visit/11.Visit
 mtext("Compare Visit preceding by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
+}

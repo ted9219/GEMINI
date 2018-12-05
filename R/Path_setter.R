@@ -1,4 +1,29 @@
-# GEMINI path setting
+#' GEMINI path setting
+#'
+#' Path setting
+#' @keywords gemini
+#' @export
+#' @example
+#' path_set()
+
+#Using rstudio api. Unless use rstudio, it may set wrong path.
+path_set<- function(){
+    if(rstudioapi::isAvailable()){
+        message("Automatically path setting...")
+        tryCatch({
+        setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+        },error=function(e){
+            path_setter()
+        })
+        print(getwd())
+        if(file.exists(c("Connect_DB.R")) == F){
+            path_setter()
+        }
+        message("Path set.")
+    }else{
+        path_setter()
+    }
+}
 
 #Find Connect_DB.R, SaveData.R file for extract data from CDM
 path_setter <- function(){
@@ -17,24 +42,4 @@ path_setter <- function(){
             path_setter()
         }
     }
-}
-
-#Check SavaData.R file exist
-check_savedata <- function(){
-    if(file.exists("SaveData.R")==F){
-        stop("SavaData.R file doesn't exist. Please check R files.")
-    }
-}
-
-#Using rstudio api. Unless use rstudio, it may set wrong path.
-if(rstudioapi::isAvailable()){
-    message("Automatically path setting...")
-    setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-    print(getwd())
-    if(file.exists(c("Connect_DB.R")) == F){
-        path_setter()
-    }
-    message("Path set.")
-}else{
-    path_setter()
 }
