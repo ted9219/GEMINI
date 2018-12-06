@@ -27,7 +27,7 @@ connect_DB <- function(){
 
     tryCatch({
         connection <<- DatabaseConnector::connect(connectionDetails)
-        DatabaseConnector::dbIsValid(connectionDetails)
+        DatabaseConnector::dbIsValid(connection)
         message("Connection success!")},
         error = function(e){
             file.rename("server_info.cfg","server_info_failed.cfg")
