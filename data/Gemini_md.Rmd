@@ -56,7 +56,7 @@ OBSERVATION PERIOD의 값을 참조한 그래프도 있습니다.
 
 ![전체 레코드 분율 비교](images/Whole/00.Record.jpg)
 
-비교 대상이 되는 테이블의 레코드 수 총합을 기준으로 한 테이블 별 레코드 분율.
+비교 대상이 되는 테이블의 레코드 수 총합을 기준으로 한 테이블 별 레코드 분율. 
 <!-- This figure shows that Standard CDM's record each assigned table ratio and Target CDM's record each assigned table ratio.-->
 </div>
 
@@ -86,7 +86,7 @@ Person 테이블의 레코드가 차지하는 분율
 <div class="pull_right">
 ![Person 테이블 성비](images/Person/01.Person_gender.jpg)
 
-전체 환자들의 성비
+환자들의 성비
 <!-- This figure shows that Standard CDM's gender ratio and Target CDM's gender ratio. -->
 </div>
 </div>
@@ -98,21 +98,21 @@ Person 테이블의 레코드가 차지하는 분율
 ![Person 테이블 마지막 진료 연도](images/Person/03.Person_max_year.jpg)
 
 </div>
-환자들이 처음으로 진료받은 연도와 마지막으로 진료받은 연도를 기준으로 연령별 분율 및 성비
+환자들이 처음으로 진료받은 연도와 마지막으로 진료받은 연도를 기준으로 한 연령별 분율 및 성비
 <!-- This figure shows that Standard CDM's, Target CDM's Observation Period Start and End. -->
 <div class="row">
 <div class="pull_left">
 
 ![Person 인종](images/Person/04.Person_race.jpg)
 
-전체 환자의 인종 별 분율
+환자 인종 별 분율
 <!-- This figure shows that Standard CDM's Race ratio and Target CDM's Race ratio-->
 </div>
 
 <div class="pull_right">
 ![Person 민족](images/Person/05.Person_ethnicity.jpg)
 
-전체 환자의 민족 별 비율
+환자 민족 별 비율
 <!-- This figure shows that Standard CDM's Ethnicity ratio and Target CDM's Ethnicity ratio-->
 </div>
 </div>
@@ -313,7 +313,7 @@ Condition Occurrence 테이블의 환자가 차지하는 분율
 
 <div class="row">
 <div class="pull_left">
-![Condition 중단 사유](images/Condition/06.Condition_Stop.jpg)
+![Condition 중단 사유](images/Condition/06.Condition_stop.jpg)
 
 증상이 나타나지 않게 된 이유의 종류 수
 <!-- This figure shows the number of stop reason in the standard CDM and target CDM. -->

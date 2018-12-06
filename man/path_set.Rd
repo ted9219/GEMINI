@@ -7,6 +7,6 @@
 path_set()
 }
 \description{
-Path setting only window
+Work directory path setting
 }
 \keyword{gemini}

@@ -1,8 +1,8 @@
 Package: gemini
-Title: GEMINI for data visualization
-Version: 0.0.0.9000
+Title: GEMINI for comparing with two institution data
+Version: 0.0.0.9700
 Authors@R: person("JunHyeong", "Kim", email = "wnsuddlsla@gmail.com", role = c("aut", "cre"))
-Description: Extract data from CDM and visualize data to compare other data
+Description: Extract data from CDM and visualize data to compare with other data.
 Depends: R (>= 3.4.4)
 License: What license is it under?
 Encoding: UTF-8
