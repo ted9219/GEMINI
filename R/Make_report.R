@@ -12,7 +12,7 @@ make_report<-function(){
     # install.packages("rmarkdown")
     library(rmarkdown)
     library(knitr)
-    file.copy(from = paste0(.libPaths()[1],"/gemini/inst/gemini_md.Rmd"), to = getwd())
+    file.copy(from = paste0(.libPaths()[1],"/gemini/data/Gemini_md.Rmd"), to = getwd())
     rmarkdown::render("gemini_md.Rmd",encoding = "UTF-8")
     browseURL(url="gemini_md.html")
 }
