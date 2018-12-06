@@ -21,6 +21,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # gender_concept_id
 ################################################################################
 jpeg(
+    filename = "images/Person/01.Person_gender.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 1), xpd = T)
