@@ -1,12 +1,16 @@
 #' GEMINI path setting
 #'
-#' Path setting only window
+#' Work directory path setting
 #' @keywords gemini
 #' @export
 #' @example
 #' path_set()
 
 path_set <- function(){
-    my_wd <- choose.dir()
+    tryCatch(
+    my_wd <- choose.dir(),
+    error = function(e){
+        my_wd <- readline("Set work directory path : ")
+    })
     setwd(my_wd)
 }

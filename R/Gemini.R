@@ -7,7 +7,7 @@
 #' gemini()
 # Read rds data
 gemini <- function(){
-    message("Choose where 'Standard RDS' folder exist")
+    message("Choose where 'Standard RDS' folder exist.")
     path_set()
     gemini::create_folder()
     # Check rds data files
@@ -28,7 +28,7 @@ gemini <- function(){
         lapply(no_files, function(x) assign(paste0("std_",gsub(x,pattern ="*.rds$",replacement = "")),value = readRDS(paste0("Standard RDS/", x)),envir=.GlobalEnv))
         lapply(no_files, function(x) assign(paste0("tar_",gsub(x,pattern ="*.rds$",replacement = "")),value = NULL,envir=.GlobalEnv))
     }else if(length(no_files) != 0&&length(name_list)==0){
-        pms <- readline('No RDS file in Target RDS folder. Do you want to test gemini? (y / n)')
+        pms <- readline('No RDS file in Target RDS folder. Do you want to test gemini? (y / n) ')
         if(pms == "y" || pms == "Y"){
             lapply(no_files, function(x) assign(paste0("std_",gsub(x,pattern ="*.rds$",replacement = "")),value = readRDS(paste0("Standard RDS/", x)),envir=.GlobalEnv))
             lapply(no_files, function(x) assign(paste0("tar_",gsub(x,pattern ="*.rds$",replacement = "")),value = readRDS(paste0("Standard RDS/", x)),envir=.GlobalEnv))
@@ -50,7 +50,7 @@ gemini <- function(){
         message("No data exist. proceed is stopped.")
     }else{
         set_val(name_list)
-        print("All data exist.")
+        message("All data exist.")
         gemini::draw_func()
         gemini::draw_whole()
         gemini::draw_person()
