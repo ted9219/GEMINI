@@ -11,7 +11,7 @@
 
 # Set User Info to check authority
 connect_DB <- function(){
-    serverInfoFile <- file.path("../server_info.cfg")
+    serverInfoFile <- file.path("server_info.cfg")
 
     infoFromFile <- function(file, pattern){
         gsub(paste0(pattern,"="),"",grep(paste0("^",pattern,"="), scan(file,what="",quiet=T,sep = "\n"),value=T))
@@ -29,7 +29,7 @@ connect_DB <- function(){
         connection <<- DatabaseConnector::connect(connectionDetails)
         message("Connection success!")},
         error = function(e){
-
+            file.rename("server_info.cfg","server_info_failed.cfg")
             stop("Connection failed. Check server_info_failed.cfg file or create new file.")
     })
     gemini::save_data()
