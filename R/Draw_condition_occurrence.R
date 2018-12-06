@@ -9,6 +9,7 @@
 # CONDITION OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
 draw_condition_occurrence <- function(){
+    message("Condition occurrence data visualizing...")
 ################################################################################
 # condition_occurrence_record
 ################################################################################
@@ -74,7 +75,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # condition_occurrence diff_date
 ################################################################################
 jpeg(
-    filename = "../images/Condition/04.Condition_Duration.jpg",
+    filename = "images/Condition/04.Condition_Duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))

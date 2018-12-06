@@ -9,6 +9,7 @@
 # DRUG EXPOSURE TABLE VISUALLIZATION
 ################################################################################
 draw_drug_exposure <- function(){
+    message("Drug exposure data visualizing...")
 ################################################################################
 # drug_exposure_record
 ################################################################################
@@ -34,29 +35,29 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # 2999, NA Problem issue
 # 2999, NA Problem issue
-if (length(std_drug_exptbl_end[is.na(std_drug_exptbl_end$drug_expYear)]) != 0) {
-    std_drug_exptbl_na_end <<- std_drug_exptbl_end[is.na(std_drug_exptbl_end$drug_expYear), 2]
+if (length(std_drug_exptbl_end[is.na(std_drug_exptbl_end$visitYear)]) != 0) {
+    std_drug_exptbl_na_end <<- std_drug_exptbl_end[is.na(std_drug_exptbl_end$visitYear), 2]
     temp_std_s <<- 2
 } else {
     std_drug_exptbl_na_end <<- NA
     temp_std_s <<- 1
 }
-if (length(std_drug_exptbl_end[std_drug_exptbl_end$drug_expYear == 2999, ]$drug_expYear) != 0) {
-    std_drug_exptbl_over_end <<- std_drug_exptbl_end[std_drug_exptbl_end$drug_expYear == 2999, 2]
+if (length(std_drug_exptbl_end[std_drug_exptbl_end$visitYear == 2999, ]$visitYear) != 0) {
+    std_drug_exptbl_over_end <<- std_drug_exptbl_end[std_drug_exptbl_end$visitYear == 2999, 2]
     temp_std_e <<- nrow(std_drug_exptbl_end) - 1
 } else {
     std_drug_exptbl_over_end <<- NA
     temp_std_e <<- nrow(std_drug_exptbl_end)
 }
-if (length(tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$drug_expYear)]) != 0) {
-    tar_drug_exptbl_na_end <<- tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$drug_expYear), 2]
+if (length(tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$visitYear)]) != 0) {
+    tar_drug_exptbl_na_end <<- tar_drug_exptbl_end[is.na(tar_drug_exptbl_end$visitYear), 2]
     temp_tar_s <<- 2
 } else {
     tar_drug_exptbl_na_end <<- NA
     temp_tar_s <<- 1
 }
-if (length(tar_drug_exptbl_end[tar_drug_exptbl_end$drug_expYear == 2999, ]$drug_expYear) != 0) {
-    tar_drug_exptbl_over_end <<- tar_drug_exptbl_end[tar_drug_exptbl_end$drug_expYear == 2999, 2]
+if (length(tar_drug_exptbl_end[tar_drug_exptbl_end$visitYear == 2999, ]$visitYear) != 0) {
+    tar_drug_exptbl_over_end <<- tar_drug_exptbl_end[tar_drug_exptbl_end$visitYear == 2999, 2]
     temp_tar_e <<- nrow(tar_drug_exptbl_end) - 1
 } else {
     tar_drug_exptbl_over_end <<- NA
@@ -74,7 +75,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_exposure diff_date
 ################################################################################
 jpeg(
-    filename = "../images/Drug Exposure/04.Drug_exp_duration.jpg",
+    filename = "images/Drug Exposure/04.Drug_exp_duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))

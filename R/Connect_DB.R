@@ -25,6 +25,12 @@ connect_DB <- function(){
         password = infoFromFile(serverInfoFile,"password")
     )
 
-    connection <<- DatabaseConnector::connect(connectionDetails)
+    tryCatch({
+        connection <<- DatabaseConnector::connect(connectionDetails)
+        message("Connection success!")},
+        error = function(e){
+
+            stop("Connection failed. Check server_info_failed.cfg file or create new file.")
+    })
     gemini::save_data()
 }

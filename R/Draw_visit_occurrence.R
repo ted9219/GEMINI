@@ -9,6 +9,7 @@
 # VISIT OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
 draw_visit_occurrence <- function(){
+    message("Visit occurrence data visualizing...")
 ################################################################################
 # visit_occurrence_record
 ################################################################################
@@ -40,7 +41,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # Image file open
 jpeg(
-    filename = "../images/Visit/03.Visit_Duration.jpg",
+    filename = "images/Visit/03.Visit_Duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 

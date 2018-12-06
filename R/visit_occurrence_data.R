@@ -125,8 +125,8 @@ tryCatch(visittbl_discharge <<- get_ratio("visit_occurrence", "discharge_to_conc
   ,
   error = function(e) {
     visittbl_discharge <<- NULL
-  }
-)
+
+})
 ################################################################################
 # Get data from preceding_visit_occurrence_id
 # No data in NHIS

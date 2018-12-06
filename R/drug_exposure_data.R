@@ -93,3 +93,4 @@ tryCatch({
   drug_exptbl_visit_detail <<- NULL
 })
 }
+message("Drug exposure data extracting done.")

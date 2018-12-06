@@ -6,7 +6,8 @@
 #' @example
 #' create_rds()
 create_rds<- function(){
-    if(file.exists("../server_info.cfg")){
+    path_set()
+    if(file.exists("server_info.cfg")){
         message("Try to connecting DB server...")
         gemini::connect_DB()
     }else{

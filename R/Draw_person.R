@@ -9,6 +9,7 @@
 # PERSON TABLE VISUALLIZATION
 ################################################################################
 draw_person <- function(){
+    message("Person data visualizing...")
 ################################################################################
 # person_record
 ################################################################################
@@ -20,7 +21,6 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # gender_concept_id
 ################################################################################
 jpeg(
-    filename = "../images/Person/01.Person_gender.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 1), xpd = T)
@@ -54,7 +54,7 @@ dev.off()
 # year_of_birth (min)
 ################################################################################
 jpeg(
-    filename = "../images/Person/02.Person_min_year.jpg",
+    filename = "images/Person/02.Person_min_year.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 1), xpd = F)
@@ -111,7 +111,7 @@ dev.off()
 # year_of_birth (max)
 ################################################################################
 jpeg(
-    filename = "../images/Person/03.Person_max_year.jpg",
+    filename = "images/Person/03.Person_max_year.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 1), xpd = F)

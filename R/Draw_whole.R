@@ -9,12 +9,13 @@
 # WHOLE TABLE info VISUALLIZATION
 ################################################################################
 draw_whole<-function(){
+    message("Summary data visualizing...")
 ################################################################################
 # WHOLE TABLE Record info
 ################################################################################
 par(mfrow = c(1, 1), xpd = T)
 jpeg(
-    filename = "../images/Whole/00.Record.jpg",
+    filename = "images/Whole/00.Record.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 tryCatch({
@@ -59,7 +60,7 @@ dev.off()
 ################################################################################
 par(mfrow = c(1, 1))
 jpeg(
-    filename = "../images/Whole/01.Person.jpg",
+    filename = "images/Whole/01.Person.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 # Draw graph in one bar chart

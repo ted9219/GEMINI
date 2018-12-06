@@ -35,6 +35,7 @@ draw_func<-function(){
     }
     # After no data error, print "No data" to show user
     afterError <<- function() {
+        message("Failed visuallization.")
       plot(0, 0, axes = F, ann = F, type = "n")
       text(0, 0, "No data", cex = 2.0)
     }
@@ -99,7 +100,7 @@ draw_func<-function(){
 
     # Create Pie chart which use attribute_name
     draw_ratio_pie <<- function(std_value, tar_value, path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       # par(mfrow = c(1,2))
       par(mfrow = c(1, 2), xpd = T)
       # standard CDM
@@ -157,7 +158,7 @@ draw_func<-function(){
     }
 
     draw_compare_pie <<- function(std_value, tar_value, path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 2))
       # standard CDM
       tryCatch({
@@ -212,7 +213,7 @@ draw_func<-function(){
     }
 
     draw_table_pie <<- function(std_value, tar_value, tblname, path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 2))
       # standard CDM
       tryCatch({
@@ -266,7 +267,7 @@ draw_func<-function(){
 
     # Draw line graph for start date
     draw_line_start <<- function(std_value, tar_value, text = "", path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 1))
       # Draw line Graph
       tryCatch({
@@ -293,7 +294,7 @@ draw_func<-function(){
 
     # Draw line graph for end date
     draw_line_end <<- function(std_value, tar_value, na_value = "No data", over_value = "No data", title = "", path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 1))
       # Draw line Graph
       tryCatch({
@@ -331,7 +332,7 @@ draw_func<-function(){
 
     # Draw bar chart with count and NULL
     draw_null_bar <<- function(std_value, tar_value, text = "", path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 2))
       tryCatch({
         # count drawing
@@ -366,7 +367,7 @@ draw_func<-function(){
 
     # Draw bar chart
     draw_ratio_bar <<- function(std_value, tar_value, path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 1))
       tryCatch({
         # count drawing
@@ -387,7 +388,7 @@ draw_func<-function(){
     }
     # Using count how many kinds
     draw_count_bar <<- function(std_value, tar_value, text = "", path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 1))
       tryCatch({
         # count drawing
@@ -409,7 +410,7 @@ draw_func<-function(){
     }
     # Compare two attributes
     draw_compare_bar <<- function(std_value, tar_value, text = "", path) {
-      jpeg(filename = paste0("../images/", path), width = 720, height = 720, quality = 75, bg = "white")
+      jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
       par(mfrow = c(1, 1))
       tryCatch({
         # count drawing

@@ -9,6 +9,7 @@
 # DRUG ERA TABLE VISUALLIZATION
 ################################################################################
 draw_drug_era <- function(){
+    message("Drug era data visualizing...")
 ################################################################################
 # drug_era_record
 ################################################################################
@@ -33,29 +34,29 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era end_date
 ################################################################################
 # 2999, NA Problem issue
-if (length(std_drug_eratbl_end[is.na(std_drug_eratbl_end$drug_eraYear)]) != 0) {
-    std_drug_eratbl_na_end <<- std_drug_eratbl_end[is.na(std_drug_eratbl_end$drug_eraYear), 2]
+if (length(std_drug_eratbl_end[is.na(std_drug_eratbl_end$visitYear)]) != 0) {
+    std_drug_eratbl_na_end <<- std_drug_eratbl_end[is.na(std_drug_eratbl_end$visitYear), 2]
     temp_std_s <<- 2
 } else {
     std_drug_eratbl_na_end <<- NA
     temp_std_s <<- 1
 }
-if (length(std_drug_eratbl_end[std_drug_eratbl_end$drug_eraYear == 2999, ]$drug_eraYear) != 0) {
-    std_drug_eratbl_over_end <<- std_drug_eratbl_end[na.omit(std_drug_eratbl_end$drug_eraYear == 2999), 2]
+if (length(std_drug_eratbl_end[std_drug_eratbl_end$visitYear == 2999, ]$visitYear) != 0) {
+    std_drug_eratbl_over_end <<- std_drug_eratbl_end[na.omit(std_drug_eratbl_end$visitYear == 2999), 2]
     temp_std_e <<- nrow(std_drug_eratbl_end) - 1
 } else {
     std_drug_eratbl_over_end <<- NA
     temp_std_e <<- nrow(std_drug_eratbl_end)
 }
-if (length(tar_drug_eratbl_end[is.na(tar_drug_eratbl_end$drug_eraYear)]) != 0) {
-    tar_drug_eratbl_na_end <<- tar_drug_eratbl_end[is.na(tar_drug_eratbl_end$drug_eraYear), 2]
+if (length(tar_drug_eratbl_end[is.na(tar_drug_eratbl_end$visitYear)]) != 0) {
+    tar_drug_eratbl_na_end <<- tar_drug_eratbl_end[is.na(tar_drug_eratbl_end$visitYear), 2]
     temp_tar_s <<- 2
 } else {
     tar_drug_eratbl_na_end <<- NA
     temp_tar_s <<- 1
 }
-if (length(tar_drug_eratbl_end[tar_drug_eratbl_end$drug_eraYear == 2999, ]$drug_eraYear) != 0) {
-    tar_drug_eratbl_over_end <<- tar_drug_eratbl_end[tar_drug_eratbl_end$drug_eraYear == 2999, 2]
+if (length(tar_drug_eratbl_end[tar_drug_eratbl_end$visitYear == 2999, ]$visitYear) != 0) {
+    tar_drug_eratbl_over_end <<- tar_drug_eratbl_end[tar_drug_eratbl_end$visitYear == 2999, 2]
     temp_tar_e <<- nrow(tar_drug_eratbl_end) - 1
 } else {
     tar_drug_eratbl_over_end <<- NA
@@ -76,7 +77,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era diff_date
 ################################################################################
 jpeg(
-    filename = "../images/Drug era/04.Drug_era_Duration.jpg",
+    filename = "images/Drug era/04.Drug_era_Duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
@@ -111,7 +112,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era gap_days
 ################################################################################
 jpeg(
-    filename = "../images/Drug era/05.Drug_era_Gap.jpg",
+    filename = "images/Drug era/05.Drug_era_Gap.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))

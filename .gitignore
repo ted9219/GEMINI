@@ -13,7 +13,6 @@
 ############
 # 제외 폴더#
 images/
-gemini/
 Standard RDS/
 Target RDS/
 
