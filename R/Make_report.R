@@ -13,6 +13,6 @@ make_report<-function(){
     library(rmarkdown)
     library(knitr)
     file.copy(from = paste0(.libPaths()[1],"/gemini/data/Gemini_md.Rmd"), to = getwd())
-    rmarkdown::render("gemini_md.Rmd",encoding = "UTF-8")
-    browseURL(url="gemini_md.html")
+    rmarkdown::render("Gemini_md.Rmd",encoding = "UTF-8")
+    browseURL(url="Gemini_md.html")
 }
