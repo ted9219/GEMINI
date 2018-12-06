@@ -16,7 +16,7 @@ create_rds<- function(){
         schema_name<-paste0("schemaName=",readline("Set schema name : "))
         user_id<-paste0("user=",readline("Set db user id : "))
         pwd<-paste0("password=",readline("Set password : "))
-        write(c(db_name,server_ip,schema_name,user_id,pwd),"../server_info.cfg")
+        write(c(db_name,server_ip,schema_name,user_id,pwd),"server_info.cfg")
         message("Try to connecting DB server...")
         gemini::connect_DB()
     }
