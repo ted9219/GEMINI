@@ -1,6 +1,6 @@
 Package: gemini
 Title: GEMINI for data visualization
-Version: 0.0.0.9000
+Version: 0.0.0.9500
 Authors@R: person("JunHyeong", "Kim", email = "wnsuddlsla@gmail.com", role = c("aut", "cre"))
 Description: Extract data from CDM and visualize data to compare other data
 Depends: R (>= 3.4.4)
