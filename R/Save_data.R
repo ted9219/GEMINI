@@ -12,6 +12,7 @@
 
 save_data <- function(){
     dir.create(file.path(getwd(), "Standard RDS"), showWarnings = FALSE)
+    dir.create(file.path(getwd(), "Target RDS"), showWarnings = FALSE)
     gemini::Query_func()
 ################################################################################
 # PERSON DATA SAVING FUNCTION
@@ -106,7 +107,7 @@ save_data <- function(){
     mapply(saveRDS, object = drug_eratbl_list, file = temp)
 
     # time check
-    message(paste0("This process takes ", sum(tm1, tm2, tm3, tm4, tm5, tm6), "s."))
+    message(paste0("RDS files created.\nThis process takes ", sum(tm1, tm2, tm3, tm4, tm5, tm6), "s."))
 ################################################################################
 # Disconnect DB
 ################################################################################

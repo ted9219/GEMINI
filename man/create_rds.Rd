@@ -7,6 +7,6 @@
 create_rds()
 }
 \description{
-This function for creating server info files
+This function for creating server info files and trigger of create rds files
 }
 \keyword{gemini}
