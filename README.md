@@ -28,7 +28,8 @@ Require to wnsuddlsla@gmail.com to get token.
 
 You can set your own work directory path and create server_info.cfg file to connect DB server.
 
-In server_info.cfg file, you should write down DB server information and DB user information.
+What you type down in Rstudio the server_info.cfg file in the following format.
+
 
 ```
 dbName=<sql server name>
