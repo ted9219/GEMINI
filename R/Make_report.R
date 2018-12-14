@@ -13,8 +13,8 @@ make_report<-function(){
     library(knitr)
     tryCatch({
         file.copy(from = paste0(.libPaths()[1],"/gemini/data/Gemini_md.Rmd"), to = getwd())
-        rmarkdown::render("Gemini_md.Rmd",encoding = "UTF-8")
-        browseURL(url="Gemini_md.html")
+        rmarkdown::render(paste0(getwd(),"/Gemini_md.Rmd"),encoding = "UTF-8")
+        browseURL(url=paste0(getwd(),"/Gemini_md.html"))
     },error = function(x){
         message("Need Rmd file.")
     })

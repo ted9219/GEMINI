@@ -371,8 +371,8 @@ draw_func<-function(){
       tryCatch({
         # count drawing
         bar_data <- barplot(c(std_value$ratio, tar_value$ratio),
-          beside = T, names = c("A", "B"), col = c("Green", "Yellow"), main = "Count by hospital",
-          xlab = "Hospital", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
+          beside = T, names = c("A", "B"), col = c("Green", "Yellow"), main = "Count",
+          xlab = "Institution", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
         )
         text(
           x = bar_data, y = c(std_value$ratio, tar_value$ratio),
@@ -392,8 +392,8 @@ draw_func<-function(){
       tryCatch({
         # count drawing
         bar_data <- barplot(c(std_value$attributeCount, tar_value$attributeCount),
-          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = paste0(text, " Count by hospital"),
-          xlab = "Hospital", ylab = "Counts (s)", cex.names = 1.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
+          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = text,
+          xlab = "Institution", ylab = "Counts (s)", cex.names = 1.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
         )
         text(
           x = bar_data, y = c(std_value$attributeCount, tar_value$attributeCount),
@@ -414,8 +414,8 @@ draw_func<-function(){
       tryCatch({
         # count drawing
         bar_data <- barplot(c(std_value$ratio, tar_value$ratio),
-          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = paste0(text, " by hospital"),
-          xlab = "Hospital", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
+          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = text,
+          xlab = "Institution", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
         )
         text(
           x = bar_data, y = c(std_value$ratio, tar_value$ratio),

@@ -13,7 +13,7 @@ draw_person <- function(){
 # person_record
 ################################################################################
 draw_table_pie(std_persontbl_record, tar_persontbl_record, "PERSON TABLE", "Person/00.Person_record.jpg")
-mtext("Person Table Ratio", side = 3, line = -5, outer = T, cex = 2.5, font = 2)
+mtext("Comparison of records between institutions", side = 3, line = -5, outer = T, cex = 2.0, font = 2)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -31,7 +31,7 @@ tryCatch({
                               std_persontbl_gender$attributeName[1], tar_persontbl_gender$attributeName[1],
                               std_persontbl_gender$attributeName[2], tar_persontbl_gender$attributeName[2]
                           ),
-                          col = c("Green", "Yellow"), main = "Gender by hospital", xlab = "Gender", ylab = "Percentage (%)", cex.main = 2.0, cex.lab = 1.5,
+                          col = c("Green", "Yellow"), main = "Comparison of gender between institutions", xlab = "Gender", ylab = "Percentage (%)", cex.main = 2.0, cex.lab = 1.5,
                           cex.names = 1.5, cex.axis = 1.5
     )
     text(
@@ -168,14 +168,14 @@ dev.off()
 # race_concept_id
 ################################################################################
 draw_ratio_pie(std_persontbl_race, tar_persontbl_race, "Person/04.Person_race.jpg")
-mtext("Compare Race by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of race between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # ethnicity_concept_id
 ################################################################################
 draw_ratio_pie(std_persontbl_ethnicity, tar_persontbl_ethnicity, "Person/05.Person_ethnicity.jpg")
-mtext("Compare Ethnicity by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of ethnicity between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################

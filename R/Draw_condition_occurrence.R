@@ -13,14 +13,14 @@ draw_condition_occurrence <- function(){
 # condition_occurrence_record
 ################################################################################
 draw_table_pie(std_conditiontbl_record, tar_conditiontbl_record, "CONDITION\nTABLE", "Condition/00.Condition_record.jpg")
-mtext("Condition Record Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of records ratio between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # condition_occurrence_person_id
 ################################################################################
 draw_table_pie(std_conditiontbl_person_ratio, tar_conditiontbl_person_ratio, "CONDITION\nPERSON", "Condition/01.Condition_person.jpg")
-mtext("Condition Person Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of person ratio between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -94,34 +94,34 @@ tryCatch(
         afterError()
     }
 )
-title("Condition Duration by Hospital", outer = T, cex.main = 2.0)
+title("Comparison of duration between institutions", outer = T, cex.main = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # condition_occurrence type_concept_id
 ################################################################################
 draw_ratio_pie(std_conditiontbl_type_concept, tar_conditiontbl_type_concept, "Condition/05.Condition_type.jpg")
-mtext("Compare Condition type by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of condition type between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # condition_occurrence stop_reason
 ################################################################################
-draw_count_bar(std_conditiontbl_stop, tar_conditiontbl_stop, "Condition stop reason", "Condition/06.Condition_stop.jpg")
+draw_count_bar(std_conditiontbl_stop, tar_conditiontbl_stop, "Comparison of stop reason between institutions", "Condition/06.Condition_stop.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # condition_occurrence visit_occurrence_id
 ################################################################################
 draw_compare_pie(std_conditiontbl_visit_occurrence, tar_conditiontbl_visit_occurrence, "Condition/07.Condition_visit_occurrence.jpg")
-mtext("Condition / Visit occurrence ratio by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of condition/visit occurrence between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off()
 ################################################################################
 # condition_occurrence visit_detail_id
 ################################################################################
 draw_compare_pie(std_conditiontbl_visit_detail, tar_conditiontbl_visit_detail, "Condition/08.Condition_visit_detail.jpg")
-mtext("Condition/Visit detail ratio by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of condition/visit detail between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off()
 }

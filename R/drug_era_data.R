@@ -69,8 +69,7 @@ tryCatch({
     GROUP BY gap_days)AS TEMP
   GROUP BY gap_day_range
 )
-SELECT gap_day_range, ROUND((person_count/CONVERT(float,(SELECT SUM(person_count) FROM T1)))*100,1) as person_ratio FROM T1
-ORDER BY CAST(LEFT(gap_day_range,CHARINDEX('~',gap_day_range)-1)AS INT) + CAST(RIGHT(gap_day_range,CHARINDEX('~',gap_day_range)-1)AS INT) ASC"
+SELECT gap_day_range, ROUND((person_count/CONVERT(float,(SELECT SUM(person_count) FROM T1)))*100,1) as person_ratio FROM T1"
 drug_eratbl_gap_days <<- queryRender(sql)
 # sql <- SqlRender::renderSql(sql, cdm_database_schema = cdmDatabaseSchema)$sql
   # sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql

@@ -13,14 +13,14 @@ draw_drug_exposure <- function(){
 # drug_exposure_record
 ################################################################################
 draw_table_pie(std_drug_exptbl_record, tar_drug_exptbl_record, "DRUG EXP\nTABLE", "Drug exposure/00.Drug_exp_record.jpg")
-mtext("Drug Exposure Table Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of records between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure person_id
 ################################################################################
 draw_table_pie(std_drug_exptbl_person_ratio, tar_drug_exptbl_person_ratio, "DRUG EXP\nPERSON", "Drug exposure/01.Drug_exp_person.jpg")
-mtext("Drug Exposure Person Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of person ratio between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -94,34 +94,34 @@ tryCatch(
         afterError()
     }
 )
-title("Drug Exposure Duration by Hospital", outer = T, cex.main = 2.0)
+title("Comparison of duration between institutions", outer = T, cex.main = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure type_concept_id
 ################################################################################
 draw_ratio_pie(std_drug_exptbl_type_concept, tar_drug_exptbl_type_concept, "Drug Exposure/05.Drug_exp_type.jpg")
-mtext("Drug Exposure Type Concept", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of type concept between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure stop_reason
 ################################################################################
-draw_count_bar(std_drug_exptbl_stop, tar_drug_exptbl_stop, "Drug Exposure stop reason", "Drug Exposure/06.Drug Stop.jpg")
+draw_count_bar(std_drug_exptbl_stop, tar_drug_exptbl_stop, "Comparison of stop reason between institutions", "Drug Exposure/06.Drug Stop.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure route_concept_id
 ################################################################################
 draw_ratio_pie(std_drug_exptbl_route, tar_drug_exptbl_route, "Drug Exposure/07.Drug_exp_route.jpg")
-mtext("Drug Exposure Route Concept", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of route concept between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure visit_occurrence_id
 ################################################################################
 draw_compare_pie(std_drug_exptbl_visit_occurrence, tar_drug_exptbl_visit_occurrence, "Drug exposure/08.Drug_exp_visit_occurrence.jpg")
-mtext("Drug Exposure/Visit Occurrence Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of drug exposure/visit occurrence\nbetween institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 }

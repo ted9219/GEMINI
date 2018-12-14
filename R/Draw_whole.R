@@ -27,7 +27,7 @@ tryCatch({
         "Person", NA, "Visit", NA, "Condition", NA,
         "Drug exp", NA, "Drug era", NA
     ),
-    ylim = c(0, 100), col = c("Green", "Yellow"), main = "Record by hospital", xlab = "Table name", ylab = "Percentage (%)", cex.axis = 1.5, cex.names = 1.5,
+    ylim = c(0, 100), col = c("Green", "Yellow"), main = "Comparison of records between institutions", xlab = "Table name", ylab = "Percentage (%)", cex.axis = 1.5, cex.names = 1.5,
     cex.main = 2.0, cex.lab = 1.5
     )
     text(
@@ -73,7 +73,7 @@ tryCatch({
         "Person", NA, "Visit", NA, "Condition", NA,
         "Drug exp", NA, "Drug era", NA
     ),
-    ylim = c(0, 100), col = c("Green", "Yellow"), main = "Person by Hospital", xlab = "Table name", ylab = "Percentage (%)", cex.axis = 1.5, cex.names = 1.5,
+    ylim = c(0, 100), col = c("Green", "Yellow"), main = "Comparison of person between institutions", xlab = "Table name", ylab = "Percentage (%)", cex.axis = 1.5, cex.names = 1.5,
     cex.main = 2.0, cex.lab = 1.5
     )
     text(
