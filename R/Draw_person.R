@@ -14,6 +14,8 @@ draw_person <- function(){
 ################################################################################
 draw_table_pie(std_persontbl_record, tar_persontbl_record, "PERSON TABLE", "Person/00.Person_record.jpg")
 mtext("Comparison of records between institutions", side = 3, line = -5, outer = T, cex = 2.0, font = 2)
+mtext(paste0("count : ",std_persontbl_record$count), side = 1, line = -15, at=0.75, outer = T, cex = 1.5)
+mtext(paste0("count : ",tar_persontbl_record$count), side = 1, line = -15, at=0.25, outer = T, cex = 1.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################

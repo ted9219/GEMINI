@@ -14,6 +14,8 @@ draw_drug_exposure <- function(){
 ################################################################################
 draw_table_pie(std_drug_exptbl_record, tar_drug_exptbl_record, "DRUG EXP\nTABLE", "Drug exposure/00.Drug_exp_record.jpg")
 mtext("Comparison of records between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
+mtext(paste0("count : ",std_drug_exptbl_record$count), side = 1, line = -15, at=0.75, outer = T, cex = 1.5)
+mtext(paste0("count : ",tar_drug_exptbl_record$count), side = 1, line = -15, at=0.25, outer = T, cex = 1.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################

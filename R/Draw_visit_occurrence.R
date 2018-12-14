@@ -14,6 +14,8 @@ draw_visit_occurrence <- function(){
 ################################################################################
 draw_table_pie(std_visittbl_record, tar_visittbl_record, "VISIT TABLE", "Visit/00.Visit_record.jpg")
 mtext("Comparison of visit records between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
+mtext(paste0("count : ",std_visittbl_record$count), side = 1, line = -15, at=0.75, outer = T, cex = 1.5)
+mtext(paste0("count : ",tar_visittbl_record$count), side = 1, line = -15, at=0.25, outer = T, cex = 1.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################

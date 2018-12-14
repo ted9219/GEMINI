@@ -29,7 +29,7 @@ Query_func<- function(){
         # Get total records
         # Query to find all table records count info, target table record and calculate with it
         get_total_records <<- function(tblName) {
-            sql <<- "SELECT '@tbl_name' as attribute_name , round(count(*)/CONVERT(float,(
+            sql <<- "SELECT '@tbl_name' as attribute_name , count(*) as count,round(count(*)/CONVERT(float,(
             SELECT SUM(TEMP.rows) FROM(
             SELECT rows FROM(
             SELECT o.name, i.rows FROM sysindexes i
