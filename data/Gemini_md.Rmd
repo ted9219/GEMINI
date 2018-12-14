@@ -2,7 +2,7 @@
 title: "GEMINI Report"
 output: 
   html_document:
-    self_contained: no
+    self_contained: yes
     theme: paper
     highlight: zenburn
     toc: true
@@ -50,7 +50,7 @@ CDM의 PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRU
 
 ### **Summary** {.flexbox .vcenter}
 <div class="row">
-<div class="pull_left">백
+<div class="pull_left">
 
 ![전체 레코드 백분율 비교](images/Whole/00.Record.jpg)
 

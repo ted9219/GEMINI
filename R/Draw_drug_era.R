@@ -13,14 +13,14 @@ draw_drug_era <- function(){
 # drug_era_record
 ################################################################################
 draw_table_pie(std_drug_eratbl_record, tar_drug_eratbl_record, "DRUG ERA\nTABLE", "Drug era/00.Drug_era_record.jpg")
-mtext("Drug Era Table Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of records between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_era person_id
 ################################################################################
 draw_table_pie(std_drug_eratbl_person_ratio, tar_drug_eratbl_person_ratio, "DRUG ERA\nPERSON", "Drug era/01.Drug_era_person.jpg")
-mtext("Drug Era Person Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of person ratio between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -96,7 +96,7 @@ tryCatch(
         afterError()
     }
 )
-title("Drug Era Duration by Hospital", outer = T, cex.main = 2.0)
+title("Comparison of duration between institutions", outer = T, cex.main = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -131,6 +131,6 @@ tryCatch(
         afterError()
     }
 )
-title("Drug Era Gap Day by Hospital", outer = T, cex.main = 2.0)
+title("Comparison of gap day between institutions", outer = T, cex.main = 2.0)
 dev.off() # It protect previous jpg file to not change current jpg image.
 }

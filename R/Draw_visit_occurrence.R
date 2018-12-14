@@ -13,14 +13,14 @@ draw_visit_occurrence <- function(){
 # visit_occurrence_record
 ################################################################################
 draw_table_pie(std_visittbl_record, tar_visittbl_record, "VISIT TABLE", "Visit/00.Visit_record.jpg")
-mtext("Compare Visit Table Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit records between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # visit_occurrence_person_id
 ################################################################################
 draw_table_pie(std_visittbl_person_ratio, tar_visittbl_person_ratio, "VISIT PERSON", "Visit/01.Visit_person.jpg")
-mtext("Compare Visit Person Ratio", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of person records between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -29,7 +29,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # uncomplete
 ################################################################################
 draw_ratio_pie(std_visittbl_visit_concept, tar_visittbl_visit_concept, "Visit/02.Visit_concept.jpg")
-mtext("Compare Visit Concept by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit concept between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # par(mfrow=c(1,2))
 # barplot(matrix(std_visittbl_visit_concept$ratio),legend=std_visittbl_visit_concept$attributeName, col = rainbow(nrow(std_visittbl_visit_concept)))
 # barplot(matrix(tar_visittbl_visit_concept$ratio),legend=tar_visittbl_visit_concept$attributeName, col = rainbow(nrow(std_visittbl_visit_concept)))
@@ -46,7 +46,7 @@ jpeg(
 
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
 tryCatch(
-    hist(std_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "A CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+    hist(std_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "A CDM", cex.main = 1.5, cex.axis = 1.5, cex.lab = 2.0)
     , # If data isn't exist...
     error = function(error_message) {
         print(error_message)
@@ -54,14 +54,14 @@ tryCatch(
     }
 )
 tryCatch(
-    hist(tar_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "B CDM", cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+    hist(tar_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "B CDM", cex.main = 1.5, cex.axis = 1.5, cex.lab = 2.0)
     , # If data isn't exist...
     error = function(error_message) {
         print(error_message)
         afterError()
     }
 )
-title("Visit Duration by Hospital", line = -1, outer = TRUE, cex = 2.0)
+title(main = "Comparison of duration between institutions", line = -1, outer = TRUE, cex.main = 2.0)
 # file close
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -115,7 +115,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # visit_occurrence_type_concept
 ################################################################################
 draw_ratio_pie(std_visittbl_type_concept, tar_visittbl_type_concept, "Visit/06.Visit_type.jpg")
-mtext("Compare Visit type by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit type between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -128,7 +128,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # visit_occurrence visit_source_concept_id
 ################################################################################
 draw_ratio_pie(std_visittbl_source_concept, tar_visittbl_source_concept, "Visit/08.Visit_source.jpg")
-mtext("Compare Visit source by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit source between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -136,7 +136,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # No data in NHIS
 ################################################################################
 draw_ratio_pie(std_visittbl_admitting_source, tar_visittbl_admitting_source, "Visit/09.Visit_admitting.jpg")
-mtext("Compare Visit admitting by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit admitting between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -144,7 +144,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # No data in NHIS
 ################################################################################
 draw_ratio_pie(std_visittbl_discharge, tar_visittbl_discharge, "Visit/10.Visit_discharge.jpg")
-mtext("Compare Visit discharge by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit discharge between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -152,7 +152,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # No data in NHIS
 ################################################################################
 draw_compare_pie(std_visittbl_preceding, tar_visittbl_preceding, "Visit/11.Visit_preceding.jpg")
-mtext("Compare Visit preceding by hospital", font = 2, side = 3, line = -5, outer = T, cex = 2.5)
+mtext("Comparison of visit precending between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 }
