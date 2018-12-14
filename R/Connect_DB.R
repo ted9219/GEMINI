@@ -3,8 +3,6 @@
 #' This function for DB server connecting
 #' @keywords gemini
 #' @export
-#' @example
-#' connect_DB()
 
 # install.packages("DatabaseConnector")
 # library(DatabaseConnector)

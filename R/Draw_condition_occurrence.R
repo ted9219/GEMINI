@@ -3,8 +3,7 @@
 #' This function for draw graph from condition occurrence RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_condition_occurrence()
+#'
 ################################################################################
 # CONDITION OCCURRENCE TABLE VISUALLIZATION
 ################################################################################

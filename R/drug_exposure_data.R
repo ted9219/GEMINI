@@ -3,8 +3,7 @@
 #' This function extract data from drug exposure table
 #' @keywords gemini
 #' @export
-#' @example
-#' drug_exposure_data()
+#'
 drug_exposure_data <- function(){
 ################################################################################
 # Get data from drug_exposure_id

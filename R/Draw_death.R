@@ -3,8 +3,7 @@
 #' This function for draw graph from death RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_death()
+#'
 ################################################################################
 # DEATH TABLE VISUALLIZATION
 ################################################################################
