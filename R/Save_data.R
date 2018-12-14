@@ -3,8 +3,7 @@
 #' This function for saving data by RDS file
 #' @keywords gemini
 #' @export
-#' @example
-#' save_data()
+#'
 ################################################################################
 # SAVE DATA RESOURCE
 # Set location when project path is change

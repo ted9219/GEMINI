@@ -3,8 +3,7 @@
 #' This function for extract data from death table
 #' @keywords gemini
 #' @export
-#' @example
-#' death_data()
+#'
 death_data <- function(){
 ################################################################################
 # Get data from death_date to check person who got 0 or many death_date

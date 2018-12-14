@@ -3,8 +3,7 @@
 #' This function for draw graph
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_func()
+#'
 
 # Function for data visualization
 draw_func<-function(){

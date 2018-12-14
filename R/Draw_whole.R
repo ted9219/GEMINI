@@ -3,8 +3,7 @@
 #' This function for draw graph from summary RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_whole()
+#'
 ################################################################################
 # WHOLE TABLE info VISUALLIZATION
 ################################################################################

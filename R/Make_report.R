@@ -3,8 +3,7 @@
 #' This function render rmd file and execute html file
 #' @keywords gemini
 #' @export
-#' @example
-#' make_report()
+#'
 
 # Execute R markdown file
 make_report<-function(){

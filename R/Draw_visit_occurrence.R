@@ -3,8 +3,7 @@
 #' This function for draw graph from visit_occurrence RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_visit_occurrence()
+#'
 ################################################################################
 # VISIT OCCURRENCE TABLE VISUALLIZATION
 ################################################################################

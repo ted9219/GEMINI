@@ -3,8 +3,7 @@
 #' This function extract data from drug era table
 #' @keywords gemini
 #' @export
-#' @example
-#' drug_era_data()
+#'
 drug_era_data <- function(){
 ################################################################################
 # Get data from drug_era_id

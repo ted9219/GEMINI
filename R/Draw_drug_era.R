@@ -3,8 +3,7 @@
 #' This function for draw graph from drug era RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_drug_era()
+#'
 ################################################################################
 # DRUG ERA TABLE VISUALLIZATION
 ################################################################################

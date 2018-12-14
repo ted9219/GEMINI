@@ -2,7 +2,7 @@
 % Please edit documentation in R/condition_occurrence_data.R
 \name{condition_occurrence_data}
 \alias{condition_occurrence_data}
-\title{Condition_occurrence_data}
+\title{Condition occurrence data}
 \usage{
 condition_occurrence_data()
 }

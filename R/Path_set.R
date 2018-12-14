@@ -3,8 +3,7 @@
 #' Work directory path setting
 #' @keywords gemini
 #' @export
-#' @example
-#' path_set()
+#'
 
 path_set <- function(){
     tryCatch(

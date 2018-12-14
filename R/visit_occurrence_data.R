@@ -3,8 +3,7 @@
 #' This function extract data from visit occurrence table
 #' @keywords gemini
 #' @export
-#' @example
-#' visit_occurrence_data()
+#'
 visit_occurrence_data <- function(){
 ################################################################################
 # Get data from visit_occurrence_id

@@ -3,8 +3,7 @@
 #' This function extract data from person table
 #' @keywords gemini
 #' @export
-#' @example
-#' person_data()
+#'
 person_data <- function(){
 ################################################################################
 # Calculate records ratio

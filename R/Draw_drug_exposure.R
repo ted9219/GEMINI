@@ -3,8 +3,7 @@
 #' This function for draw graph from drug exposure RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_drug_exposure()
+#'
 ################################################################################
 # DRUG EXPOSURE TABLE VISUALLIZATION
 ################################################################################

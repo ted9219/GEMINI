@@ -3,10 +3,9 @@
 #' This function for creating server info files and trigger of create rds files
 #' @keywords gemini
 #' @export
-#' @example
-#' create_rds()
+#'
 create_rds<- function(){
-    path_set()
+    gemini::path_set()
     create_server_info <-function(){
         db_name<-paste0("dbName=",readline("Set db server name : "))
         server_ip<-paste0("server=",readline("Set server ip : "))

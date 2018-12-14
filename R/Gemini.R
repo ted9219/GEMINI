@@ -3,12 +3,11 @@
 #' Run GEMINI
 #' @keywords gemini
 #' @export
-#' @example
-#' gemini()
+#'
 # Read rds data
 gemini <- function(){
     message("Choose where 'Standard RDS' folder exist.")
-    path_set()
+    gemini::path_set()
     gemini::create_folder()
     ask_test <- function(){
         ask <- readline('No RDS file in Target RDS folder. Do you want to test gemini? (y / n) ')

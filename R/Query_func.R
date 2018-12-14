@@ -3,8 +3,7 @@
 #' This function for extracting data function
 #' @keywords gemini
 #' @export
-#' @example
-#' query_func()
+#'
 
 # Function about data extraction
 # Sys.setlocale('LC_ALL','C')

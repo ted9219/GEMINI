@@ -3,8 +3,7 @@
 #' This function for draw graph from person RDS data
 #' @keywords gemini
 #' @export
-#' @example
-#' draw_person()
+#'
 ################################################################################
 # PERSON TABLE VISUALLIZATION
 ################################################################################
