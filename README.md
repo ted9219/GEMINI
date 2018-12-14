@@ -16,13 +16,24 @@ DRUG EXPOSURE
 
 DRUG ERA
 
+(OBSERVATION_PERIOD)
+
 # HOW TO USE
 
-0. In R, install_github() will need auth_token.
-
-Require to wnsuddlsla@gmail.com to get token.
-
 1. Install GEMINI package using install_github().
+
+```
+install.packages("devtools")
+library(devtools)
+install_github("https://github.com/ABMI/GEMINI.git")
+library(gemini)
+```
+
+> Until merging, you should be use this code when install package.
+
+```
+install_github("https://github.com/ABMI/GEMINI.git", ref="gemini_temp")
+```
 
 2. After install, create_rds() to create RDS files.
 
