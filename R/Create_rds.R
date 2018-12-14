@@ -9,9 +9,12 @@ create_rds<- function(){
     create_server_info <-function(){
         db_name<-paste0("dbName=",readline("Set db server name : "))
         server_ip<-paste0("server=",readline("Set server ip : "))
-        schema_name<-paste0("schemaName=",readline("Set schema name(*.dbo) : "))
+        schema_name<-paste0("schemaName=",readline("Set schema name : "))
         user_id<-paste0("user=",readline("Set db user id : "))
         pwd<-paste0("password=",readline("Set password : "))
+        if(!grepl(x = schema_name, pattern = "*.dbo$")){
+            schema_name <- paste0(schema_name,".dbo")
+        }
         return(c(db_name,server_ip,schema_name,user_id,pwd))
     }
 

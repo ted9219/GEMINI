@@ -14,6 +14,8 @@ draw_condition_occurrence <- function(){
 ################################################################################
 draw_table_pie(std_conditiontbl_record, tar_conditiontbl_record, "CONDITION\nTABLE", "Condition/00.Condition_record.jpg")
 mtext("Comparison of records ratio between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
+mtext(paste0("count : ",std_conditiontbl_record$count), side = 1, line = -15, at=0.75, outer = T, cex = 1.5)
+mtext(paste0("count : ",tar_conditiontbl_record$count), side = 1, line = -15, at=0.25, outer = T, cex = 1.5)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
