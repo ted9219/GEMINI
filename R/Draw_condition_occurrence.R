@@ -68,7 +68,7 @@ condition_na_end <<- c(std_conditiontbl_na_end, tar_conditiontbl_na_end)
 condition_over_end <<- c(std_conditiontbl_over_end, tar_conditiontbl_over_end)
 draw_line_end(
     std_conditiontbl_end[temp_std_s:temp_std_e, ], tar_conditiontbl_end[temp_tar_s:temp_tar_e, ], condition_na_end, condition_over_end,
-    "Condition", "Condition/03.Condition_End.jpg"
+    "Condition", "Condition/03.Condition_end.jpg"
 )
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
@@ -76,7 +76,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # condition_occurrence diff_date
 ################################################################################
 jpeg(
-    filename = "images/Condition/04.Condition_Duration.jpg",
+    filename = "images/Condition/04.Condition_duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
