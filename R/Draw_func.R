@@ -95,6 +95,32 @@ draw_func<-function(){
       }
     }
 
+    concept_piecolor <- function(concept1,concept2){
+        temp_cpt <- as.character(sort(union(concept1$attributeName,concept2$attributeName)))
+        temp_col <- rainbow(length(temp_cpt), s=0.7)
+        if(sum(is.na(concept1))>0||sum(is.na(concept2))>0){
+            temp_cpt <- append(temp_cpt,"NA")
+            temp_col <- append(temp_col,"#A0A0A0FF")
+        }
+        temp <- data.frame(temp_cpt,temp_col,stringsAsFactors = F)
+        return(temp)
+    }
+    # concept1<-std_visittbl_visit_concept
+    # concept2<-tar_visittbl_visit_concept
+    # color <- concept_piecolor(concept1,concept2)
+    # concept1[is.na(concept1$attributeName),] <-"NA"
+    # unlist(sapply(concept1$attributeName, FUN=function(x) color[color$temp_cpt==x,])[2,],use.names = F)
+    # concept1<-std_drug_exptbl_route
+    # concept2<-tar_drug_exptbl_route
+    # concept_piecolor(tar_drug_exptbl_route,std_drug_exptbl_route)
+    # color <- concept_piecolor(std_drug_exptbl_route,tar_drug_exptbl_route)
+    # concept1[is.na(concept1$attributeName),] <-"NA"
+    # unlist(sapply(concept1$attributeName, FUN=function(x)
+    #     color[color$temp_cpt==x,]
+    # )[2,],use.names = F)
+
+
+
     # Create Pie chart which use attribute_name
     draw_ratio_pie <<- function(std_value, tar_value, path) {
       jpeg(filename = paste0("images/", path), width = 720, height = 720, quality = 75, bg = "white")
@@ -103,7 +129,9 @@ draw_func<-function(){
       # standard CDM
       tryCatch({
         # If NA, value must get 0. So this NA value get error range 0.1
+        cpt_col <- concept_piecolor(std_value,tar_value)
         std_value <- naTostring(std_value)
+        std_cols <- unlist(sapply(std_value$attributeName, FUN=function(x) cpt_col[cpt_col$temp_cpt==x,])[2,],use.names = F)
         # Label Setting
         # Label name set , append ratio num, percentage mark
         std_lbl <- labeling(std_value)
@@ -117,9 +145,8 @@ draw_func<-function(){
         # Draw Pie
         pie3D(std_slices,
           labels = paste0(std_value$ratio, "%"), explode = 0.1, main = "A CDM",
-          radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(std_value) + 1, s = 0.7)
-        )
-        legend(-1.5, -1.5, std_value$attributeName, cex = 1.5, fill = rainbow(nrow(std_value) + 1, s = 0.7), xpd = T)
+          radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = std_cols)
+        legend(-1.5, -1.5, std_value$attributeName, cex = 1.5, fill = std_cols, xpd = T)
       }, # If data isn't exist...
       error = function(error_message) {
         print(error_message)
@@ -130,7 +157,9 @@ draw_func<-function(){
 
       tryCatch({
         # If NA, value must get 0. And this NA value get error range 0.1
+
         tar_value <- naTostring(tar_value)
+        tar_cols <- unlist(sapply(tar_value$attributeName, FUN=function(x) cpt_col[cpt_col$temp_cpt==x,])[2,],use.names = F)
         # Label Setting
         tar_lbl <- labeling(tar_value)
         tar_slices <- as.numeric(tar_value$ratio)
@@ -143,9 +172,8 @@ draw_func<-function(){
         # Draw Pie
         pie3D(tar_slices,
           labels = paste0(tar_value$ratio, "%"), explode = 0.03, main = "B CDM",
-          radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(tar_value) + 1, s = 0.7)
-        )
-        legend(-1.5, -1.5, tar_value$attributeName, cex = 1.5, fill = rainbow(nrow(tar_value) + 1, s = 0.7), xpd = T)
+          radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = tar_cols)
+        legend(-1.5, -1.5, tar_value$attributeName, cex = 1.5, fill = tar_cols, xpd = T)
       }, # If data isn't exist...
       error = function(error_message) {
         print(error_message)
