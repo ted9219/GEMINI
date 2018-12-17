@@ -28,7 +28,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure start_date
 ################################################################################
-draw_line_start(std_drug_exptbl_start, tar_drug_exptbl_start, "Drug Exposure ", "Drug Exposure/02.Drug_exp_start.jpg")
+draw_line_start(std_drug_exptbl_start, tar_drug_exptbl_start, "Drug Exposure", "Drug exposure/02.Drug_exp_start.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -76,7 +76,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_exposure diff_date
 ################################################################################
 jpeg(
-    filename = "images/Drug Exposure/04.Drug_exp_duration.jpg",
+    filename = "images/Drug exposure/04.Drug_exp_duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
@@ -102,7 +102,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure type_concept_id
 ################################################################################
-draw_ratio_pie(std_drug_exptbl_type_concept, tar_drug_exptbl_type_concept, "Drug Exposure/05.Drug_exp_type.jpg")
+draw_ratio_pie(std_drug_exptbl_type_concept, tar_drug_exptbl_type_concept, "Drug exposure/05.Drug_exp_type.jpg")
 mtext("Comparison of type concept between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
@@ -115,7 +115,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure route_concept_id
 ################################################################################
-draw_ratio_pie(std_drug_exptbl_route, tar_drug_exptbl_route, "Drug Exposure/07.Drug_exp_route.jpg")
+draw_ratio_pie(std_drug_exptbl_route, tar_drug_exptbl_route, "Drug exposure/07.Drug_exp_route.jpg")
 mtext("Comparison of route concept between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.

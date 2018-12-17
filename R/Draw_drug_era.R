@@ -28,7 +28,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_era start_date
 ################################################################################
-draw_line_start(std_drug_eratbl_start, tar_drug_eratbl_start, "Drug Era", "Drug Era/02.Drug_era_start.jpg")
+draw_line_start(std_drug_eratbl_start, tar_drug_eratbl_start, "Drug Era", "Drug era/02.Drug_era_start.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
