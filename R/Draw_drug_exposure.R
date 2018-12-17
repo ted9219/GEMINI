@@ -109,7 +109,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_exposure stop_reason
 ################################################################################
-draw_count_bar(std_drug_exptbl_stop, tar_drug_exptbl_stop, "Comparison of stop reason between institutions", "Drug Exposure/06.Drug Stop.jpg")
+draw_count_bar(std_drug_exptbl_stop, tar_drug_exptbl_stop, "Comparison of stop reason between institutions", "Drug exposure/06.Drug Stop.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################

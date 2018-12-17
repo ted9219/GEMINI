@@ -69,7 +69,7 @@ drug_era_over_end <<- c(std_drug_eratbl_over_end, tar_drug_eratbl_over_end)
 
 draw_line_end(
     std_drug_eratbl_end[temp_std_s:temp_std_e, ], tar_drug_eratbl_end[temp_tar_s:temp_tar_e, ], drug_era_na_end, drug_era_over_end,
-    "Drug Era", "Drug Era/03.Drug_era_end.jpg"
+    "Drug Era", "Drug era/03.Drug_era_end.jpg"
 )
 
 # Graph Save
