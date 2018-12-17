@@ -68,7 +68,7 @@ drug_exp_na_end <<- c(std_drug_exptbl_na_end, tar_drug_exptbl_na_end)
 drug_exp_over_end <<- c(std_drug_exptbl_over_end, tar_drug_exptbl_over_end)
 draw_line_end(
     std_drug_exptbl_end[temp_std_s:temp_std_e, ], tar_drug_exptbl_end[temp_tar_s:temp_tar_e, ], drug_exp_na_end, drug_exp_over_end,
-    "Drug Exposure", "Drug Exposure/03.Drug_exp_end.jpg"
+    "Drug Exposure", "Drug exposure/03.Drug_exp_end.jpg"
 )
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
