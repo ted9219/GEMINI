@@ -170,7 +170,7 @@ Person 테이블의 레코드가 차지하는 백분율
 ### **VISIT OCCURRENCE Table**
 <div class="row">
 <div class="pull_left">
-![Visit 테이블 레코드](images/VIsit/00.Visit_record.jpg)
+![Visit 테이블 레코드](images/Visit/00.Visit_record.jpg)
 
 Visit Occurrence 테이블의 레코드가 차지하는 백분율
 
@@ -178,7 +178,7 @@ Visit Occurrence 테이블의 레코드가 차지하는 백분율
 </div>
 
 <div class="pull_right">
-![Visit 테이블 Person](images/VIsit/01.Visit_person.jpg)
+![Visit 테이블 Person](images/Visit/01.Visit_person.jpg)
 
 Visit Occurrence 테이블의 환자가 차지하는 백분율
 <!-- This figure shows that Standard CDM's Visit Occurrenece Table person ratio and Target CDM's Visit Occurrenece Table person ratio.-->
@@ -187,14 +187,14 @@ Visit Occurrence 테이블의 환자가 차지하는 백분율
 
 <div class="row">
 <div class="pull_left">
-![Visit 방문 유형](images/VIsit/02.Visit_concept.jpg)
+![Visit 방문 유형](images/Visit/02.Visit_concept.jpg)
 
 병원 방문 유형별 백분율
 <!-- This figure shows that Standard CDM's Visit Concept ratio and Target CDM's Visit Concept ratio.-->
 </div>
 
 <div class="pull_right">
-![Visit 기간](images/VIsit/03.Visit_Duration.jpg)
+![Visit 기간](images/Visit/03.Visit_duration.jpg)
 
 환자의 방문 기간 히스토그램
 <!-- This figure shows that Standard CDM's Visit Duration histogram and Target CDM's Visit Duration histogram.-->
@@ -202,16 +202,16 @@ Visit Occurrence 테이블의 환자가 차지하는 백분율
 </div>
 
 <div class="col2">
-![Visit 시작 연도](images/VIsit/04.Visit_start.jpg)
+![Visit 시작 연도](images/Visit/04.Visit_start.jpg)
 
-![Visit 종료 연도](images/VIsit/05.Visit_end.jpg)
+![Visit 종료 연도](images/Visit/05.Visit_end.jpg)
 </div>
 연도별 병원 최초 방문 및 마지막 방문 백분율
 <!-- This figure shows that the Visit occurrence start, end with person ratio.-->
 
 <div class="row">
 <div class="pull_left">
-![Visit 유형](images/VIsit/06.Visit_type.jpg)
+![Visit 유형](images/Visit/06.Visit_type.jpg)
 
 방문 기록 유형 구분별 백분율
 
@@ -219,7 +219,7 @@ Visit Occurrence 테이블의 환자가 차지하는 백분율
 </div>
 
 <div class="pull_right">
-![Visit 의료 서비스 장소](images/VIsit/07.Visit_care_site.jpg)
+![Visit 의료 서비스 장소](images/Visit/07.Visit_care_site.jpg)
 
 방문자가 의료 서비스를 받는 장소의 종류 수 및 Null 값의 백분율
 
@@ -229,7 +229,7 @@ Visit Occurrence 테이블의 환자가 차지하는 백분율
 
 <div class="row">
 <div class="pull_left">
-![Visit 구분 코드](images/VIsit/08.Visit_source.jpg)
+![Visit 구분 코드](images/Visit/08.Visit_source.jpg)
 
 방문 구분 코드 별 백분율
 
@@ -237,7 +237,7 @@ Visit Occurrence 테이블의 환자가 차지하는 백분율
 </div>
 
 <div class="pull_right">
-![Visit 허용](images/VIsit/09.Visit_admitting.jpg)
+![Visit 허용](images/Visit/09.Visit_admitting.jpg)
 
 방문 허용 코드 별 백분율
 
@@ -247,14 +247,14 @@ Visit Occurrence 테이블의 환자가 차지하는 백분율
 
 <div class="row">
 <div class="pull_left">
-![Visit 종료 사유](images/VIsit/10.Visit_discharge.jpg)
+![Visit 종료 사유](images/Visit/10.Visit_discharge.jpg)
 
 방문 종료 사유별 백분율
 <!-- This figure shows that Standard CDM's Visit discharge ratio and Target CDM's Visit discharge ratio.-->
 </div>
 
 <div class="pull_right">
-![Visit 방문 여부](images/VIsit/11.Visit_preceding.jpg)
+![Visit 방문 여부](images/Visit/11.Visit_preceding.jpg)
 
 이전의 방문과 재방문 연관에 따른 비율
 <!-- This figure shows that Standard CDM's Visit preceding ratio and Target CDM's Visit preceding ratio.-->
@@ -295,7 +295,7 @@ Condition Occurrence 테이블의 환자가 차지하는 백분율
 
 <div class="row">
 <div class="pull_left">
-![Condition 기간](images/Condition/04.Condition_Duration.jpg)
+![Condition 기간](images/Condition/04.Condition_duration.jpg)
 
 질병 기간별 히스토그램
 <!-- This figure shows that Standard CDM's Condition histogram and Target CDM's Condition Duration histogram.-->
@@ -384,7 +384,7 @@ Drug Exposue 테이블의 환자가 차지하는 백분율
 
 <div class="row">
 <div class="pull_left">
-![DrugExp 중단 사유](images/Drug exposure/06.Drug Stop.jpg)
+![DrugExp 중단 사유](images/Drug exposure/06.Drug_stop.jpg)
 
 약물 제공을 중지한 사유의 종류 수
 <!-- This figure shows the number of stop reason in the standard CDM and target CDM. -->
@@ -440,14 +440,14 @@ Drug Era 테이블의 환자가 차지하는 백분율
 
 <div class="row">
 <div class="pull_left">
-![DrugEra 기간](images/Drug era/04.Drug_era_Duration.jpg)
+![DrugEra 기간](images/Drug era/04.Drug_era_duration.jpg)
 
 약물 복용 기간에 대한 히스토그램
 <!-- This figure shows that Standard CDM's Drug Era Duration histogram and Target CDM's Drug Era Duration histogram.-->
 </div>
 
 <div class="pull_right">
-![DrugEra 약물 제공일과 차이](images/Drug era/05.Drug_era_Gap.jpg)
+![DrugEra 약물 제공일과 차이](images/Drug era/05.Drug_era_gap.jpg)
 
 약물 제공일과 약물 복용일 차이에 대한 히스토그램
 <!-- This figure shows that Standard CDM's Gap Days histogram and Target CDM's Gap Days histogram. -->

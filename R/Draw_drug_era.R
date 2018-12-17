@@ -78,7 +78,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era diff_date
 ################################################################################
 jpeg(
-    filename = "images/Drug era/04.Drug_era_Duration.jpg",
+    filename = "images/Drug era/04.Drug_era_duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
@@ -113,7 +113,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era gap_days
 ################################################################################
 jpeg(
-    filename = "images/Drug era/05.Drug_era_Gap.jpg",
+    filename = "images/Drug era/05.Drug_era_gap.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))

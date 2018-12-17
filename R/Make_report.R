@@ -7,10 +7,8 @@
 
 # Execute R markdown file
 make_report<-function(){
-    # install.packages("knitr")
-    # install.packages("rmarkdown")
-    library(rmarkdown)
-    library(knitr)
+    check.packages("knitr")
+    check.packages("rmarkdown")
     tryCatch({
         file.copy(from = paste0(.libPaths()[1],"/gemini/data/Gemini_md.Rmd"), to = getwd())
         rmarkdown::render(paste0(getwd(),"/Gemini_md.Rmd"),encoding = "UTF-8")
