@@ -5,8 +5,11 @@
 #' @export
 #'
 create_rds<- function(){
+
     gemini::path_set()
-    check.packages("DatabaseConnector")
+    gemini::check.packages("DatabaseConnector")
+    gemini::check.packages("SqlRender")
+
     create_server_info <-function(){
         db_name<-paste0("dbName=",readline("Set db server name : "))
         server_ip<-paste0("server=",readline("Set server ip : "))
@@ -20,9 +23,9 @@ create_rds<- function(){
     }
 
     infofile_rename <- function(){
-        if(file.exists("server_info_old*.cfg$")){
-            temp <- tail(list.files(pattern="server_info_old*.cfg$"))
-            temp <- paste0("server_info_old",as.character(as.integer(gsub("*.cfg$","",gsub("server_info_old*","",temp)))+1),".cfg")
+        if( length(list.files(pattern = "^server_info_old\\d*.cfg$"))>0){
+            temp <- max(as.integer(gsub("*.cfg$","", gsub("server_info_old","",list.files(pattern="server_info_old\\d*.cfg$")))))
+            temp <- paste0("server_info_old",as.character(temp+1),".cfg")
             return(temp)
         }
         else{
@@ -30,6 +33,7 @@ create_rds<- function(){
         }
     }
 
+    # Main Code
     if(file.exists("server_info.cfg"))
         {
         recon <- readline("Do you want to connect previous server?(y/n) : ")
