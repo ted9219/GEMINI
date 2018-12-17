@@ -42,7 +42,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # Image file open
 jpeg(
-    filename = "images/Visit/03.Visit_Duration.jpg",
+    filename = "images/Visit/03.Visit_duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 
@@ -110,7 +110,7 @@ if (length(tar_visittbl_end[tar_visittbl_end$visitYear == 2999, ]$visitYear) != 
 visit_na_end <<- c(std_visittbl_na_end, tar_visittbl_na_end)
 visit_over_end <<- c(std_visittbl_over_end, tar_visittbl_over_end)
 # Grid line sketch
-draw_line_end(std_visittbl_end[temp_std_s:temp_std_e, ], tar_visittbl_end[temp_tar_s:temp_tar_e, ], visit_na_end, visit_over_end, "Visit Occurrence", "Visit/05.Visit_End.jpg")
+draw_line_end(std_visittbl_end[temp_std_s:temp_std_e, ], tar_visittbl_end[temp_tar_s:temp_tar_e, ], visit_na_end, visit_over_end, "Visit Occurrence", "Visit/05.Visit_end.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################

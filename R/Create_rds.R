@@ -6,6 +6,7 @@
 #'
 create_rds<- function(){
     gemini::path_set()
+    check.packages("DatabaseConnector")
     create_server_info <-function(){
         db_name<-paste0("dbName=",readline("Set db server name : "))
         server_ip<-paste0("server=",readline("Set server ip : "))

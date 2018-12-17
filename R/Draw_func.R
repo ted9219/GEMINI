@@ -7,11 +7,9 @@
 
 # Function for data visualization
 draw_func<-function(){
-    # install.packages('plotrix')
-    # install.packages('ggplot2')
 
-    library(plotrix)
-    library(ggplot2)
+    check.packages('plotrix')
+    check.packages('ggplot2')
 
     # Library for Pie 3D function
     options(scipen = 999999)

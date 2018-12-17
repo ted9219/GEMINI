@@ -28,7 +28,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
 # drug_era start_date
 ################################################################################
-draw_line_start(std_drug_eratbl_start, tar_drug_eratbl_start, "Drug Era", "Drug Era/02.Drug_era_start.jpg")
+draw_line_start(std_drug_eratbl_start, tar_drug_eratbl_start, "Drug Era", "Drug era/02.Drug_era_start.jpg")
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
 ################################################################################
@@ -69,7 +69,7 @@ drug_era_over_end <<- c(std_drug_eratbl_over_end, tar_drug_eratbl_over_end)
 
 draw_line_end(
     std_drug_eratbl_end[temp_std_s:temp_std_e, ], tar_drug_eratbl_end[temp_tar_s:temp_tar_e, ], drug_era_na_end, drug_era_over_end,
-    "Drug Era", "Drug Era/03.Drug_era_end.jpg"
+    "Drug Era", "Drug era/03.Drug_era_end.jpg"
 )
 
 # Graph Save
@@ -78,7 +78,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era diff_date
 ################################################################################
 jpeg(
-    filename = "images/Drug era/04.Drug_era_Duration.jpg",
+    filename = "images/Drug era/04.Drug_era_duration.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
@@ -113,7 +113,7 @@ dev.off() # It protect previous jpg file to not change current jpg image.
 # drug_era gap_days
 ################################################################################
 jpeg(
-    filename = "images/Drug era/05.Drug_era_Gap.jpg",
+    filename = "images/Drug era/05.Drug_era_gap.jpg",
     width = 720, height = 720, quality = 75, bg = "white"
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
