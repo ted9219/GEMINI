@@ -12,18 +12,20 @@ draw_death <- function(){
 ################################################################################
 # death_date
 ################################################################################
-if (std_deathtbl_check$attributeName == 1 || std_deathtbl_check$attributeName == "Integrity Data") {
-    std_deathtbl_check$attributeName <<- "Integrity Data"
-} else if (std_deathtbl_check$attributeName > 1 || std_deathtbl_check$attributeName < 1 || std_deathtbl_check$attributeName == "Duplicate time Data") {
-    std_deathtbl_check$attributeName <<- "Duplicata time Data"
-}
-if (tar_deathtbl_check$attributeName == 1 || tar_deathtbl_check$attributeName == "Integrity Data") {
-    tar_deathtbl_check$attributeName <<- "Integrity Data"
-} else if (tar_deathtbl_check$attributeName > 1 || tar_deathtbl_check$attributeName < 1 || tar_deathtbl_check$attributeName == "Duplicate time Data") {
-    tar_deathtbl_check$attributeName <<- "Duplicata time Data"
+check.death <- function(temporary){
+    if(nrow(temporary)!=1){
+        main <- temporary[1,]
+        main$attributeName[1] <- "Integrity data"
+        main <- rbind(main, data.frame(attributeName = "Duplicate data", ratio = round(100 - temporary[1,]$ratio,1)))
+    }else{
+        main <- temporary
+        main$attributeName <- "Integrity data"
+    }
+
+    return(main)
 }
 # For legend, Name should be change
-draw_ratio_pie(std_deathtbl_check, tar_deathtbl_check, "Death/00.Death_deathcheck.jpg")
+draw_ratio_pie(check.death(std_deathtbl_check), check.death(tar_deathtbl_check), "Death/00.Death_deathcheck.jpg")
 mtext("Check Multiple Death time between institutions", font = 2, side = 3, line = -5, outer = T, cex = 2.0)
 # Graph Save
 dev.off() # It protect previous jpg file to not change current jpg image.
