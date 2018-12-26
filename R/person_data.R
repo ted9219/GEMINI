@@ -36,11 +36,6 @@ tryCatch({
                 FROM @cdm_database_schema.@tbl_name
                 GROUP BY @att_name"
   persontbl_gender <<- queryRender(sql,"PERSON","gender_concept_id")
-  # sql <- SqlRender::renderSql(sql, cdm_database_schema = cdmDatabaseSchema, tbl_name = tblName, att_name = AttName)$sql
-  # sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
-  # persontbl_gender <- DatabaseConnector::querySql(connection, sql)
-  # # Colname change
-  # colnames(persontbl_gender) <- SqlRender::snakeCaseToCamelCase(colnames(persontbl_gender))
 },
 error = function(e) {
   persontbl_gender <<- NULL
@@ -64,12 +59,8 @@ GROUP BY A.person_id, YEAR(OBSERVATION_PERIOD_START_DATE)-year_of_birth, gender_
 GROUP BY AGE_RANGE, gender_concept_id
 )
 SELECT AGE_RANGE, gender_concept_id, ROUND(person_count*100/CONVERT(float,(SELECT SUM(person_count) FROM T1)),1) as ratio FROM T1
-ORDER BY CAST(LEFT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) + CAST(RIGHT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) ASC ,gender_concept_id"
+ORDER BY CAST(LEFT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) ASC ,gender_concept_id"
 persontbl_min_age <<- queryRender(sql)
-  # sql <- SqlRender::renderSql(sql, cdm_database_schema = cdmDatabaseSchema)$sql
-  # sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
-  # persontbl_min_age <- DatabaseConnector::querySql(connection, sql)
-  # colnames(persontbl_min_age) <- SqlRender::snakeCaseToCamelCase(colnames(persontbl_min_age))
   # value 0.0 to 0.01 that is not no data. just too small to ceiling
   options(scipen = 9999)
   persontbl_min_age <<- addNullGender(persontbl_min_age)
@@ -94,7 +85,7 @@ GROUP BY A.person_id, YEAR(OBSERVATION_PERIOD_START_DATE)-year_of_birth, gender_
 GROUP BY AGE_RANGE, gender_concept_id
 )
 SELECT AGE_RANGE, gender_concept_id, ROUND(person_count*100/CONVERT(float,(SELECT SUM(person_count) FROM T1)),1) as ratio FROM T1
-ORDER BY CAST(LEFT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) + CAST(RIGHT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) ASC ,gender_concept_id"
+ORDER BY CAST(LEFT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) ASC ,gender_concept_id"
 persontbl_max_age <<- queryRender(sql)
   # value 0.0 to 0.01 that is not no data. just too small to ceiling
   # options(scipen = 9999)
