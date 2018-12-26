@@ -142,7 +142,7 @@ Query_func<- function(){
                     temp <- c(attName$ageRange[i], "8532", 0)
                     attName <- rbind(attName[c(1:i), ], temp, attName[c(i + 1:nrow(attName)), ])
                 }
-                else if (attName$genderConceptId[i] == "8532" && attName$genderConceptId[i - 1] != "8507") {
+                else if (attName$genderConceptId[i] == "8532" && (attName$genderConceptId[i-1] != "8507" || identical(attName$genderConceptId[i-1],numeric(0)))) {
                     temp <- c(attName$ageRange[i], "8507", 0)
                     attName <- rbind(attName[c(1:i - 1), ], temp, attName[c(i:nrow(attName)), ])
                 }

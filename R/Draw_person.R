@@ -64,22 +64,24 @@ par(mfrow = c(1, 1), xpd = F)
 tryCatch({
     male_min_ratio <<- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8507"]
     female_min_ratio <<- std_persontbl_min_age$ratio[std_persontbl_min_age$genderConceptId == "8532"]
+
     compared_male_min_ratio <<- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8507"]
     compared_female_min_ratio <<- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8532"]
     # Set label which got more long length
-    if (length(std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"])
-        > length(tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"])) {
-        x_min_lbl <<- std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"]
-    } else {
-        x_min_lbl <<- tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"]
-    }
+    min_lbl <<- union(std_persontbl_min_age$ageRange,std_persontbl_max_age$ageRange)
+    # if (length(std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"])
+    #     > length(tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"])) {
+    #     x_min_lbl <<- std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"]
+    # } else {
+    #     x_min_lbl <<- tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"]
+    # }
     # Draw line Graph
     plot(male_min_ratio,
          type = "p", pch = 19, col = 4, cex = 2, xlab = "AGE_RANGE", ylab = "GENDER_RATIO(%)", axes = F,
          ylim = c(0, as.numeric(max(c(male_min_ratio, female_min_ratio, compared_male_min_ratio, compared_female_min_ratio)))),
-         xlim = c(0, length(x_min_lbl)), main = "First Visit Person per Year", cex.main = 2.0, cex.lab = 1.5
+         xlim = c(0, length(min_lbl)), main = "First Visit Person per Year", cex.main = 2.0, cex.lab = 1.5
     )
-    axis(1, at = c(1:length(x_min_lbl)), labels = x_min_lbl, cex.axis = 1.5)
+    axis(1, at = c(1:length(min_lbl)), labels = min_lbl, cex.axis = 1.5)
     # Set y_axis which got more big value
     if (max(std_persontbl_min_age$ratio) > max(tar_persontbl_min_age$ratio)) {
         y_axis <<- as.numeric(max(std_persontbl_min_age$ratio))
