@@ -1,4 +1,4 @@
-################
+﻿################
 # 제외할 확장자#
 *.txt
 *.RData
@@ -8,15 +8,17 @@
 *.cfg
 *.md
 *.rds
+*.gz
 
 ############
 # 제외 폴더#
 images/
-Packages/
 Standard RDS/
 Target RDS/
+data/Gemini_md_files
 
 ###########
 #제외 파일#
 .Rhistory
 R/.Rhistory
+.Rproj.user
