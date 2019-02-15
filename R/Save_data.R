@@ -16,7 +16,7 @@ save_data <- function(){
 ################################################################################
 # PERSON DATA SAVING FUNCTION
 ################################################################################
-    message("Person data extracting...")
+    cat("Person data extracting...\n")
     tm1 <- as.numeric(round(system.time(gemini::person_data())[3], digit = 1))
     # list for save data
     # if append more data, append in list
@@ -35,7 +35,7 @@ save_data <- function(){
 ################################################################################
 # DEATH DATA SAVING FUNCTION
 ################################################################################
-    message("Death data extracting...")
+    cat("Death data extracting...\n")
     tm2 <- as.numeric(round(system.time(gemini::death_data())[3], digit = 1))
     deathtbl_list <- list(deathtbl_check, deathtbl_type)
     deathtbl_name_list <- c("deathtbl_check", "deathtbl_type")
@@ -44,7 +44,7 @@ save_data <- function(){
 ################################################################################
 # VISIT_OCCURRENCE DATA SAVING FUNCTION
 ################################################################################
-    message("Visit occurrence data extracting...")
+    cat("Visit occurrence data extracting...\n")
     tm3 <- as.numeric(round(system.time(gemini::visit_occurrence_data())[3], digit = 1))
     visittbl_list <- list(
       visittbl_record, visittbl_person_ratio, visittbl_visit_concept, visittbl_start, visittbl_end, visittbl_diff_date
@@ -61,7 +61,7 @@ save_data <- function(){
 ################################################################################
 # CONDITION_OCCURRENCE DATA SAVING FUNCTION
 ################################################################################
-    message("Condition occurrence data extracting...")
+    cat("Condition occurrence data extracting...\n")
     tm4 <- as.numeric(round(system.time(gemini::condition_occurrence_data())[3], digit = 1))
     conditiontbl_list <- list(
       conditiontbl_record, conditiontbl_person_ratio, conditiontbl_diff_date, conditiontbl_start, conditiontbl_end,
@@ -77,7 +77,7 @@ save_data <- function(){
 ################################################################################
 # DRUG_EXPOSURE DATA SAVING FUNCTION
 ################################################################################
-    message("Drug exposure data extracting...")
+    cat("Drug exposure data extracting...\n")
     tm5 <- as.numeric(round(system.time(gemini::drug_exposure_data())[3], digit = 1))
     drug_exptbl_list <- list(
       drug_exptbl_record, drug_exptbl_person_ratio, drug_exptbl_diff_date, drug_exptbl_start, drug_exptbl_end,
@@ -92,7 +92,7 @@ save_data <- function(){
 ################################################################################
 # DRUG_ERA DATA SAVING FUNCTION
 ################################################################################
-    message("Drug era data extracting...")
+    cat("Drug era data extracting...\n")
     tm6 <- as.numeric(round(system.time(gemini::drug_era_data())[3], digit = 1))
     drug_eratbl_list <- list(
       drug_eratbl_record, drug_eratbl_person_ratio, drug_eratbl_diff_date, drug_eratbl_start, drug_eratbl_end,
@@ -105,11 +105,11 @@ save_data <- function(){
     temp <- sapply(FUN = paste0, "Standard RDS/", drug_eratbl_name_list, ".rds")
     mapply(saveRDS, object = drug_eratbl_list, file = temp)
 
-    zip(zipfile = paste0("Standard RDS/",cdmDatabaseSchema,".zip"),files = "Standard RDS/", flag= c("-j", "-r"))
+    zip(zipfile = paste0("Standard RDS/",cdmDatabaseSchema,".zip"),files = "Standard RDS/*.rds", flag= c("-j", "-r "))
     file.remove(paste0("Standard RDS/",list.files(path = "Standard RDS/", pattern = ".rds$")))
 
     # time check
-    message(paste0("RDS files created.\nThis process takes ", sum(tm1, tm2, tm3, tm4, tm5, tm6), "s."))
+    cat(paste0("RDS files created.\nThis process takes ", sum(tm1, tm2, tm3, tm4, tm5, tm6), "s.\n"))
 ################################################################################
 # Disconnect DB
 ################################################################################

@@ -8,7 +8,7 @@
 # WHOLE TABLE info VISUALLIZATION
 ################################################################################
 draw_whole<-function(){
-    message("Summary data visualizing...")
+    cat("Summary data visualizing...\n")
 ################################################################################
 # WHOLE TABLE Record info
 ################################################################################

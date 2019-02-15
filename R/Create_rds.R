@@ -6,6 +6,7 @@
 #'
 create_rds<- function(){
 
+    cat("Set directory to create rds files.\n")
     gemini::path_set()
     gemini::check.packages("DatabaseConnector")
     gemini::check.packages("SqlRender")
@@ -23,7 +24,7 @@ create_rds<- function(){
     }
 
     infofile_rename <- function(){
-        if( length(list.files(pattern = "^server_info_old\\d*.cfg$"))>0){
+        if( length(list.files(pattern = "server_info_old\\w*.cfg$"))>0){
             temp <- max(as.integer(gsub("*.cfg$","", gsub("server_info_old","",list.files(pattern="server_info_old\\d*.cfg$")))))
             temp <- paste0("server_info_old",as.character(temp+1),".cfg")
             return(temp)
@@ -34,23 +35,24 @@ create_rds<- function(){
     }
 
     # Main Code
-    if(file.exists("server_info.cfg"))
+    if(length(list.files(pattern = "server_info\\w*.cfg$"))>0)
         {
-        recon <- readline("Do you want to connect previous server?(y/n) : ")
-        if(recon == 'y'||recon == 'Y'){
-            message("Try to connecting DB server...")
-            gemini::connect_DB()
+        recon <- select.list(c("y","n"), title = "Do you want to connect previous server?")
+        if(recon == 'y'){
+            pick_server <- select.list(list.files(pattern = "server_info\\w*.cfg$"), title = "Select previous server info flie.")
+            cat("Try to connecting DB server...\n")
+            gemini::connect_DB(pick_server)
             }
-        else if(recon == 'n'||recon == 'N'){
+        else if(recon == 'n'){
             file.rename("server_info.cfg",infofile_rename())
             write(create_server_info(),"server_info.cfg")
-            message("Try to connecting DB server...")
+            cat("Try to connecting DB server...\n")
             gemini::connect_DB()
             }
-
-    }else{
+        else{
         write(create_server_info(),"server_info.cfg")
-        message("Try to connecting DB server...")
+        cat("Try to connecting DB server...\n")
         gemini::connect_DB()
+        }
     }
 }

@@ -8,7 +8,7 @@
 # DRUG EXPOSURE TABLE VISUALLIZATION
 ################################################################################
 draw_drug_exposure <- function(){
-    message("Drug exposure data visualizing...")
+    cat("Drug exposure data visualizing...\n")
 ################################################################################
 # drug_exposure_record
 ################################################################################

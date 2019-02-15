@@ -8,7 +8,7 @@
 # CONDITION OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
 draw_condition_occurrence <- function(){
-    message("Condition occurrence data visualizing...")
+    cat("Condition occurrence data visualizing...\n")
 ################################################################################
 # condition_occurrence_record
 ################################################################################

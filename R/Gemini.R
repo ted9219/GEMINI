@@ -6,14 +6,14 @@
 #'
 # Read rds data
 gemini <- function(){
-    message("Choose where 'Standard RDS' folder exist.")
+    cat("Choose where 'Standard RDS' folder exist.\n")
     gemini::path_set()
     gemini::create_folder()
     if(length(list.files(paste0(getwd(), "/Standard RDS/"), pattern = "*.zip$"))>0){
         unzip(zipfile = paste0("Standard RDS/",list.files(paste0(getwd(), "/Standard RDS/"), pattern = "*.zip$")), overwrite = T, exdir = "Standard RDS")
     }
     if(length(list.files(paste0(getwd(), "/Target RDS/"), pattern = "*.zip$"))>0){
-        unzip(zipfile = paste0("Target RDS/",list.files(paste0(getwd(), "/Target RDS/"), pattern = "*.zip$")), , overwrite = T, exdir = "Target RDS")
+        unzip(zipfile = paste0("Target RDS/",list.files(paste0(getwd(), "/Target RDS/"), pattern = "*.zip$")), overwrite = T, exdir = "Target RDS")
     }
     ask_test <- function(){
         ask <- readline('No RDS file in Target RDS folder. Do you want to test gemini? (y / n) ')
@@ -30,7 +30,7 @@ gemini <- function(){
             gemini::draw_drug_era()
             gemini::make_report()
         }else if (ask == "n" || ask == "N"){
-            message("Proceed is stopped.")
+            cat("Proceed is stopped.\n")
         }else{
             message("Wrong input.\n")
             ask_test()
@@ -55,10 +55,10 @@ gemini <- function(){
     }else if(length(no_files) != 0&&length(name_list)==0){
         ask_test()
     }else if(length(no_files) == 0 && length(name_list)==0){
-        message("No data exist. proceed is stopped.")
+        cat("No data exist. proceed is stopped.\n")
     }else{
         set_val(name_list)
-        message("All data exist.")
+        cat("All data exist.\n")
         gemini::draw_func()
         gemini::draw_whole()
         gemini::draw_person()

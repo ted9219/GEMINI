@@ -8,7 +8,7 @@
 # VISIT OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
 draw_visit_occurrence <- function(){
-    message("Visit occurrence data visualizing...")
+    cat("Visit occurrence data visualizing...\n")
 ################################################################################
 # visit_occurrence_record
 ################################################################################
