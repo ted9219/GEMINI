@@ -7,7 +7,7 @@
 ################################################################################
 # WHOLE TABLE info VISUALLIZATION
 ################################################################################
-draw_whole<-function(){
+draw_whole<-function(std_schema_name,tar_schema_name){
     cat("Summary data visualizing...\n")
 ################################################################################
 # WHOLE TABLE Record info
@@ -44,7 +44,7 @@ tryCatch({
             label_sort(std_drug_eratbl_record$ratio[1], tar_drug_eratbl_record$ratio[1])
         ), col = "black", cex = 2.0
     )
-    legend("topleft", c("A CDM", "B CDM"), pch = 15, cex = 1.5, col = c("green", "yellow"))
+    legend("topleft", c(std_schema_name, tar_schema_name), pch = 15, cex = 1.5, col = c("green", "yellow"))
 }, # If data isn't exist...
 error = function(error_message) {
     print(error_message)
@@ -90,7 +90,7 @@ tryCatch({
             label_sort(std_drug_eratbl_person_ratio$ratio, tar_drug_eratbl_person_ratio$ratio)
         ), col = "black", cex = 2.0
     )
-    legend("bottomleft", c("A CDM", "B CDM"), pch = 15, cex = 1.5, col = c("green", "yellow"))
+    legend("bottomleft", c(std_schema_name, tar_schema_name), pch = 15, cex = 1.5, col = c("green", "yellow"))
 }, # If data isn't exist...
 error = function(error_message) {
     print(error_message)

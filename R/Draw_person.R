@@ -7,7 +7,7 @@
 ################################################################################
 # PERSON TABLE VISUALLIZATION
 ################################################################################
-draw_person <- function(){
+draw_person <- function(std_schema_name,tar_schema_name){
     cat("Person data visualizing...\n")
 ################################################################################
 # person_record
@@ -43,7 +43,7 @@ tryCatch({
             label_sort(std_persontbl_gender$ratio[2], tar_persontbl_gender$ratio[2])
         ), col = "black", cex = 2.0
     )
-    legend("topleft", c("A CDM", "B CDM"), pch = 15, cex = 2.0, col = c("green", "yellow"))
+    legend("topleft", c(std_schema_name, tar_schema_name), pch = 15, cex = 2.0, col = c("green", "yellow"))
 }, # If data isn't exist...
 error = function(error_message) {
     print(error_message)

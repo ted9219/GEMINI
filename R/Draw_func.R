@@ -6,7 +6,7 @@
 #'
 
 # Function for data visualization
-draw_func<-function(){
+draw_func<-function(std_schema_name,tar_schema_name){
 
     check.packages('plotrix')
     check.packages('ggplot2')
@@ -144,7 +144,7 @@ draw_func<-function(){
           })
         # Draw Pie
         pie3D(std_slices,
-          labels = paste0(std_value$ratio, "%"), explode = 0.1, main = "A CDM",
+          labels = paste0(std_value$ratio, "%"), explode = 0.1, main = std_schema_name,
           radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = std_cols)
         legend(-1.5, -1.5, std_value$attributeName, cex = 1.5, fill = std_cols, xpd = T)
       }, # If data isn't exist...
@@ -171,7 +171,7 @@ draw_func<-function(){
           })
         # Draw Pie
         pie3D(tar_slices,
-          labels = paste0(tar_value$ratio, "%"), explode = 0.03, main = "B CDM",
+          labels = paste0(tar_value$ratio, "%"), explode = 0.03, main = tar_schema_name,
           radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = tar_cols)
         legend(-1.5, -1.5, tar_value$attributeName, cex = 1.5, fill = tar_cols, xpd = T)
       }, # If data isn't exist...
@@ -201,7 +201,7 @@ draw_func<-function(){
           })
         # Draw pie
         pie3D(std_slices,
-          labels = c("", std_lbl), explode = 0.03, main = "A CDM",
+          labels = c("", std_lbl), explode = 0.03, main = std_schema_name,
           radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(std_value) + 1, s = 0.7)
         )
       }, # If data isn't exist...
@@ -226,7 +226,7 @@ draw_func<-function(){
           })
         # Draw pie
         pie3D(tar_slices,
-          labels = c("", tar_lbl), explode = 0.03, main = "B CDM",
+          labels = c("", tar_lbl), explode = 0.03, main = tar_schema_name,
           radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0, col = rainbow(nrow(tar_value) + 1, s = 0.7)
         )
       }, # If data isn't exist...
@@ -256,7 +256,7 @@ draw_func<-function(){
             (x)
           })
         pie3D(std_recordslices,
-          labels = c(std_recordlbl, ""), explode = 0.03, main = "A CDM",
+          labels = c(std_recordlbl, ""), explode = 0.03, main = std_schema_name,
           col = rainbow(nrow(std_value) + 1, s = 0.7), radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0
         )
       }, # If data isn't exist...
@@ -279,7 +279,7 @@ draw_func<-function(){
             (x)
           })
         pie3D(tar_recordslices,
-          labels = c(tar_recordlbl, ""), explode = 0.03, main = "B CDM",
+          labels = c(tar_recordlbl, ""), explode = 0.03, main = tar_schema_name,
           col = rainbow(nrow(tar_value) + 1, s = 0.7), radius = 1.0, labelcex = 1.5, theta = 0.8, start = pi / 2, cex.main = 2.0
         )
       }, # If data isn't exist...
@@ -308,7 +308,7 @@ draw_func<-function(){
         axis(2, at = c(0:y_axis), cex.axis = 2.0)
         box()
         gridline(std_value, tar_value)
-        legend("topleft", c("A", "B"), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
+        legend("topleft", c(std_schema_name, tar_schema_name), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
       }, # If data isn't exist...
       error = function(error_message) {
         print(error_message)
@@ -337,14 +337,14 @@ draw_func<-function(){
         axis(2, at = c(0:y_axis), cex.axis = 2.0)
         box()
         gridline(std_value, tar_value)
-        legend("topleft", c("A", "B"), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
+        legend("topleft", c(std_schema_name, tar_schema_name), lwd = 2, lty = 1, cex = 1.5, col = c("blue", "red"))
         # Need to append NA, 2999 person data.
         if (is.null(na_value) && is.null(over_value)) {}
         else {
           # as.numeric(min(c(std_value$visitYear,tar_value$visitYear)))+10,y=as.numeric(max(c(std_value$personRatio,tar_value$personRatio)))
           mtext(
             side = 3, line = -5, adj = 1, cex = 1.2, font = 2, outer = T,
-            text = paste0("A CDM NA : ", na_value[1], " / B CDM NA : ", na_value[2], "\nA CDM 2999 : ", over_value[1], " / B CDM 2999 : ", over_value[2])
+            text = paste0("std_schema_name NA : ", na_value[1], " / B CDM NA : ", na_value[2], "\nstd_schema_name 2999 : ", over_value[1], " / B CDM 2999 : ", over_value[2])
           )
         }
       }, # If data isn't exist...
@@ -363,7 +363,7 @@ draw_func<-function(){
         # count drawing
         bar_data <- barplot(c(std_value$attributeCount, tar_value$attributeCount),
           ylim = c(0, max(std_value$attributeCount, tar_value$attributeCount)), cex.names = 2.0,
-          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = paste("Number of", text, "type"), cex.main = 2.0, cex.axis = 2.0,
+          beside = F, names = c(std_schema_name, tar_schema_name), col = c("Green", "Yellow"), main = paste("Number of", text, "type"), cex.main = 2.0, cex.axis = 2.0,
           ylab = "Counts (s)", cex.lab = 1.5
         )
         text(
@@ -374,7 +374,7 @@ draw_func<-function(){
         # NULL data drawing
         null_bar <- barplot(c(std_value$nullRatio, tar_value$nullRatio),
           ylim = c(0, max(std_value$nullRatio, tar_value$nullRatio)),
-          beside = F, names = c("A", "B"), col = c("Gray40", "Gray55"), main = "NULL Ratio", cex.main = 2.0, cex.axis = 2.0,
+          beside = F, names = c(std_schema_name, tar_schema_name), col = c("Gray40", "Gray55"), main = "NULL Ratio", cex.main = 2.0, cex.axis = 2.0,
           ylab = "Percentage (%)", cex.names = 2.0, cex.lab = 1.5
         )
         text(
@@ -397,7 +397,7 @@ draw_func<-function(){
       tryCatch({
         # count drawing
         bar_data <- barplot(c(std_value$ratio, tar_value$ratio),
-          beside = T, names = c("A", "B"), col = c("Green", "Yellow"), main = "Count",
+          beside = T, names = c(std_schema_name, tar_schema_name), col = c("Green", "Yellow"), main = "Count",
           xlab = "Institution", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
         )
         text(
@@ -418,7 +418,7 @@ draw_func<-function(){
       tryCatch({
         # count drawing
         bar_data <- barplot(c(std_value$attributeCount, tar_value$attributeCount),
-          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = text,
+          beside = F, names = c(std_schema_name, tar_schema_name), col = c("Green", "Yellow"), main = text,
           xlab = "Institution", ylab = "Counts (s)", cex.names = 1.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
         )
         text(
@@ -440,7 +440,7 @@ draw_func<-function(){
       tryCatch({
         # count drawing
         bar_data <- barplot(c(std_value$ratio, tar_value$ratio),
-          beside = F, names = c("A", "B"), col = c("Green", "Yellow"), main = text,
+          beside = F, names = c(std_schema_name, tar_schema_name), col = c("Green", "Yellow"), main = text,
           xlab = "Institution", ylab = "Percentage (%)", cex.names = 2.5, cex.main = 2.0, cex.lab = 1.5, cex.axis = 2.0
         )
         text(
@@ -454,4 +454,5 @@ draw_func<-function(){
       }
       )
     }
+
 }

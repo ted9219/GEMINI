@@ -12,7 +12,7 @@ create_rds<- function(){
     gemini::check.packages("SqlRender")
 
     create_server_info <-function(){
-        db_name<-paste0("dbName=",readline("Set db server name : "))
+        db_name<-paste0("dbName=",readline("Set dbms name : "))
         server_ip<-paste0("server=",readline("Set server ip : "))
         schema_name<-paste0("schemaName=",readline("Set schema name : "))
         user_id<-paste0("user=",readline("Set db user id : "))

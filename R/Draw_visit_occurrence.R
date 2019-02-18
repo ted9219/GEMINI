@@ -7,7 +7,7 @@
 ################################################################################
 # VISIT OCCURRENCE TABLE VISUALLIZATION
 ################################################################################
-draw_visit_occurrence <- function(){
+draw_visit_occurrence <- function(std_schema_name,tar_schema_name){
     cat("Visit occurrence data visualizing...\n")
 ################################################################################
 # visit_occurrence_record
@@ -48,7 +48,7 @@ jpeg(
 
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
 tryCatch(
-    hist(std_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "A CDM", cex.main = 1.5, cex.axis = 1.5, cex.lab = 2.0)
+    hist(std_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = std_schema_name, cex.main = 1.5, cex.axis = 1.5, cex.lab = 2.0)
     , # If data isn't exist...
     error = function(error_message) {
         print(error_message)
@@ -56,7 +56,7 @@ tryCatch(
     }
 )
 tryCatch(
-    hist(tar_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = "B CDM", cex.main = 1.5, cex.axis = 1.5, cex.lab = 2.0)
+    hist(tar_visittbl_diff_date$dayDiff, breaks = 25, xlab = "Visit Duration", main = tar_schema_name, cex.main = 1.5, cex.axis = 1.5, cex.lab = 2.0)
     , # If data isn't exist...
     error = function(error_message) {
         print(error_message)
