@@ -11,9 +11,7 @@
 connect_DB <- function(previous = "server_info.cfg"){
     serverInfoFile <- file.path(previous)
 
-    infoFromFile <- function(file, pattern){
-        gsub(paste0(pattern,"="),"",grep(paste0("^",pattern,"="), scan(file,what="",quiet=T,sep = "\n"),value=T))
-    }
+    #Set server information to connecting
     cdmDatabaseSchema <<- infoFromFile(serverInfoFile,"schemaName")
     connectionDetails <- DatabaseConnector::createConnectionDetails(
         dbms = infoFromFile(serverInfoFile,"dbName"),
@@ -23,6 +21,7 @@ connect_DB <- function(previous = "server_info.cfg"){
         password = infoFromFile(serverInfoFile,"password")
     )
 
+    #Server connect
     tryCatch({
         connection <<- DatabaseConnector::connect(connectionDetails)
         DatabaseConnector::dbIsValid(connection)
@@ -31,5 +30,10 @@ connect_DB <- function(previous = "server_info.cfg"){
             print(e)
             stop("Connection failed. Check server_info_failed.cfg file or create new file.")
     })
-    gemini::save_data()
+
+}
+
+#Read information from cfg file
+infoFromFile <- function(file, pattern){
+    gsub(paste0(pattern,"="),"",grep(paste0("^",pattern,"="), scan(file,what="",quiet=T,sep = "\n"),value=T))
 }

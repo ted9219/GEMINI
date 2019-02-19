@@ -7,10 +7,6 @@
 
 # Function for data visualization
 draw_func<-function(std_schema_name,tar_schema_name){
-
-    check.packages('plotrix')
-    check.packages('ggplot2')
-
     # Library for Pie 3D function
     options(scipen = 999999)
     # Draw graph in one bar chart

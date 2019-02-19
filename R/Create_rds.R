@@ -7,32 +7,10 @@
 create_rds<- function(){
 
     cat("Set directory to create rds files.\n")
+    # Change working directory for confirming user to create where the files
     gemini::path_set()
     gemini::check.packages("DatabaseConnector")
     gemini::check.packages("SqlRender")
-
-    create_server_info <-function(){
-        db_name<-paste0("dbName=",readline("Set dbms name : "))
-        server_ip<-paste0("server=",readline("Set server ip : "))
-        schema_name<-paste0("schemaName=",readline("Set schema name : "))
-        user_id<-paste0("user=",readline("Set db user id : "))
-        pwd<-paste0("password=",readline("Set password : "))
-        if(!grepl(x = schema_name, pattern = "*.dbo$")){
-            schema_name <- paste0(schema_name,".dbo")
-        }
-        return(c(db_name,server_ip,schema_name,user_id,pwd))
-    }
-
-    infofile_rename <- function(){
-        if( length(list.files(pattern = "server_info_old\\w*.cfg$"))>0){
-            temp <- max(as.integer(gsub("*.cfg$","", gsub("server_info_old","",list.files(pattern="server_info_old\\d*.cfg$")))))
-            temp <- paste0("server_info_old",as.character(temp+1),".cfg")
-            return(temp)
-        }
-        else{
-            return("server_info_old0.cfg")
-        }
-    }
 
     # Main Code
     if(length(list.files(pattern = "server_info\\w*.cfg$"))>0)
@@ -54,5 +32,30 @@ create_rds<- function(){
         cat("Try to connecting DB server...\n")
         gemini::connect_DB()
         }
+    }
+    gemini::save_data()
+    rm(list = ls())
+}
+
+create_server_info <- function(){
+    db_name<-paste0("dbName=",readline("Set db server name : "))
+    server_ip<-paste0("server=",readline("Set server ip : "))
+    schema_name<-paste0("schemaName=",readline("Set schema name : "))
+    user_id<-paste0("user=",readline("Set db user id : "))
+    pwd<-paste0("password=",readline("Set password : "))
+    if(!grepl(x = schema_name, pattern = "*.dbo$")){
+        schema_name <- paste0(schema_name,".dbo")
+    }
+    return(c(db_name,server_ip,schema_name,user_id,pwd))
+}
+
+infofile_rename <- function(){
+    if( length(list.files(pattern = "server_info_old\\w*.cfg$"))>0){
+        temp <- max(as.integer(gsub("*.cfg$","", gsub("server_info_old","",list.files(pattern="server_info_old\\d*.cfg$")))))
+        temp <- paste0("server_info_old",as.character(temp+1),".cfg")
+        return(temp)
+    }
+    else{
+        return("server_info_old0.cfg")
     }
 }
