@@ -81,7 +81,7 @@ jpeg(
 )
 par(mfrow = c(1, 2), oma = c(0, 0, 2, 0))
 tryCatch(
-    hist(std_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Drug exp Duration", main = std_schema_name, cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+    hist(std_drug_exptbl_diff_date$dayDiff, breaks = 25, xlab = "Drug exp Duration", main = std_schema_name, cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
     , # If data isn't exist...
     error = function(error_message) {
         print(error_message)
@@ -89,7 +89,7 @@ tryCatch(
     }
 )
 tryCatch(
-    hist(tar_conditiontbl_diff_date$dayDiff, breaks = 25, xlab = "Drug exp Duration", main = tar_schema_name, cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
+    hist(tar_drug_exptbl_diff_date$dayDiff, breaks = 25, xlab = "Drug exp Duration", main = tar_schema_name, cex.main = 2.0, cex.axis = 1.5, cex.lab = 1.5)
     , # If data isn't exist...
     error = function(error_message) {
         print(error_message)

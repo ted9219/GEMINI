@@ -51,7 +51,8 @@ save_data <- function(){
     rds_maker("drug_era")
 
     tryCatch({
-        zip(zipfile = paste0("Standard RDS/",cdmDatabaseSchema,".zip"),files = paste0("Standard RDS/",list.files("~/Standard RDS",pattern = "*.rds$")), flag= c("-j", "-r"))
+        zip(zipfile = paste0("Standard RDS/",cdmDatabaseSchema,".zip"),
+            files = paste0("Standard RDS/",list.files("~/Standard RDS",pattern = "*.rds$")), flag= c("-j", "-r"))
     },
     error = function(e){
         cat("Files zip is failed. \n")
