@@ -144,6 +144,7 @@ The Percentage of Care Providers and the null values
 The Percentage of Places that provide medical care and null values
 <!-- 환자에게 의료 서비스를 제공하는 장소의 수 및 Null 값의 백분율.-->
 </div>
+</div>
     
 <a href="#Top">TOP</a>
     
