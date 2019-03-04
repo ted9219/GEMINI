@@ -137,22 +137,22 @@ The Percentage of patients' residential addresses and the null values
   
   The Percentage of Care Providers and the null values
   <!-- 환자를 관리하는 인원 수와 Null 값의 백분율.-->
-    </div>
-    </div>
+  </div>
+  </div>
     
 <SPAN class="col2">
 ![Null value Ratio of Care Site](images/Person/08.Person_care_site.jpg)
   
 The Percentage of Places that provide medical care and null values
 <!-- 환자에게 의료 서비스를 제공하는 장소의 수 및 Null 값의 백분율.-->
-    </SPAN>
+  </SPAN>
     
-   <a href="#Top">TOP</a>
+  <a href="#Top">TOP</a>
     
   ***
   <a name="DEATH"></a>
    
-  ### **DEATH Table**
+### **DEATH Table**
   <div class="row">
   <div class="pull_left">
 ![Death ETL check](images/Death/00.Death_deathcheck.jpg)
@@ -167,15 +167,15 @@ The percentage of death date records per the number of person who expired
 The percentage of deaths by type of death
   <!-- 사망자의 사망 유형 별 백분율-->
     
-   </div>
+  </div>
     
   </div>
-  <a href="#Top">TOP</a>
+<a href="#Top">TOP</a>
     
    ***
-  <a name="VISIT OCCURRENCE"></a>
+<a name="VISIT OCCURRENCE"></a>
     
-   ### **VISIT OCCURRENCE Table**
+### **VISIT OCCURRENCE Table**
   <div class="row">
   <div class="pull_left">
  ![Visit record ratio](images/Visit/00.Visit_record.jpg)
@@ -268,10 +268,10 @@ The percentage of deaths by type of death
   </div>
     <a href="#Top">TOP</a>
     
-  ***
-  <a name="CONDITION OCCURRENCE"></a>
+***
+<a name="CONDITION OCCURRENCE"></a>
     
-  ### **CONDITION OCCURRENCE Table**
+### **CONDITION OCCURRENCE Table**
   <div class="row">
   <div class="pull_left">
     ![Condition record ratio](images/Condition/00.Condition_record.jpg)
@@ -342,10 +342,10 @@ The percentage of deaths by type of death
     
   <a href="#Top">TOP</a>
     
-  ***
+***
     <a name="DRUG EXPOSURE"></a>
     
-  ### **DRUG EXPOSURE Table**
+### **DRUG EXPOSURE Table**
   <div class="row">
   <div class="pull_left">
     ![Records ratio of Drug Exposure](images/Drug exposure/00.Drug_exp_record.jpg)
@@ -419,10 +419,10 @@ The percentage of deaths by type of death
     
    <a href="#Top">TOP</a>
     
-   ***
+***
    <a name="DRUG ERA"></a>
     
-  ### **DRUG ERA Table**
+### **DRUG ERA Table**
     <div class="row">
     <div class="pull_left">
     ![Drug Era record](images/Drug era/00.Drug_era_record.jpg)
@@ -465,5 +465,5 @@ The percentage of deaths by type of death
     
    <a href="#Top">TOP</a>
     
-  ***
+***
     
