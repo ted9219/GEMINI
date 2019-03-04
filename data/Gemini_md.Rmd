@@ -2,13 +2,13 @@
   title: "GEMINI Report"
   output: 
   html_document:
-self_contained: yes
-theme: paper
-highlight: zenburn
-toc: true
-toc_float:
-collapsed: false
-smooth_scroll: TRUE
+    self_contained: yes
+    theme: paper
+    highlight: zenburn
+    toc: true
+    toc_float:
+    collapsed: false
+    smooth_scroll: TRUE
 ---
 
 
