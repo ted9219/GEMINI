@@ -51,7 +51,7 @@ Compare CDM's PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSU
 <div class="row">
 <div class="pull_left">
 
-![Percentage of Total Records](images/Whole/00.Record.jpg)
+![Total Records](images/Whole/00.Record.jpg)
 
 The Percentage of Each table Records per total records
 <!--비교 대상이 되는 테이블의 레코드 수 총합을 기준으로 한 테이블 별 레코드 백분율. -->
@@ -59,7 +59,7 @@ The Percentage of Each table Records per total records
 </div>
 
 <div class="pull_right">
-![Percentage of Total Person](images/Whole/01.Person.jpg)
+![Total Person](images/Whole/01.Person.jpg)
 
 The Percentage of Each table Person per total person
 <!--비교 대상이 되는 테이블의 전체 환자 수를 기준으로 한 테이블 별 환자 백분율.-->
@@ -93,26 +93,26 @@ The Percentage of Gender in Person table
 
 <div class="col2">
 
-![Plot in First visit year](images/Person/02.Person_min_year.jpg)
+![First visit year](images/Person/02.Person_min_year.jpg)
 
-![Plot in Last visit year](images/Person/03.Person_max_year.jpg)
+![Last visit year](images/Person/03.Person_max_year.jpg)
 
 </div>
 
-Plot of Age range and gender ratio of Patient's first/last visit year
+Plots of Age range and gender ratio of Patient's first/last visit year
 <!--환자들이 처음으로 진료받은 연도와 마지막으로 진료받은 연도를 기준으로 한 연령별 백분율 및 성비-->
 
 <div class="row">
 <div class="pull_left">
 
-![Race Ratio of Person table](images/Person/04.Person_race.jpg)
+![Race Ratio of Person](images/Person/04.Person_race.jpg)
 
 The Percentage of Race in Person table
 <!-- 환자 인종별 백분율-->
 </div>
 
 <div class="pull_right">
-![Ethnicity Ratio of Person table](images/Person/05.Person_ethnicity.jpg)
+![Ethnicity Ratio of Person](images/Person/05.Person_ethnicity.jpg)
 
 The Percentage of Ethnicity in Person table
 <!-- 환자 민족별 백분율 -->
@@ -122,27 +122,28 @@ The Percentage of Ethnicity in Person table
 <div class="row">
 <div class="pull_left">
 
-![Null value Ratio of Address](images/Person/06.Person_location.jpg)
+![Location records and Null ratio](images/Person/06.Person_location.jpg)
 
-The Percentage of patients' residential addresses and the null values
+The Percentage of patients' residential location and the null values
 
 <!-- 환자의 거주 주소의 수 및 Null 값의 백분율.-->
 </div>
   
 <div class="pull_right">
-![Null value Ratio of Care Provider](images/Person/07.Person_provider.jpg)
+![Care Provider records and Null ratio](images/Person/07.Person_provider.jpg)
   
 The Percentage of Care Providers and the null values
 <!-- 환자를 관리하는 인원 수와 Null 값의 백분율.-->
 </div>
 </div>
     
-<SPAN class="col2">
-![Null value Ratio of Care Site](images/Person/08.Person_care_site.jpg)
+<div class="row">
+<div class="pull_left">
+![Care site records and Null ratio](images/Person/08.Person_care_site.jpg)
   
 The Percentage of Places that provide medical care and null values
 <!-- 환자에게 의료 서비스를 제공하는 장소의 수 및 Null 값의 백분율.-->
-</SPAN>
+</div>
     
 <a href="#Top">TOP</a>
     
@@ -329,12 +330,12 @@ The percentage of correlation between condition check and visits
 </div>
     
 <div class="row">
-<SPAN class="col2">
+<div class="pull_left">
 ![Condition / visit detail](images/Condition/08.Condition_visit_detail.jpg)
   
 The percentage of correlation between conition and visit details
 <!-- 증상과 방문 내용과의 상관 관계 비율.-->
-</SPAN>
+</div>
 </div>
     
 <a href="#Top">TOP</a>
@@ -413,13 +414,13 @@ The percentage of drug exposure route
 </div>
     
 <div class="row">
-<SPAN class="col2">
+<div class="pull_left">
 ![Drug Exposure / visit occurrence](images/Drug exposure/08.Drug_exp_visit_occurrence.jpg)
   
 The percentage of relationship types between drug exposure and visit
 <!-- 약물 제공과 방문 간 연관 관계의 비율.-->
     
-</SPAN>
+</div>
 </div>
     
 <a href="#Top">TOP</a>
