@@ -83,7 +83,7 @@ The Percentage of Records in the Person table per total records
 </div>
 
 <div class="pull_right">
-![Total Person Ratio by Gender](images/Person/01.Person_gender.jpg)
+![Person Ratio by Gender](images/Person/01.Person_gender.jpg)
 
 The Percentage of Gender in Person table
 <!--환자들의 성비-->
@@ -207,9 +207,9 @@ The Histogram of Visit Duration and Frequency
 </div>
     
 <div class="col2">
-![Visit Start Year](images/Visit/04.Visit_start.jpg)
+![Year of Visit Start](images/Visit/04.Visit_start.jpg)
 
-![Visit End Year](images/Visit/05.Visit_end.jpg)
+![Year of Visit End](images/Visit/05.Visit_end.jpg)
 </div>
     
 The graphs of Person ratio in Patient's first/last visit year
@@ -290,9 +290,9 @@ The percentage of patients in the Condition Occurrence table per total person
 </div>
     
 <div class="col2">
-![Condition Start Year](images/Condition/02.Condition_start.jpg)
+![Year of Condition Start](images/Condition/02.Condition_start.jpg)
 
-![Condition End Year](images/Condition/03.Condition_end.jpg)
+![Year of Condition End](images/Condition/03.Condition_end.jpg)
 </div>
     
 The percentage of year following condition identification and termination
@@ -323,7 +323,7 @@ Counts of Stop Reason value
 </div>
   
 <div class="pull_right">
-![Condition / Visit Occurrence](images/Condition/07.Condition_visit_occurrence.jpg)
+![Correlation with Visit Occurrence](images/Condition/07.Condition_visit_occurrence.jpg)
   
 The percentage of Correlation between condition check and visits
 <!-- 증상 확인과 방문 간 상관 관계의 비율.-->
@@ -332,7 +332,7 @@ The percentage of Correlation between condition check and visits
     
 <div class="row">
 <div class="pull_left">
-![Condition / Visit Detail](images/Condition/08.Condition_visit_detail.jpg)
+![Correlation with visit detail](images/Condition/08.Condition_visit_detail.jpg)
   
 The percentage of Correlation between condition and visit details
 <!-- 증상과 방문 내용과의 상관 관계 비율.-->
@@ -365,14 +365,14 @@ The percentage of patients in the Drug Exposue table per total person
     
 <div class="row">
 <div class="pull_left">
-![Drug Exposure Start Year](images/Drug exposure/02.Drug_exp_start.jpg)
+![Year of Drug Exposure Start](images/Drug exposure/02.Drug_exp_start.jpg)
 
 The Graph of Person ratio and the first Drug Exposure Year
 </div>
 <!-- 약물을 제공하기 시작한 연도에서 환자 백분율.-->
 
 <div class="pull_right">
-![Drug Exposure End Year](images/Drug exposure/03.Drug_exp_end.jpg)
+![Year of Drug Exposure End](images/Drug exposure/03.Drug_exp_end.jpg)
 
 The Graph of Person ratio and the Drug Exposure ended Year
 
@@ -447,9 +447,9 @@ The percentage of Person in the Drug Era table per total person
 </div>
     
 <div class="col2">
-![Drug Era start year](images/Drug era/02.Drug_era_start.jpg)
+![Year of Drug Era Start](images/Drug era/02.Drug_era_start.jpg)
   
-![Drug Era end year](images/Drug era/03.Drug_era_end.jpg)
+![Year of Drug Era End](images/Drug era/03.Drug_era_end.jpg)
 </div>
 The Graphs of Drug Era start year and end year.
 <!-- 약물 복용 시작 및 종료 연도와 인구 비율에 관한 그래프.-->
