@@ -206,8 +206,9 @@ The Histogram of Visit Duration range and Frequency
     
 <div class="col2">
 ![Visit Start Year](images/Visit/04.Visit_start.jpg)
+
 ![Visit End Year](images/Visit/05.Visit_end.jpg)
- </div>
+</div>
     
 The graph of Person ratio in Patient's first/last visit year
 <!-- 연도별 병원 최초 방문 및 마지막 방문 백분율.-->
@@ -360,17 +361,25 @@ The percentage of patients in the Drug Exposue table per total person
 </div>
 </div>
     
-<div class="col2">
+<div class="row">
+<div class="pull_left">
 ![DrugExp Start Year](images/Drug exposure/02.Drug_exp_start.jpg)
+
 The Graph of Person ratio and the first Drug Exposure Year
+</div>
 <!-- 약물을 제공하기 시작한 연도에서 환자 백분율.-->
-</div>
-    
+
+<div class="pull_right">
 ![DrugExp End Year](images/Drug exposure/03.Drug_exp_end.jpg)
+
+The Graph of Person ratio and the Drug Exposure ended Year
+
+<!-- 약물을 제공 종료 연도에서의 환자 백분율.-->
+</div>
 </div>
     
-<!-- 약물을 제공 종료 연도에서의 환자 백분율.-->
-The Graph of Person ratio and the Drug Exposure ended Year 
+
+ 
 <div class="row">
 <div class="pull_left">
 ![Duration of Drug Exposure](images/Drug exposure/04.Drug_exp_duration.jpg)
