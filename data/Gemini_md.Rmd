@@ -13,9 +13,9 @@ output:
 <a name="Top"></a>
 
 ### **GEMINI info** 
-This tool for data quality management by comparing and visualizing manifold data characteristics based on data converted to CDM.
+This tool for data quality management by comparing and visualizing manifold data characteristics based on data converted to OMOP-CDM.
 
-Compare CDM's PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRUG ERA tables.
+Compare OMOP-CDM's PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRUG ERA tables.
 
 <style>
   .col2{
