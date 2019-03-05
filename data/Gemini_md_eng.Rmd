@@ -11,9 +11,15 @@ output:
       smooth_scroll: TRUE
 ---
 <a name="Top"></a>
-<a href="Gemini_md_kor.html" style="text-decoration-line: none;"><span style="color: #337ab7; font-family: &quot;arial&quot;; text-decoration-line: underline; vertical-align: baseline; white-space: pre-wrap;">Korean</span></a></div>
 
 ### **GEMINI info** 
+
+<a style="text-decoration-line: none;"><span style="color: black; font-family: &quot;arial&quot;; vertical-align: baseline; white-space: pre-wrap;">English</span></a></div>
+
+<a href="Gemini_md_kor.html" style="text-decoration-line: none;"><span style="color: #337ab7; font-family: &quot;arial&quot;; text-decoration-line: underline; vertical-align: baseline; white-space: pre-wrap;">Korean</span></a></div>
+
+
+
 This tool for data quality management by comparing and visualizing manifold data characteristics based on data converted to OMOP-CDM.
 
 Compare OMOP-CDM's PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRUG ERA tables.
