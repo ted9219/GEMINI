@@ -1,5 +1,5 @@
 ---
-title: "GEMINI 분석결과 보고서"
+title: "GEMINI 결과보고서"
 output: 
   html_document:
     self_contained: yes
@@ -16,12 +16,15 @@ output:
 
 <a style="text-decoration-line: none;"><div style="text-align: right"><span style="color: black; font-family: &quot;arial&quot;; vertical-align: baseline; white-space: pre-wrap;">Korean</span></a></div>
 
+
 ### **GEMINI info** 
 
 <!--This tool for data quality management by comparing and visualizing manifold data characteristics based on data converted to OMOP-CDM.-->
 GEMINI는 OMOP - CDM 으로 변환된 데이터를 기반으로 데이터의 분석 및 시각화를 통해 데이터 품질 관리를 할 수 있도록 돕는 툴입니다.
 <!--Compare OMOP-CDM's PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRUG ERA tables.-->
-OMOP CDM 의 Person, Death, Visit occurrence, Condition occurrence, Drug exposure, Drug era 표를 비교합니다.
+
+OMOP CDM 의 PERSON, DEATH, VISIT OCCURRENCE, CONDITION OCCURRENCE, DRUG EXPOSURE, DRUG ERA 표를 비교합니다.
+
 <style>
   .col2{
     display: inline-block;
