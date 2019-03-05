@@ -99,7 +99,7 @@ The Percentage of Gender in Person table
 
 </div>
 
-Plots of Age range and gender ratio of Patient's first/last visit year
+Plots of Age range and gender ratio of Patient's First/Last visit year
 <!--환자들이 처음으로 진료받은 연도와 마지막으로 진료받은 연도를 기준으로 한 연령별 백분율 및 성비-->
 
 <div class="row">
