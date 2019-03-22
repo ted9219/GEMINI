@@ -22,7 +22,7 @@ gemini <- function(){
         unzip(zipfile = paste0("Standard RDS/",pick_std_schema), overwrite = T, exdir = "Standard RDS")
     }
     else{
-        std_schema <- "A CDM"
+        std_schema <- "NHIS_Ver.1"
     }
     if(length(list.files(paste0(getwd(), "/Target RDS/"), pattern = "*.zip$"))>0){
         pick_tar_schema <- select.list(list.files(path = "Target RDS", pattern = "\\w*.zip$"), title = "Select Target schema zip flie.")
@@ -30,7 +30,7 @@ gemini <- function(){
         unzip(zipfile = paste0("Target RDS/",pick_tar_schema), overwrite = T, exdir = "Target RDS")
     }
     else{
-        tar_schema <- "B CDM"
+        tar_schema <- "AUSOM"
     }
     # Check rds data files
 
