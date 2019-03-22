@@ -30,7 +30,7 @@ gemini <- function(){
         unzip(zipfile = paste0("Target RDS/",pick_tar_schema), overwrite = T, exdir = "Target RDS")
     }
     else{
-        tar_schema <- "NHIS_Ver.3"
+        tar_schema <- "NHIS_Ver.2"
     }
     # Check rds data files
 
