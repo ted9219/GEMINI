@@ -172,8 +172,7 @@ The percentage of death by type of death
 <a href="#Top">TOP</a>
      
 ***
-***
-***
+<br><br><br>
 
 <a name="VISIT OCCURRENCE"></a>
     
@@ -272,7 +271,7 @@ The Percentage of Correlation type between visits
 <a href="#Top">TOP</a>
   
 ***
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 
 <a name="CONDITION OCCURRENCE"></a>
     
@@ -348,7 +347,7 @@ The percentage of Correlation between condition and visit details
 <a href="#Top">TOP</a>
     
 ***
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
 
 <a name="DRUG EXPOSURE"></a>
      
