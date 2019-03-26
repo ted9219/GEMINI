@@ -170,9 +170,9 @@ The percentage of death by type of death
 </div>
 </div>
 <a href="#Top">TOP</a>
-    
+     
 ***
-
+***
 
 <a name="VISIT OCCURRENCE"></a>
     
