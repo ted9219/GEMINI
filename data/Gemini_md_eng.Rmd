@@ -348,7 +348,7 @@ The percentage of Correlation between condition and visit details
     
 ***
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <a name="DRUG EXPOSURE"></a>
      
 ### **DRUG EXPOSURE Table**
