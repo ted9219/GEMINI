@@ -172,6 +172,8 @@ The percentage of death by type of death
 <a href="#Top">TOP</a>
     
 ***
+
+
 <a name="VISIT OCCURRENCE"></a>
     
 ### **VISIT OCCURRENCE Table**
