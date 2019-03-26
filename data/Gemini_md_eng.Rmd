@@ -272,9 +272,8 @@ The Percentage of Correlation type between visits
 <a href="#Top">TOP</a>
   
 ***
-***
-***
-
+<br>
+<br>
 <a name="CONDITION OCCURRENCE"></a>
     
 ### **CONDITION OCCURRENCE Table**
@@ -349,11 +348,10 @@ The percentage of Correlation between condition and visit details
 <a href="#Top">TOP</a>
     
 ***
-***
-***
+<br><br><br><br><br><br>
 
 <a name="DRUG EXPOSURE"></a>
-    
+     
 ### **DRUG EXPOSURE Table**
 <div class="row">
 <div class="pull_left">
